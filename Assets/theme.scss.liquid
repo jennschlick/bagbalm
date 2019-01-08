@@ -1,11 +1,85 @@
 /*============================================================================
   Colors
 ==============================================================================*/
-$mediumgreen: #00982e;
-$darkgreen: #0d4c39;
-$red: #b10031;
 $beige: #faf6ed;
+$darkgreen: #0d4c39;
+$mediumgreen: #00982e;
+$red: #b10031;
 $tan: #8a6f40;
+$white: #fff;
+
+/*============================================================================
+  Fonts
+==============================================================================*/
+@font-face {
+  font-family: 'Copperplate Gothic';
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/CopperplateGothic-Light.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/CopperplateGothic-Light.woff?6092100117994694258') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Copperplate Gothic';
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/CopperplateGothic-Bold.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/CopperplateGothic-Bold.woff?6092100117994694258') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-SemiBold.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-SemiBold.woff?6092100117994694258') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff?6092100117994694258') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff?6092100117994694258') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin copperplategothiclight {
+  font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
+  font-weight: 300;
+}
+
+@mixin copperplategothicbold {
+  font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+@mixin montserratsemibold {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+@mixin montserratregular {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin montserratmedium {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+/*============================================================================
+  Grid
+==============================================================================*/
+$spacer: 20px;
 
 /*============================================================================
   Brooklyn by Shopify
@@ -15,6 +89,7 @@ $tan: #8a6f40;
 /*============================================================================
   #Sass Mixins
 ==============================================================================*/
+
 .clearfix {
   &:after {
     content: '';
@@ -135,7 +210,7 @@ $tan: #8a6f40;
     @return #1c1d1d;
   }
   @else {
-    @return #fff;
+    @return $white;
   }
 }
 
@@ -337,7 +412,7 @@ $colorBtnSecondaryAccentActive: adaptive-color($colorBtnSecondaryAccent, 24%);
 
 // Text link colors
 $colorLink: $colorSecondary;
-$colorLinkHover: $colorPrimary;
+$colorLinkHover: $darkgreen;
 
 // Text colors
 $colorTextBody: {{ settings.color_body_text }};
@@ -980,7 +1055,21 @@ input,
 textarea,
 button,
 select {
-  line-height: 1.563; // 25px based on 16px font
+  @include montserratregular;
+  color: $darkgreen;
+  font-size: 14px;
+  line-height: 1.5; // 21px based on 16px font
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  @include copperplategothicbold;
+  font-size: 33px;
+  text-transform: uppercase;
+
+  &,
+  &:not(.hero__title) {
+    color: $darkgreen;
+  }
 }
 
 h1 {
@@ -1038,15 +1127,6 @@ th,
     text-align: center;
   }
 
-  // emulate separator line (<hr>) under rte headings
-  h1::after, h2::after {
-    content: '';
-    display: block;
-    margin: 20px auto;
-    border-bottom: 1px {{ settings.color_borders }} solid;
-    max-width: 50px;
-  }
-
   h3 {
     {% if settings.type_accent_subheadings %}
       @include accentFontStack;
@@ -1079,10 +1159,12 @@ blockquote {
 
 /*================ Blog and Page Typography ================*/
 .article .rte,
-.page .rte {
-  h2,
-  h3 {
-    margin-bottom: 2em;
+.page .rte,
+.rte {
+  h2, .h2,
+  h3, .h3 {
+    margin-top: 2em;
+    margin-bottom: 1em;
   }
 }
 
@@ -1181,8 +1263,9 @@ blockquote {
 
 /*================ Misc typography ================*/
 .drawer__title {
-  @include headerFontStack;
-  font-size: em(24px);
+  @include copperplategothicbold;
+  font-size: 33px;
+  text-transform: uppercase;
 }
 
 .collection-grid__item-title {
@@ -1540,6 +1623,7 @@ a {
 
 .rte a,
 .text-link {
+  border-bottom: none !important;
   color: $colorLink;
 
   &:hover {
@@ -1644,7 +1728,9 @@ a {
 }
 
 .drawer__header {
-  padding: ($gutter / 2) 0;
+  border-bottom: none;
+  height: auto;
+  padding-top: ($gutter / 2);
   margin: 0;
 }
 
@@ -2804,9 +2890,25 @@ $slick-opacity-not-active: 0.25;
 }
 
 .site-nav__link {
-  @include accentFontStack;
-  @include transition(color 0.2s);
-  font-size: em(14px);
+  @include montserratsemibold;
+  color: $darkgreen;
+  font-size: 15px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $mediumgreen;
+  }
+}
+
+.site-nav__link--icon {
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+    top: 3px;
+}
+
+.site-nav__link.cart-link {
+  color: $mediumgreen;
 }
 
 .site-nav--has-dropdown {
@@ -2838,6 +2940,22 @@ $slick-opacity-not-active: 0.25;
 
   &.site-nav--has-dropdown-grandchild {
     a:before {
+      display: none;
+    }
+  }
+}
+
+.mobile-nav {
+  > .mobile-nav__item {
+    @include montserratsemibold;
+    text-transform: uppercase;
+
+    a {
+      font-size: 15px;
+      padding: 10px 15px;
+    }
+
+    &:after {
       display: none;
     }
   }
@@ -4089,4 +4207,177 @@ button.mfp-arrow {
 
 .shopify-name {
     @include visuallyHidden;
+}
+
+/*============================================================================
+  Announcement Bar
+==============================================================================*/
+.announcement-bar__message {
+  @include montserratmedium;
+  font-size: 11px;
+  text-transform: uppercase;
+
+  a {
+    color: #fff;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/*============================================================================
+  Main Content
+==============================================================================*/
+.main-content {
+  padding-bottom: 130px !important;
+}
+
+/*============================================================================
+  Footer
+==============================================================================*/
+.site-footer {
+  background: $darkgreen;
+  padding-bottom: 0;
+  position: relative;
+
+  &:before {
+    background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/bag-balm-seal.png?11623341294064470570) 0 0 no-repeat;
+    background-size: contain;
+    content: '';
+    height: 208px;
+    position: absolute;
+      top: -104px;
+    width: 215px;
+
+    @media screen and (max-width: 590px) {
+      left: 50%;
+      -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    @media screen and (min-width: 591px) {
+      left: -40px;
+    }
+  }
+
+  .grid-uniform {
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      &,
+      a {
+        color: #fff;
+      }
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      text-align: center;
+    }
+
+    &:nth-of-type(1) {
+      @media screen and (max-width: 590px) {
+        padding: ($spacer * 7) 0 ($spacer * 2);
+      }
+
+      @media screen and (min-width: 591px) {
+        padding: ($spacer * 6) 0;
+      }
+
+      .site-footer__linklist {
+        li {
+          text-transform: uppercase;
+          a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      @include copperplategothicbold;
+      background: $mediumgreen;
+      font-size: 18px;
+      padding: ($spacer) 0;
+      text-transform: uppercase;
+    }
+
+    &:nth-of-type(3) {
+      @include montserratmedium;
+      background: $white;
+      font-size: 12px;
+      padding: ($spacer * 2) 0;
+
+      .site-footer__linklist {
+        li {
+          @include montserratsemibold;
+          display: inline-block;
+          font-size: 12px;
+          margin-bottom: 0;
+          text-transform: uppercase;
+
+          &:not(:last-child) {
+            margin-right: ($spacer / 2);
+          }
+        }
+      }
+
+      a {
+        &:hover {
+          color: $mediumgreen;
+        }
+      }
+    }
+  }
+
+  .sep {
+    display: inline-block;
+    margin: 0 ($spacer / 2);
+  }
+
+  .social-icons {
+    margin-bottom: 0;
+
+    li {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*============================================================================
+  Section Header
+==============================================================================*/
+.section-header {
+  h1 {
+    margin-bottom: 0;
+
+    @media screen and (min-width: 591px) {
+      &:before,
+      &:after {
+        background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/heading-line.png?7773746805475830441) 0 0 no-repeat;
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        height: 6px;
+        position: relative;
+          top: -6px;
+        width: 159px;
+      }
+
+      &:before {
+        margin-right: ($spacer);
+      }
+
+      &:after {
+        margin-left: ($spacer);
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
