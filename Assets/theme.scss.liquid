@@ -1650,6 +1650,31 @@ a {
   height: 45px;
 }
 
+.btn--add-to-cart,
+.btn--secondary-accent {
+  &,
+  &:focus,
+  &:hover {
+    @include montserratregular;
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+    text-transform: uppercase;
+  }
+
+  &:focus,
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.btn--text {
+  @include montserratsemibold;
+  color: $mediumgreen;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 /*================ Button loading indicator, when supported ================*/
 .supports-csstransforms .btn--loading {
   position: relative;
@@ -1859,11 +1884,13 @@ $shareCountBg: $colorBody;
   }
 
   span {
+    @include montserratsemibold;
     display: inline-block;
     vertical-align: top;
     height: $shareButtonHeight;
     line-height: $shareButtonHeight;
     font-size: 12px;
+    text-transform: uppercase;
   }
 
   .icon {
@@ -1871,6 +1898,14 @@ $shareCountBg: $colorBody;
 
     &:before {
       line-height: $shareButtonHeight;
+    }
+  }
+
+  a {
+    &:first-child {
+      .icon {
+        padding-left: 0;
+      }
     }
   }
 
@@ -1919,7 +1954,7 @@ $shareCountBg: $colorBody;
     }
 
     &:hover {
-      opacity: 0.8;
+      color: $mediumgreen;
     }
 
     &:hover .share-count {
@@ -1928,10 +1963,6 @@ $shareCountBg: $colorBody;
       &:after {
         border-right-color: $shareCountBg;
       }
-    }
-
-    .share-title {
-      font-weight: $bodyFontWeight;
     }
   }
 
@@ -2887,6 +2918,12 @@ $slick-opacity-not-active: 0.25;
 
 .site-nav__item {
   white-space: normal;
+
+  &.site-nav--active {
+    .site-nav__link {
+      color: $mediumgreen;
+    }
+  }
 }
 
 .site-nav__link {
@@ -3061,16 +3098,15 @@ $slick-opacity-not-active: 0.25;
 /*================ Module | Theme Tags ================*/
 .tags {
   a {
-    padding: 4px ($gutter / 2);
-    @include accentFontStack;
-    font-size: em(13px);
-    letter-spacing: 0.15em;
+    padding: 4px ($spacer);
   }
 }
 
 .tags--collection {
-  max-width: 75%;
-  margin: 0 auto 25px;
+  @include montserratsemibold;
+  font-size: 14px;
+  margin: ($spacer * 1.5) auto 0 auto;
+  text-transform: uppercase;
 
   @include at-query($min, $large) {
     li {
@@ -3323,7 +3359,6 @@ button.mfp-arrow {
   position: relative;
   display: block;
   width: 100%;
-  background-color: $colorProductBackground;
   @include transition(opacity 0.4s ease-out);
 
   .grid-collage & {
@@ -3379,6 +3414,14 @@ button.mfp-arrow {
   }
 }
 
+.grid-product__wrapper {
+  &:hover {
+    .grid-product__meta {
+      color: $mediumgreen;
+    }
+  }
+}
+
 .product--image {
   width: 100%;
   position: absolute;
@@ -3404,13 +3447,175 @@ button.mfp-arrow {
   white-space: nowrap;
 }
 
+.product-single__price {
+  @include copperplategothicbold;
+  font-size: 23px;
+}
+
+.product-single__description {
+  margin: ($spacer * 2) 0;
+}
+
+.product-single__uses {
+  margin: ($spacer) 0;
+
+  > p {
+    @include montserratsemibold;
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+  }
+}
+
+.product-single__form--no-variants {
+  margin-top: 0;
+}
+
+.product-single__ingredients {
+  margin-bottom: ($spacer);
+
+  summary {
+    @include montserratsemibold;
+    color: $mediumgreen;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $darkgreen;
+    }
+
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+
+    span {
+      font-size: 18px;
+      position: relative;
+        top: 2px;
+    }
+  }
+
+  summary::-webkit-details-marker {
+    display: none
+  }
+}
+
+.product-single__quote {
+  background: $beige;
+  box-sizing: border-box;
+  color: $tan;
+  margin-top: ($spacer * 3);
+  padding: ($spacer * 2);
+
+  blockquote {
+    @include copperplategothiclight;
+    font-size: 24px;
+    font-variant: small-caps;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+
+    cite {
+      @include montserratmedium;
+      font-size: 14px;
+      font-style: normal;
+      font-variant: normal;
+      margin-top: ($spacer / 2);
+      text-transform: uppercase;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &:before {
+      background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote.png?8837123510934998066) 0 0 no-repeat;
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 20px;
+      margin: 0 auto ($spacer) auto;
+      width: 25px;
+    }
+  }
+}
+
+.product-single__bottom {
+  h2 {
+    font-size: 34px;
+    line-height: 1;
+
+    span {
+      color: $mediumgreen;
+      display: block;
+      font-size: 44px;
+    }
+
+    @media screen and (min-width: 591px) {
+      margin-top: 50px;
+    }
+  }
+}
+
+#ProductSection-related-products {
+  margin: ($spacer * 4) 0;
+  text-align: center;
+
+  .section-header {
+    margin-bottom: ($spacer);
+    text-align: center;
+
+    h1 {
+      @include montserratsemibold;
+      font-size: 20px;
+
+      &:before,
+      &:after {
+        top: -4px;
+      }
+    }
+  }
+
+  .grid {
+    > .grid__item {
+      padding-left: 0;
+    }
+  }
+
+  .grid-uniform {
+    text-align: center;
+
+    .grid__item {
+      display: inline-block;
+      float: none;
+    }
+  }
+
+  .btn {
+    background: $red url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/btn-arrow.png?2126813982052107641) 20px center no-repeat;
+    background-size: 11px auto;
+    padding-left: ($spacer * 2);
+  }
+}
+
 .long-dash {
+  display: none;
   margin: 0 4px;
 }
 
 .grid-product__title {
-  @include bodyFontItalic;
-  font-size: em(floor($baseFontSize * 1.25));  //20px based on 16px base font size
+  @include montserratsemibold;
+  display: block;
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
 .grid-product__vendor {
@@ -3421,8 +3626,9 @@ button.mfp-arrow {
 }
 
 .grid-product__price {
-  @include accentFontStack;
-  font-size: em(14px);
+  @include montserratmedium;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .grid-product__price-min {
@@ -3502,10 +3708,33 @@ button.mfp-arrow {
 
 }
 
+.product-single {
+  text-align: left;
+}
+
+.product-single__meta {
+  padding-top: 0;
+}
+
+.product-single__photos a,
+.product-single__photos img,
+.product-single__thumbnails a,
+.product-single__thumbnails img {
+  background-color: transparent;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}
+
+.product-single__photo-wrapper {
+  padding-top: 0 !important;
+}
+
 /*================ Rich text section ================*/
 .rich-text {
   .section-header {
-    margin-bottom: $gutter / 2.5;
+    margin-bottom: ($spacer * 1.5);
   }
 }
 
@@ -4231,6 +4460,10 @@ button.mfp-arrow {
 ==============================================================================*/
 .main-content {
   padding-bottom: 130px !important;
+
+  @media screen and (min-width: 769px) {
+    padding-top: ($spacer * 3);
+  }
 }
 
 /*============================================================================
@@ -4360,6 +4593,7 @@ button.mfp-arrow {
       &:after {
         background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/heading-line.png?7773746805475830441) 0 0 no-repeat;
         background-size: contain;
+        box-sizing: border-box;
         content: '';
         display: inline-block;
         height: 6px;
@@ -4380,4 +4614,93 @@ button.mfp-arrow {
       }
     }
   }
+}
+
+/*============================================================================
+  Custom Page Styles
+==============================================================================*/
+body#tried-amp-true-bag-balm-uses,
+body#web-specials {
+  .main-content {
+    > .wrapper {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+
+      > .page-template-uses,
+      > .page-template-web-specials {
+        max-width: 1050px;
+        margin: 0 auto;
+
+        @media screen and (max-width: 590px) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        @media screen and (min-width: 591px) {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        .grid__item-inner {
+          background: $beige;
+          padding: ($spacer);
+          text-align: center;
+
+          img {
+            display: block;
+            height: auto;
+            margin-bottom: ($spacer);
+            max-width: 100%;
+          }
+        }
+
+        h2 {
+          @include montserratsemibold;
+          font-size: 20px;
+
+          span {
+            color: $mediumgreen;
+          }
+        }
+
+        .email-signup {
+          margin-top: ($spacer * 3);
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+body#products {
+  .main-content {
+    > .wrapper {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  #shopify-section-collection-template {
+    max-width: 1050px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 590px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    @media screen and (min-width: 591px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}
+
+.img--top {
+  display: block;
+  height: auto;
+  margin-bottom: ($spacer * 4);
+  width: 100%;
 }
