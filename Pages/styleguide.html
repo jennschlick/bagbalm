@@ -1,0 +1,345 @@
+<h2>Colors</h2>
+<p><code>$beige:</code> <span style="background-color: #faf6ed; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#faf6ed</span><br>
+<code>$darkgreen:</code> <span style="background-color: #0d4c39; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#0d4c39</span><br>
+<code>$mediumgreen:</code> <span style="background-color: #00982e; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#00982e</span><br>
+<code>$red:</code> <span style="background-color: #b10031; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#b10031</span><br>
+<code>$tan:</code> <span style="background-color: #8a6f40; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#8a6f40</span><br>
+<code>$white:</code> <span style="background-color: #fff; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#fff</span></p>
+
+<h2>Breakpoints</h2>
+<pre>$siteWidth: 1050px
+$small: 590px
+$medium: 768px
+$large: 769px</pre>
+<h2>Grid</h2>
+<div class="grid">
+<div class="grid__item large--six-twelfths bg--beige">Column</div>
+<div class="grid__item large--six-twelfths bg--beige">Column</div>
+</div>
+<pre>
+/*==================================================================
+  HTML
+===================================================================*/
+
+&lt;div class="grid"&gt;
+&lt;div class="grid__item large--six-twelfths"&gt;Column&lt;/div&gt;
+&lt;div class="grid__item large--six-twelfths"&gt;Column&lt;/div&gt;
+&lt;/div&gt;
+
+/*==================================================================
+  Grid classes
+===================================================================*/
+
+.grid
+.grid--full
+.grid--small
+.grid-uniform
+
+/*==================================================================
+  Column widths
+===================================================================*/
+
+/* Whole */
+#{$class-type}#{$namespace}one-whole       { width: 100%; }
+
+/* Halves */
+#{$class-type}#{$namespace}one-half        { width: 50%; }
+
+/* Thirds */
+#{$class-type}#{$namespace}one-third       { width: 33.333%; }
+#{$class-type}#{$namespace}two-thirds      { width: 66.666%; }
+
+/* Quarters */
+#{$class-type}#{$namespace}one-quarter     { width: 25%; }
+#{$class-type}#{$namespace}two-quarters    { width: 50%; }
+#{$class-type}#{$namespace}three-quarters  { width: 75%; }
+
+/* Fifths */
+#{$class-type}#{$namespace}one-fifth       { width: 20%; }
+#{$class-type}#{$namespace}two-fifths      { width: 40%; }
+#{$class-type}#{$namespace}three-fifths    { width: 60%; }
+#{$class-type}#{$namespace}four-fifths     { width: 80%; }
+
+/* Sixths */
+#{$class-type}#{$namespace}one-sixth       { width: 16.666%; }
+#{$class-type}#{$namespace}two-sixths      { width: 33.333%; }
+#{$class-type}#{$namespace}three-sixths    { width: 50%; }
+#{$class-type}#{$namespace}four-sixths     { width: 66.666%; }
+#{$class-type}#{$namespace}five-sixths     { width: 83.333%; }
+
+/* Eighths */
+#{$class-type}#{$namespace}one-eighth      { width: 12.5%; }
+#{$class-type}#{$namespace}two-eighths     { width: 25%; }
+#{$class-type}#{$namespace}three-eighths   { width: 37.5%; }
+#{$class-type}#{$namespace}four-eighths    { width: 50%; }
+#{$class-type}#{$namespace}five-eighths    { width: 62.5%; }
+#{$class-type}#{$namespace}six-eighths     { width: 75%; }
+#{$class-type}#{$namespace}seven-eighths   { width: 87.5%; }
+
+/* Tenths */
+#{$class-type}#{$namespace}one-tenth       { width: 10%; }
+#{$class-type}#{$namespace}two-tenths      { width: 20%; }
+#{$class-type}#{$namespace}three-tenths    { width: 30%; }
+#{$class-type}#{$namespace}four-tenths     { width: 40%; }
+#{$class-type}#{$namespace}five-tenths     { width: 50%; }
+#{$class-type}#{$namespace}six-tenths      { width: 60%; }
+#{$class-type}#{$namespace}seven-tenths    { width: 70%; }
+#{$class-type}#{$namespace}eight-tenths    { width: 80%; }
+#{$class-type}#{$namespace}nine-tenths     { width: 90%; }
+
+/* Twelfths */
+#{$class-type}#{$namespace}one-twelfth     { width: 8.333%; }
+#{$class-type}#{$namespace}two-twelfths    { width: 16.666%; }
+#{$class-type}#{$namespace}three-twelfths  { width: 25%; }
+#{$class-type}#{$namespace}four-twelfths   { width: 33.333%; }
+#{$class-type}#{$namespace}five-twelfths   { width: 41.666% }
+#{$class-type}#{$namespace}six-twelfths    { width: 50%; }
+#{$class-type}#{$namespace}seven-twelfths  { width: 58.333%; }
+#{$class-type}#{$namespace}eight-twelfths  { width: 66.666%; }
+#{$class-type}#{$namespace}nine-twelfths   { width: 75%; }
+#{$class-type}#{$namespace}ten-twelfths    { width: 83.333%; }
+#{$class-type}#{$namespace}eleven-twelfths { width: 91.666%; }
+
+/*==================================================================
+  Column push classes
+===================================================================*/
+
+/* Whole */
+#{$class-type}push--#{$namespace}one-whole       { left: 100%; }
+
+/* Halves */
+#{$class-type}push--#{$namespace}one-half        { left: 50%; }
+
+/* Thirds */
+#{$class-type}push--#{$namespace}one-third       { left: 33.333%; }
+#{$class-type}push--#{$namespace}two-thirds      { left: 66.666%; }
+
+/* Quarters */
+#{$class-type}push--#{$namespace}one-quarter     { left: 25%; }
+#{$class-type}push--#{$namespace}two-quarters    { left: 50%; }
+#{$class-type}push--#{$namespace}three-quarters  { left: 75%; }
+
+/* Fifths */
+#{$class-type}push--#{$namespace}one-fifth       { left: 20%; }
+#{$class-type}push--#{$namespace}two-fifths      { left: 40%; }
+#{$class-type}push--#{$namespace}three-fifths    { left: 60%; }
+#{$class-type}push--#{$namespace}four-fifths     { left: 80%; }
+
+/* Sixths */
+#{$class-type}push--#{$namespace}one-sixth       { left: 16.666%; }
+#{$class-type}push--#{$namespace}two-sixths      { left: 33.333%; }
+#{$class-type}push--#{$namespace}three-sixths    { left: 50%; }
+#{$class-type}push--#{$namespace}four-sixths     { left: 66.666%; }
+#{$class-type}push--#{$namespace}five-sixths     { left: 83.333%; }
+
+/* Eighths */
+#{$class-type}push--#{$namespace}one-eighth      { left: 12.5%; }
+#{$class-type}push--#{$namespace}two-eighths     { left: 25%; }
+#{$class-type}push--#{$namespace}three-eighths   { left: 37.5%; }
+#{$class-type}push--#{$namespace}four-eighths    { left: 50%; }
+#{$class-type}push--#{$namespace}five-eighths    { left: 62.5%; }
+#{$class-type}push--#{$namespace}six-eighths     { left: 75%; }
+#{$class-type}push--#{$namespace}seven-eighths   { left: 87.5%; }
+
+/* Tenths */
+#{$class-type}push--#{$namespace}one-tenth       { left: 10%; }
+#{$class-type}push--#{$namespace}two-tenths      { left: 20%; }
+#{$class-type}push--#{$namespace}three-tenths    { left: 30%; }
+#{$class-type}push--#{$namespace}four-tenths     { left: 40%; }
+#{$class-type}push--#{$namespace}five-tenths     { left: 50%; }
+#{$class-type}push--#{$namespace}six-tenths      { left: 60%; }
+#{$class-type}push--#{$namespace}seven-tenths    { left: 70%; }
+#{$class-type}push--#{$namespace}eight-tenths    { left: 80%; }
+#{$class-type}push--#{$namespace}nine-tenths     { left: 90%; }
+
+/* Twelfths */
+#{$class-type}push--#{$namespace}one-twelfth     { left: 8.333%; }
+#{$class-type}push--#{$namespace}two-twelfths    { left: 16.666%;  }
+#{$class-type}push--#{$namespace}three-twelfths  { left: 25%; }
+#{$class-type}push--#{$namespace}four-twelfths   { left: 33.333%; }
+#{$class-type}push--#{$namespace}five-twelfths   { left: 41.666%; }
+#{$class-type}push--#{$namespace}six-twelfths    { left: 50%; }
+#{$class-type}push--#{$namespace}seven-twelfths  { left: 58.333%; }
+#{$class-type}push--#{$namespace}eight-twelfths  { left: 66.666%; }
+#{$class-type}push--#{$namespace}nine-twelfths   { left: 75%; }
+#{$class-type}push--#{$namespace}ten-twelfths    { left: 83.333%; }
+#{$class-type}push--#{$namespace}eleven-twelfths { left: 91.666%; }
+
+/*==================================================================
+  Column pull classes
+===================================================================*/
+
+/* Whole */
+#{$class-type}pull--#{$namespace}one-whole       { right: 100%; }
+
+/* Halves */
+#{$class-type}pull--#{$namespace}one-half        { right: 50%; }
+
+/* Thirds */
+#{$class-type}pull--#{$namespace}one-third       { right: 33.333%; }
+#{$class-type}pull--#{$namespace}two-thirds      { right: 66.666%; }
+
+/* Quarters */
+#{$class-type}pull--#{$namespace}one-quarter     { right: 25%; }
+#{$class-type}pull--#{$namespace}two-quarters    { right: 50%; }
+#{$class-type}pull--#{$namespace}three-quarters  { right: 75%; }
+
+/* Fifths */
+#{$class-type}pull--#{$namespace}one-fifth       { right: 20%; }
+#{$class-type}pull--#{$namespace}two-fifths      { right: 40%; }
+#{$class-type}pull--#{$namespace}three-fifths    { right: 60%; }
+#{$class-type}pull--#{$namespace}four-fifths     { right: 80%; }
+
+/* Sixths */
+#{$class-type}pull--#{$namespace}one-sixth       { right: 16.666%; }
+#{$class-type}pull--#{$namespace}two-sixths      { right: 33.333%; }
+#{$class-type}pull--#{$namespace}three-sixths    { right: 50%; }
+#{$class-type}pull--#{$namespace}four-sixths     { right: 66.666%; }
+#{$class-type}pull--#{$namespace}five-sixths     { right: 83.333%; }
+
+/* Eighths */
+#{$class-type}pull--#{$namespace}one-eighth      { right: 12.5%; }
+#{$class-type}pull--#{$namespace}two-eighths     { right: 25%; }
+#{$class-type}pull--#{$namespace}three-eighths   { right: 37.5%; }
+#{$class-type}pull--#{$namespace}four-eighths    { right: 50%; }
+#{$class-type}pull--#{$namespace}five-eighths    { right: 62.5%; }
+#{$class-type}pull--#{$namespace}six-eighths     { right: 75%; }
+#{$class-type}pull--#{$namespace}seven-eighths   { right: 87.5%; }
+
+/* Tenths */
+#{$class-type}pull--#{$namespace}one-tenth       { right: 10%; }
+#{$class-type}pull--#{$namespace}two-tenths      { right: 20%; }
+#{$class-type}pull--#{$namespace}three-tenths    { right: 30%; }
+#{$class-type}pull--#{$namespace}four-tenths     { right: 40%; }
+#{$class-type}pull--#{$namespace}five-tenths     { right: 50%; }
+#{$class-type}pull--#{$namespace}six-tenths      { right: 60%; }
+#{$class-type}pull--#{$namespace}seven-tenths    { right: 70%; }
+#{$class-type}pull--#{$namespace}eight-tenths    { right: 80%; }
+#{$class-type}pull--#{$namespace}nine-tenths     { right: 90%; }
+
+/* Twelfths */
+#{$class-type}pull--#{$namespace}one-twelfth     { right: 8.333%; }
+#{$class-type}pull--#{$namespace}two-twelfths    { right: 16.666%; }
+#{$class-type}pull--#{$namespace}three-twelfths  { right: 25%; }
+#{$class-type}pull--#{$namespace}four-twelfths   { right: 33.333%; }
+#{$class-type}pull--#{$namespace}five-twelfths   { right: 41.666%; }
+#{$class-type}pull--#{$namespace}six-twelfths    { right: 50%; }
+#{$class-type}pull--#{$namespace}seven-twelfths  { right: 58.333%; }
+#{$class-type}pull--#{$namespace}eight-twelfths  { right: 66.666%; }
+#{$class-type}pull--#{$namespace}nine-twelfths   { right: 75%; }
+#{$class-type}pull--#{$namespace}ten-twelfths    { right: 83.333%; }
+#{$class-type}pull--#{$namespace}eleven-twelfths { right: 91.666%; }
+
+/*==================================================================
+  Helper classes
+===================================================================*/
+
+.clearfix
+
+.visually-hidden
+
+#{$class-type}#{$namespace}show        { display: block!important; }
+#{$class-type}#{$namespace}hide        { display: none!important; }
+
+#{$class-type}#{$namespace}text-left   { text-align: left!important; }
+#{$class-type}#{$namespace}text-right  { text-align: right!important; }
+#{$class-type}#{$namespace}text-center { text-align: center!important; }
+
+#{$class-type}#{$namespace}left        { float: left!important; }
+#{$class-type}#{$namespace}right       { float: right!important; }
+</pre>
+
+<h2>Typography</h2>
+<p style="font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif; font-weight: 300;">Copperplate Gothic Light</p>
+<p style="font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif; font-weight: bold;">Copperplate Gothic Bold</p>
+<p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">Montserrat Semibold</p>
+<p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500;">Montserrat Medium</p>
+<p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal;">Montserrat Regular</p>
+<pre>
+@mixin copperplategothiclight {
+  font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
+  font-weight: 300;
+}
+
+@mixin copperplategothicbold {
+  font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+@mixin montserratsemibold {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+@mixin montserratregular {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin montserratmedium {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+</pre>
+<div class="section-header text-center"><h2 class="h1 section-header__title">Section Header</h2></div>
+<h1>H1 Heading</h1>
+<h2>H2 Heading</h2>
+<h3>H3 Heading</h3>
+<h4>H4 Heading</h4>
+<h5>H5 Heading</h5>
+<h6>H6 Heading</h6>
+<pre>
+&lt;div class="section-header text-center">
+  &lt;h2 class="h1 section-header__title">Repairing Skin Since 1899&lt;/h2>
+&lt;/div>
+&lt;h1>H1 Heading&lt;/h1>
+&lt;h2>H2 Heading&lt;/h2>
+&lt;h3>H3 Heading&lt;/h3>
+&lt;h4>H4 Heading&lt;/h4>
+&lt;h5>H5 Heading&lt;/h5>
+&lt;h6>H6 Heading&lt;/h6>
+</pre>
+<p>Paragraph. <a href="#">Lorem ipsum dolor</a> sit amet, <strong>consectetur</strong> <em>adipiscing</em> elit. Ut eu turpis vel magna sagittis semper eu id massa. Ut quis placerat urna. Donec sed sagittis lacus.</p>
+<pre>
+&lt;p>Paragraph. &lt;a href="#">Lorem ipsum dolor&lt;/a> sit amet, &lt;strong>consectetur&lt;/strong> &lt;em>adipiscing&lt;/em> elit. Ut eu turpis vel magna sagittis semper eu id massa. Ut quis placerat urna. Donec sed sagittis lacus.&lt;/p>
+</pre>
+<ul>
+  <li>List item</li>
+  <li>List item</li>
+  <li>List item</li>
+</ul>
+<ol>
+  <li>List item</li>
+  <li>List item</li>
+  <li>List item</li>
+</ol>
+<pre>
+&lt;ul>
+  &lt;li>List item&lt;/li>
+  &lt;li>List item&lt;/li>
+  &lt;li>List item&lt;/li>
+&lt;/ul>
+&lt;ol>
+  &lt;li>List item&lt;/li>
+  &lt;li>List item&lt;/li>
+  &lt;li>List item&lt;/li>
+&lt;/ol>
+</pre>
+<blockquote style="margin-bottom: 20px;">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua.
+  <cite>Jane Doe</cite>
+</blockquote>
+<pre>
+&lt;blockquote>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua.
+  &lt;cite>Jane Doe&lt;/cite>
+&lt;/blockquote>
+</pre>
+<p><a href="#" class="btn">Default Button</a><br><a href="#" class="btn--add-to-cart">Add to Cart</a><br><a href="#" class="btn--secondary">Secondary Button</a><br><a href="#" class="btn--secondary-accent">Secondary Accent Button</a><br><a href="#" class="btn--text">Text Button</a></p>
+<pre>
+&lt;a href="#" class="btn">Default Button&lt;/a>
+&lt;a href="#" class="btn--add-to-cart">Add to Cart&lt;/a>
+&lt;a href="#" class="btn--secondary">Secondary Button&lt;/a>
+&lt;a href="#" class="btn--secondary-accent">Secondary Accent Button&lt;/a>
+&lt;a href="#" class="btn--text">Text Button&lt;/a>
+</pre>
