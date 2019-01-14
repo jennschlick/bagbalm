@@ -37,17 +37,17 @@ $white: #fff;
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff2?6092100117994694258') format('woff2'),
-      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff?6092100117994694258') format('woff');
-  font-weight: normal;
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff?6092100117994694258') format('woff');
+  font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff2?6092100117994694258') format('woff2'),
-      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Medium.woff?6092100117994694258') format('woff');
-  font-weight: 500;
+  src: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff2?6092100117994694258') format('woff2'),
+      url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/Montserrat-Regular.woff?6092100117994694258') format('woff');
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -66,14 +66,21 @@ $white: #fff;
   font-weight: 600;
 }
 
+@mixin montserratmedium {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
 @mixin montserratregular {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 
-@mixin montserratmedium {
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 500;
+/*============================================================================
+  Helper Classes
+==============================================================================*/
+.bg--beige {
+  background-color: $beige;
 }
 
 /*============================================================================
@@ -1141,14 +1148,40 @@ th,
   }
 }
 
+.rte blockquote,
 blockquote {
-  @include bodyFontItalic;
-  font-size: em(23px);
-  line-height: 1.385;
+  @include copperplategothiclight;
+  background: $beige;
+  box-sizing: border-box;
+  color: $tan;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  padding: ($spacer * 2);
   text-align: center;
+  width: 100%;
 
-  @include at-query($min, $postSmall) {
-    font-size: em(26px);
+  cite {
+    @include montserratmedium;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    margin-top: ($spacer / 2);
+    text-transform: uppercase;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &:before {
+    background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote.png?8837123510934998066) 0 0 no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    height: 20px;
+    margin: 0 auto ($spacer) auto;
+    width: 25px;
   }
 }
 
@@ -1619,6 +1652,11 @@ a {
   &:hover {
     color: $colorTextBody;
   }
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
 }
 
 .rte a,
@@ -1637,29 +1675,34 @@ a {
 }
 
 /*================ Buttons and Input Groups ================*/
-.btn,
-.btn--secondary {
-  @include accentFontStack;
-  padding: 12px 20px;
-  font-size: em(13px);
-}
-
 .input-group .btn,
 .input-group .btn--secondary,
 .input-group .input-group-field {
   height: 45px;
 }
 
+.rte .btn,
+.rte .btn--add-to-cart,
+.rte .btn--secondary,
+.rte .btn--secondary-accent,
+.btn,
 .btn--add-to-cart,
+.btn--secondary,
 .btn--secondary-accent {
+  @include montserratmedium;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1;
+  min-width: none;
+  padding: 15px 30px;
+  text-transform: uppercase;
+
   &,
   &:focus,
   &:hover {
-    @include montserratregular;
     background-color: $red;
-    border-color: $red;
+    border: 0;
     color: $white;
-    text-transform: uppercase;
   }
 
   &:focus,
@@ -1671,8 +1714,13 @@ a {
 .btn--text {
   @include montserratsemibold;
   color: $mediumgreen;
+  display: inline-block;
   font-size: 12px;
   text-transform: uppercase;
+
+  &:hover {
+    color: $darkgreen;
+  }
 }
 
 /*================ Button loading indicator, when supported ================*/
@@ -3509,43 +3557,7 @@ button.mfp-arrow {
 }
 
 .product-single__quote {
-  background: $beige;
-  box-sizing: border-box;
-  color: $tan;
   margin-top: ($spacer * 3);
-  padding: ($spacer * 2);
-
-  blockquote {
-    @include copperplategothiclight;
-    font-size: 24px;
-    font-variant: small-caps;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-
-    cite {
-      @include montserratmedium;
-      font-size: 14px;
-      font-style: normal;
-      font-variant: normal;
-      margin-top: ($spacer / 2);
-      text-transform: uppercase;
-
-      &:before {
-        display: none;
-      }
-    }
-
-    &:before {
-      background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote.png?8837123510934998066) 0 0 no-repeat;
-      background-size: contain;
-      content: '';
-      display: block;
-      height: 20px;
-      margin: 0 auto ($spacer) auto;
-      width: 25px;
-    }
-  }
 }
 
 .product-single__bottom {
@@ -4627,7 +4639,29 @@ body.template-index {
 
 #shopify-section-1547407703492 {
   background: $beige;
-  padding: ($spacer * 3) 0;
+  padding: ($spacer * 6) 0 ($spacer * 4) 0;
+
+  h2 {
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: ($spacer);
+    text-align: left;
+
+    span {
+      color: $mediumgreen;
+      display: block;
+      font-size: 44px;
+    }
+  }
+}
+
+#shopify-section-1547407575732 {
+  .section-header {
+    .h1 {
+      @include montserratsemibold;
+      font-size: 20px;
+    }
+  }
 }
 
 /*============================================================================
