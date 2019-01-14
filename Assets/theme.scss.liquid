@@ -1068,9 +1068,19 @@ select {
   line-height: 1.5; // 21px based on 16px font
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, .h1, h2, .h2 {
   @include copperplategothicbold;
   font-size: 33px;
+  text-transform: uppercase;
+
+  &,
+  &:not(.hero__title) {
+    color: $darkgreen;
+  }
+}
+
+h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  @include montserratsemibold;
   text-transform: uppercase;
 
   &,
@@ -1196,8 +1206,8 @@ blockquote {
 .rte {
   h2, .h2,
   h3, .h3 {
-    margin-top: 2em;
-    margin-bottom: 1em;
+    margin-top: ($spacer * 2);
+    margin-bottom: ($spacer);
   }
 }
 
@@ -4637,6 +4647,100 @@ body.template-index {
   }
 }
 
+/* Video */
+#shopify-section-1547407483876 {
+  position: relative;
+
+  .wrapper {
+    max-width: none;
+    padding: 0;
+
+    &:before {
+      background:rgba(0, 0, 0, .6);
+      content: '';
+      height: 100%;
+      position: absolute;
+        top: 0;
+        left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  video {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .custom__item {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  .rte {
+    margin-bottom: 0;
+  }
+
+  .home-video-content {
+    position: absolute;
+      top: 50%;
+      left: 0;
+    text-align: center;
+    -webkit-transform: translate(-50% 0);
+    -ms-transform: translate(-50% 0);
+    transform: translate(-50% 0);
+    width: 100%;
+    z-index: 2;
+
+    h2 {
+      color: $white;
+      font-size: 46px;
+      line-height: 1;
+      margin-top: 0;
+      text-transform: none;
+
+      span {
+        display: block;
+        font-size: 66px;
+      }
+    }
+  }
+
+  .btn {
+    padding-left: ($spacer * 2) !important;
+    padding-right: ($spacer * 2) !important;
+  }
+}
+
+/* Repairing Skin */
+#shopify-section-1547467922341 {
+  margin-top: 140px;
+}
+
+/* Callouts */
+#shopify-section-1547407538239 {
+  h3 {
+    margin-top: ($spacer);
+    margin-bottom: ($spacer / 4);
+  }
+
+  p {
+    margin-bottom: ($spacer / 2);
+  }
+}
+
+/* Best Sellers */
+#shopify-section-1547407575732 {
+  .section-header {
+    .h1 {
+      @include montserratsemibold;
+      font-size: 20px;
+    }
+  }
+}
+
+/* Rugged Northeast Kingdom */
 #shopify-section-1547407703492 {
   background: $beige;
   padding: ($spacer * 6) 0 ($spacer * 4) 0;
@@ -4651,15 +4755,6 @@ body.template-index {
       color: $mediumgreen;
       display: block;
       font-size: 44px;
-    }
-  }
-}
-
-#shopify-section-1547407575732 {
-  .section-header {
-    .h1 {
-      @include montserratsemibold;
-      font-size: 20px;
     }
   }
 }
