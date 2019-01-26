@@ -1,11 +1,5 @@
 <h2>Colors</h2>
-<p><code>$beige:</code> <span style="background-color: #faf6ed; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#faf6ed</span><br>
-<code>$darkgreen:</code> <span style="background-color: #0d4c39; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#0d4c39</span><br>
-<code>$mediumgreen:</code> <span style="background-color: #00982e; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#00982e</span><br>
-<code>$red:</code> <span style="background-color: #b10031; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#b10031</span><br>
-<code>$tan:</code> <span style="background-color: #8a6f40; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#8a6f40</span><br>
-<code>$white:</code> <span style="background-color: #fff; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#fff</span></p>
-
+<p><code>$beige:</code> <span style="background-color: #faf6ed; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#faf6ed</span><br /> <code>$darkgreen:</code> <span style="background-color: #0d4c39; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#0d4c39</span><br /> <code>$mediumgreen:</code> <span style="background-color: #00982e; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#00982e</span><br /> <code>$red:</code> <span style="background-color: #b10031; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#b10031</span><br /> <code>$tan:</code> <span style="background-color: #8a6f40; border-radius: 2px; color: #fff; display: inline-block; font-size: 12px; padding: 0px 6px;">#8a6f40</span><br /> <code>$white:</code> <span style="background-color: #fff; border-radius: 2px; display: inline-block; font-size: 12px; padding: 0px 6px;">#fff</span></p>
 <h2>Breakpoints</h2>
 <pre>$siteWidth: 1050px
 $small: 590px
@@ -16,8 +10,7 @@ $large: 769px</pre>
 <div class="grid__item large--six-twelfths bg--beige">Column</div>
 <div class="grid__item large--six-twelfths bg--beige">Column</div>
 </div>
-<pre>
-/*==================================================================
+<pre>/*==================================================================
   HTML
 ===================================================================*/
 
@@ -248,15 +241,13 @@ $large: 769px</pre>
 #{$class-type}#{$namespace}left        { float: left!important; }
 #{$class-type}#{$namespace}right       { float: right!important; }
 </pre>
-
 <h2>Typography</h2>
 <p style="font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif; font-weight: 300;">Copperplate Gothic Light</p>
 <p style="font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif; font-weight: bold;">Copperplate Gothic Bold</p>
 <p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;">Montserrat Semibold</p>
 <p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500;">Montserrat Medium</p>
 <p style="font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal;">Montserrat Regular</p>
-<pre>
-@mixin copperplategothiclight {
+<pre>@mixin copperplategothiclight {
   font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
   font-weight: 300;
 }
@@ -281,65 +272,70 @@ $large: 769px</pre>
   font-weight: 500;
 }
 </pre>
-<div class="section-header text-center"><h2 class="h1 section-header__title">Section Header</h2></div>
+<div class="section-header text-center">
+<h2 class="h1 section-header__title">Section Header</h2>
+</div>
 <h1>H1 Heading</h1>
 <h2>H2 Heading</h2>
 <h3>H3 Heading</h3>
 <h4>H4 Heading</h4>
 <h5>H5 Heading</h5>
 <h6>H6 Heading</h6>
-<pre>
-&lt;div class="section-header text-center">
-  &lt;h2 class="h1 section-header__title">Repairing Skin Since 1899&lt;/h2>
-&lt;/div>
-&lt;h1>H1 Heading&lt;/h1>
-&lt;h2>H2 Heading&lt;/h2>
-&lt;h3>H3 Heading&lt;/h3>
-&lt;h4>H4 Heading&lt;/h4>
-&lt;h5>H5 Heading&lt;/h5>
-&lt;h6>H6 Heading&lt;/h6>
+<pre>&lt;div class="section-header text-center"&gt;
+  &lt;h2 class="h1 section-header__title"&gt;Repairing Skin Since 1899&lt;/h2&gt;
+&lt;/div&gt;
+&lt;h1&gt;H1 Heading&lt;/h1&gt;
+&lt;h2&gt;H2 Heading&lt;/h2&gt;
+&lt;h3&gt;H3 Heading&lt;/h3&gt;
+&lt;h4&gt;H4 Heading&lt;/h4&gt;
+&lt;h5&gt;H5 Heading&lt;/h5&gt;
+&lt;h6&gt;H6 Heading&lt;/h6&gt;
 </pre>
 <p>Paragraph. <a href="#">Lorem ipsum dolor</a> sit amet, <strong>consectetur</strong> <em>adipiscing</em> elit. Ut eu turpis vel magna sagittis semper eu id massa. Ut quis placerat urna. Donec sed sagittis lacus.</p>
-<pre>
-&lt;p>Paragraph. &lt;a href="#">Lorem ipsum dolor&lt;/a> sit amet, &lt;strong>consectetur&lt;/strong> &lt;em>adipiscing&lt;/em> elit. Ut eu turpis vel magna sagittis semper eu id massa. Ut quis placerat urna. Donec sed sagittis lacus.&lt;/p>
+<pre>&lt;p&gt;Paragraph. &lt;a href="#"&gt;Lorem ipsum dolor&lt;/a&gt; sit amet, &lt;strong&gt;consectetur&lt;/strong&gt; &lt;em&gt;adipiscing&lt;/em&gt; elit. Ut eu turpis vel magna sagittis semper eu id massa. Ut quis placerat urna. Donec sed sagittis lacus.&lt;/p&gt;
 </pre>
 <ul>
-  <li>List item</li>
-  <li>List item</li>
-  <li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
 </ul>
 <ol>
-  <li>List item</li>
-  <li>List item</li>
-  <li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
 </ol>
-<pre>
-&lt;ul>
-  &lt;li>List item&lt;/li>
-  &lt;li>List item&lt;/li>
-  &lt;li>List item&lt;/li>
-&lt;/ul>
-&lt;ol>
-  &lt;li>List item&lt;/li>
-  &lt;li>List item&lt;/li>
-  &lt;li>List item&lt;/li>
-&lt;/ol>
+<pre>&lt;ul&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+&lt;/ol&gt;
 </pre>
-<blockquote style="margin-bottom: 20px;">
+<blockquote style="margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua. <cite>Jane Doe</cite></blockquote>
+<pre>&lt;blockquote&gt;
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua.
-  <cite>Jane Doe</cite>
-</blockquote>
-<pre>
-&lt;blockquote>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua.
-  &lt;cite>Jane Doe&lt;/cite>
-&lt;/blockquote>
+  &lt;cite&gt;Jane Doe&lt;/cite&gt;
+&lt;/blockquote&gt;
 </pre>
-<p><a href="#" class="btn">Default Button</a><br><a href="#" class="btn--add-to-cart">Add to Cart</a><br><a href="#" class="btn--secondary">Secondary Button</a><br><a href="#" class="btn--secondary-accent">Secondary Accent Button</a><br><a href="#" class="btn--text">Text Button</a></p>
-<pre>
-&lt;a href="#" class="btn">Default Button&lt;/a>
-&lt;a href="#" class="btn--add-to-cart">Add to Cart&lt;/a>
-&lt;a href="#" class="btn--secondary">Secondary Button&lt;/a>
-&lt;a href="#" class="btn--secondary-accent">Secondary Accent Button&lt;/a>
-&lt;a href="#" class="btn--text">Text Button&lt;/a>
+<blockquote class="blockquote--large" style="margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua. <cite>Jane Doe</cite></blockquote>
+<pre>&lt;blockquote class="blockquote--large"&gt;
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut re et dolore magna aliqua.
+  &lt;cite&gt;Jane Doe&lt;/cite&gt;
+&lt;/blockquote&gt;
+</pre>
+<p><span class="label">Pro Tip</span></p>
+<pre>&lt;span class="label"&gt;
+  Pro Tip
+&lt;/span&gt;
+</pre>
+<p><a href="#" class="btn">Default Button</a><br /><a href="#" class="btn--add-to-cart">Add to Cart</a><br /><a href="#" class="btn--secondary">Secondary Button</a><br /><a href="#" class="btn--secondary-accent">Secondary Accent Button</a><br /><a href="#" class="btn--text">Text Button</a></p>
+<pre>&lt;a href="#" class="btn"&gt;Default Button&lt;/a&gt;
+&lt;a href="#" class="btn--add-to-cart"&gt;Add to Cart&lt;/a&gt;
+&lt;a href="#" class="btn--secondary"&gt;Secondary Button&lt;/a&gt;
+&lt;a href="#" class="btn--secondary-accent"&gt;Secondary Accent Button&lt;/a&gt;
+&lt;a href="#" class="btn--text"&gt;Text Button&lt;/a&gt;
 </pre>
