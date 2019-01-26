@@ -1413,6 +1413,13 @@ select {
   }
 }
 
+button {
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+}
+
 select:hover {
   outline: 1px solid darken($colorInputBg, 10%);
 }
@@ -1716,11 +1723,6 @@ a {
   &:hover {
     color: $colorLinkHover;
   }
-}
-
-.return-link {
-  @include accentFontStack;
-  font-size: em(14px);
 }
 
 /*================ Buttons and Input Groups ================*/
@@ -3792,6 +3794,18 @@ button.mfp-arrow {
   padding-top: 0 !important;
 }
 
+.product-single__thumbnail {
+  img {
+    border-width: 1px;
+  }
+
+  &.active-thumb {
+    img {
+      border-color: #d7d1c9;
+    }
+  }
+}
+
 /*================ Rich text section ================*/
 .rich-text {
   .section-header {
@@ -4979,4 +4993,19 @@ body#products {
   height: auto;
   margin-bottom: ($spacer * 4);
   width: 100%;
+}
+
+#SearchModal {
+  .input-group .input-group-field {
+    height: auto;
+  }
+
+  input[type="search"] {
+    min-width: 500px;
+    padding: ($spacer);
+  }
+
+  .btn {
+    height: 68px;
+  }
 }
