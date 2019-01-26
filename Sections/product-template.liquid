@@ -382,21 +382,12 @@
       </div>
     </div>
 
-    {% if collection %}
-      <hr class="hr--clear">
-      <div class="text-center">
-        <a href="{{ collection.url }}" class="return-link">&larr; {{ 'products.general.collection_return' | t: collection: collection.title }}</a>
-      </div>
-    {% endif %}
-
 </div>
 {% unless product.empty == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
   </script>
 {% endunless %}
-
-
 
 {% schema %}
 {
