@@ -83,6 +83,10 @@ $white: #fff;
   background-color: $beige;
 }
 
+.color--mediumgreen {
+  color: $mediumgreen;
+}
+
 /*============================================================================
   Grid
 ==============================================================================*/
@@ -1160,16 +1164,22 @@ th,
 
 .rte blockquote,
 blockquote {
-  @include copperplategothiclight;
-  background: $beige;
   box-sizing: border-box;
-  color: $tan;
-  font-size: 24px;
-  line-height: 1.2;
-  margin: 0;
-  padding: ($spacer * 2);
-  text-align: center;
+  color: $mediumgreen;
+  font-size: 18px;
+  margin: 0 0 ($spacer) 0;
+  padding: 0;
   width: 100%;
+
+  &:before {
+    background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote.png?10071376858802526513) 0 0 no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    height: 20px;
+    margin-bottom: ($spacer / 2);
+    width: 25px;
+  }
 
   cite {
     @include montserratmedium;
@@ -1184,14 +1194,19 @@ blockquote {
     }
   }
 
-  &:before {
-    background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote.png?8837123510934998066) 0 0 no-repeat;
-    background-size: contain;
-    content: '';
-    display: block;
-    height: 20px;
-    margin: 0 auto ($spacer) auto;
-    width: 25px;
+  &.blockquote--large {
+    @include copperplategothiclight;
+    background: $beige;
+    color: $tan;
+    font-size: 24px;
+    line-height: 1.2;
+    padding: ($spacer * 2);
+    text-align: center;
+
+    &:before {
+      background-image:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/blockquote-large.png?1192674393195667503);
+      margin: 0 auto ($spacer) auto;
+    }
   }
 }
 
@@ -1321,6 +1336,30 @@ blockquote {
   }
 }
 
+.label {
+  @include montserratsemibold;
+  background: $mediumgreen;
+  color: $white;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1;
+  padding: ($spacer / 4) ($spacer) ($spacer / 4) ($spacer / 2);
+  position: relative;
+  text-transform: uppercase;
+
+  &:after {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 7px solid $white;
+    content: '';
+    height: 0;
+    position: absolute;
+      top: 0;
+      right: 0;
+    width: 0;
+  }
+}
+
 /*================ Partials | Theme Form Overrides ================*/
 label {
   @include bodyFontItalic;
@@ -1365,12 +1404,12 @@ select {
 
   &:hover {
     @include transition(opacity 0.15s ease-out);
-    opacity: 0.9;
   }
 
   &:active,
   &:focus {
     opacity: 1;
+    outline: 0;
   }
 }
 
@@ -4505,7 +4544,7 @@ button.mfp-arrow {
       top: -104px;
     width: 215px;
 
-    @media screen and (max-width: 590px) {
+    @media screen and (max-width: $small) {
       left: 50%;
       -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
@@ -4518,6 +4557,22 @@ button.mfp-arrow {
   }
 
   .grid-uniform {
+    .wrapper {
+      .grid__item {
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          @media screen and (max-width: $medium) {
+            padding-top: ($spacer);
+          }
+        }
+        &:nth-of-type(3) {
+          @media screen and (max-width: $medium) {
+            padding-top: ($spacer * 2);
+          }
+        }
+      }
+    }
+
     &:nth-of-type(1),
     &:nth-of-type(2) {
       &,
@@ -4532,12 +4587,12 @@ button.mfp-arrow {
     }
 
     &:nth-of-type(1) {
-      @media screen and (max-width: 590px) {
-        padding: ($spacer * 7) 0 ($spacer * 2);
+      @media screen and (max-width: $medium) {
+        padding: ($spacer * 6) 0 ($spacer) 0;
       }
 
-      @media screen and (min-width: 591px) {
-        padding: ($spacer * 6) 0;
+      @media screen and (min-width: $medium + 1px) {
+        padding: ($spacer * 7) 0 ($spacer * 5) 0;
       }
 
       .site-footer__linklist {
@@ -4599,7 +4654,81 @@ button.mfp-arrow {
     li {
       display: inline-block;
       margin-bottom: 0;
+
+      a {
+        &:hover {
+          opacity: .7;
+        }
+      }
     }
+  }
+
+  h2 {
+    color: $white;
+    font-size: 33px;
+    line-height: 1;
+
+    img {
+      display: inline-block;
+      height: auto;
+      margin: 0 ($spacer / 6);
+      vertical-align: middle;
+      width: 26px;
+    }
+  }
+
+  form {
+    margin-bottom: ($spacer * 1.5);
+  }
+
+  input[type="email"],
+  input[type="submit"] {
+    background: transparent;
+    border: 1px solid $white;
+    color: $white;
+    display: inline-block;
+    font-size: 13px;
+    padding-top: ($spacer / 2);
+    padding-bottom: ($spacer / 2);
+  }
+
+  input[type="email"] {
+    min-width: 250px;
+  }
+
+  input[type="submit"] {
+    @include montserratsemibold;
+    margin-left: ($spacer / 4);
+    padding-left: ($spacer * 1.5);
+    padding-right: ($spacer * 1.5);
+    text-transform: uppercase;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: $white;
+      color: $darkgreen;
+    }
+  }
+
+  ::-webkit-input-placeholder {
+    color: #799189;
+    font-style: italic;
+  }
+
+  ::-moz-placeholder {
+    color: #799189;
+    font-style: italic;
+  }
+
+  :-ms-input-placeholder {
+    color: #799189;
+    font-style: italic;
+  }
+
+  :-moz-placeholder {
+    color: #799189;
+    font-style: italic;
   }
 }
 
@@ -4716,6 +4845,10 @@ body.template-index {
 /* Repairing Skin */
 #shopify-section-1547467922341 {
   margin-top: 140px;
+
+  .custom__item-inner {
+    text-align: center;
+  }
 }
 
 /* Callouts */
@@ -4775,7 +4908,7 @@ body#web-specials {
         max-width: 1050px;
         margin: 0 auto;
 
-        @media screen and (max-width: 590px) {
+        @media screen and (max-width: $small) {
           padding-left: 15px;
           padding-right: 15px;
         }
@@ -4798,7 +4931,7 @@ body#web-specials {
           }
         }
 
-        h2 {
+        h2:not(.h1) {
           @include montserratsemibold;
           font-size: 20px;
 
@@ -4829,7 +4962,7 @@ body#products {
     max-width: 1050px;
     margin: 0 auto;
 
-    @media screen and (max-width: 590px) {
+    @media screen and (max-width: $small) {
       padding-left: 15px;
       padding-right: 15px;
     }
