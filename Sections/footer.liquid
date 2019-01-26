@@ -27,7 +27,7 @@
         {% comment %}
           If we have an odd amount of links, we need to show 1 more link in 1st column
         {% endcomment %}
-        {% assign extra_link = footer_linklist_count | modulo: 2 %}
+        {% assign extra_link = footer_linklist_count | modulo: 1 %}
         {% comment %}
           We start with a 2nd column after first column is filled up.
         {% endcomment %}
@@ -82,20 +82,96 @@
       {% endcomment %}
       {% if extra_footer_linklist_column and forloop.index == footer_linklist_split %}
           </ul>
+          {% if footer_social_enable %}
+            <ul class="no-bullets social-icons">
+              {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                    <span class="icon icon-facebook" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                    <span class="icon icon-twitter" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                    <span class="icon icon-instagram" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_pinterest_link != blank %}
+                <li>
+                  <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                    <span class="icon icon-pinterest" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_snapchat_link != blank %}
+                <li>
+                  <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                    <span class="icon icon-snapchat" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_google_plus_link != blank %}
+                <li>
+                  <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                    <span class="icon icon-google_plus" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_tumblr_link != blank %}
+                <li>
+                  <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                    <span class="icon icon-tumblr" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_youtube_link != blank %}
+                <li>
+                  <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                    <span class="icon icon-youtube" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_vimeo_link != blank %}
+                <li>
+                  <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                    <span class="icon icon-vimeo" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.social_fancy_link != blank %}
+                <li>
+                  <a href="{{ settings.social_fancy_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                    <span class="icon icon-fancy" aria-hidden="true"></span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
         </div>
         <div class="grid__item {{ footer_column_width }}">
           <ul class="no-bullets site-footer__linklist">
       {% endif %}
-
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-
             {% endfor %}
           </ul>
         </div>
       {% endif %}
 
-      <div class="grid__item {{ footer_column_width }} {% if num_footer_columns == 1 %}text-center{% else %}large--text-right{% endif %}">
-        Newsletter
+      <div class="grid__item large--two-quarters">
+        <h2>Sign up <img src="https://cdn.shopify.com/s/files/1/0108/4823/9675/files/for.png?15222619099356151098" alt="for"> Savings</h2>
+        <form>
+          <input type="email" placeholder="email address"> <input type="submit" value="Submit">
+        </form>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem lesta accusantium doloremque laudantium, totam rem apeue ipsa quae ab illo inventore veritatis et quasi archie vitae dicta.</p>
           {%- if section.settings.show_payment_icons -%}
             {%- unless shop.enabled_payment_types == empty -%}
               <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
@@ -110,88 +186,10 @@
           {%- endif -%}
       </div>
     </div>
-    <div class="wrapper">
-    {% if footer_social_enable %}
-      <div class="grid__item {{ footer_column_width }}">
-          <ul class="no-bullets social-icons">
-            {% if settings.social_facebook_link != blank %}
-              <li>
-                <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-                  <span class="icon icon-facebook" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_twitter_link != blank %}
-              <li>
-                <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                  <span class="icon icon-twitter" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_instagram_link != blank %}
-              <li>
-                <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                  <span class="icon icon-instagram" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_pinterest_link != blank %}
-              <li>
-                <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                  <span class="icon icon-pinterest" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_snapchat_link != blank %}
-              <li>
-                <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-                  <span class="icon icon-snapchat" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_google_plus_link != blank %}
-              <li>
-                <a href="{{ settings.social_google_plus_link | escape }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
-                  <span class="icon icon-google_plus" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_tumblr_link != blank %}
-              <li>
-                <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                  <span class="icon icon-tumblr" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_youtube_link != blank %}
-              <li>
-                <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                  <span class="icon icon-youtube" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_vimeo_link != blank %}
-              <li>
-                <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                  <span class="icon icon-vimeo" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-            {% if settings.social_fancy_link != blank %}
-              <li>
-                <a href="{{ settings.social_fancy_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
-                  <span class="icon icon-fancy" aria-hidden="true"></span>
-                </a>
-              </li>
-            {% endif %}
-          </ul>
-      </div>
-    {% endif %}
-    </div>
   </div>
   <div class="grid-uniform">
     <div class="wrapper">
-      Skin care the works wonders since 1899
+      Skin care that works wonders since 1899
     </div>
   </div>
   <div class="grid-uniform">
