@@ -3546,6 +3546,14 @@ button.mfp-arrow {
   white-space: nowrap;
 }
 
+.product-single__title {
+  margin-bottom: 0;
+}
+
+.product-single__subtitle {
+  font-size: 16px;
+}
+
 .product-single__price {
   @include copperplategothicbold;
   font-size: 23px;
@@ -4691,58 +4699,65 @@ button.mfp-arrow {
     }
   }
 
-  form {
-    margin-bottom: ($spacer * 1.5);
-  }
-
-  input[type="email"],
-  input[type="submit"] {
-    background: transparent;
-    border: 1px solid $white;
-    color: $white;
-    display: inline-block;
-    font-size: 13px;
-    padding-top: ($spacer / 2);
-    padding-bottom: ($spacer / 2);
-  }
-
-  input[type="email"] {
-    min-width: 250px;
-  }
-
-  input[type="submit"] {
-    @include montserratsemibold;
-    margin-left: ($spacer / 4);
-    padding-left: ($spacer * 1.5);
-    padding-right: ($spacer * 1.5);
-    text-transform: uppercase;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background: $white;
-      color: $darkgreen;
+  #mc_embed_signup {
+    form {
+      margin-bottom: ($spacer * 1.5);
     }
-  }
 
-  ::-webkit-input-placeholder {
-    color: #799189;
-    font-style: italic;
-  }
+    input[type="email"],
+    input[type="submit"] {
+      background: transparent;
+      border: 1px solid $white;
+      color: $white;
+      display: inline-block;
+      font-size: 13px;
+      padding-top: ($spacer / 2);
+      padding-bottom: ($spacer / 2);
+    }
 
-  ::-moz-placeholder {
-    color: #799189;
-    font-style: italic;
-  }
+    input[type="email"] {
+      min-width: 250px;
+    }
 
-  :-ms-input-placeholder {
-    color: #799189;
-    font-style: italic;
-  }
+    input[type="submit"] {
+      @include montserratsemibold;
+      margin-left: ($spacer / 4);
+      padding-left: ($spacer * 1.5);
+      padding-right: ($spacer * 1.5);
+      text-transform: uppercase;
 
-  :-moz-placeholder {
-    color: #799189;
-    font-style: italic;
+      &:active,
+      &:focus,
+      &:hover {
+        background: $white;
+        color: $darkgreen;
+        opacity: 1;
+      }
+    }
+
+    ::-webkit-input-placeholder {
+      color: #799189;
+      font-style: italic;
+      opacity: 1;
+    }
+
+    ::-moz-placeholder {
+      color: #799189;
+      font-style: italic;
+      opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+      color: #799189;
+      font-style: italic;
+      opacity: 1;
+    }
+
+    :-moz-placeholder {
+      color: #799189;
+      font-style: italic;
+      opacity: 1;
+    }
   }
 }
 
@@ -5007,5 +5022,74 @@ body#products {
 
   .btn {
     height: 68px;
+  }
+}
+
+/*============================================================================
+  Custom Cart Styles
+==============================================================================*/
+.cart-link__bubble--visible {
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 11px;
+}
+
+/*============================================================================
+  Mailchimp
+==============================================================================*/
+.main-content #mc_embed_signup {
+
+  input[type="email"],
+  input[type="submit"] {
+    font-size: 13px;
+    height: 44px;
+    line-height: 1;
+  }
+
+  input[type="email"] {
+    background: $white;
+    border: 1px solid $darkgreen;
+    color: $mediumgreen;
+    min-width: 250px;
+  }
+
+  input[type="submit"] {
+    @include montserratsemibold;
+    background: $red;
+    color: $white;
+    margin-left: ($spacer / 4);
+    padding-left: ($spacer * 1.5);
+    padding-right: ($spacer * 1.5);
+    text-transform: uppercase;
+
+    &:active,
+    &:focus,
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  ::-webkit-input-placeholder {
+    color: $mediumgreen;
+    font-style: italic;
+    opacity: 1;
+  }
+
+  :-moz-placeholder {
+    color: $mediumgreen;
+    font-style: italic;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: $mediumgreen;
+    font-style: italic;
+    opacity: 1;
+  }
+
+  ::-ms-input-placeholder {
+    color: $mediumgreen;
+    font-style: italic;
+    opacity: 1;
   }
 }
