@@ -214,6 +214,10 @@
 
           <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
 
+          {% assign subtitle = product.metafields.subtitle %}
+          {% assign key = 'subtitle' %}
+          <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
+
           <div class="product-single__description rte" itemprop="description">
             {{ product.description }}
           </div>
