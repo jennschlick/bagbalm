@@ -102,6 +102,7 @@
     {% endif %}
 
     <main class="main-content" role="main">
+      {% include 'breadcrumbs' %}
       {% unless template.name == "index" or template == "collection.image" %}
         <div class="wrapper">
       {% endunless %}

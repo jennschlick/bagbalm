@@ -2359,7 +2359,9 @@ $socialIconFontStack: 'icons';
 
 /*================ Module | Site Header ================*/
 .site-header {
-  padding: ($gutter / 2) 0 0;
+  padding: ($gutter / 2) 40px 0 60px;
+  position: relative;
+  top: 20px;
 
   .grid--table {
     display: table;
@@ -2409,7 +2411,7 @@ $socialIconFontStack: 'icons';
 .announcement-bar__message {
   display: block;
   font-weight: $headerFontWeight;
-  padding: 10px $gutter;
+  padding: 14px $gutter;
   margin: 0;
 }
 
@@ -2507,7 +2509,7 @@ $socialIconFontStack: 'icons';
 .site-nav__link {
   display: inline-block;
   text-decoration: none;
-  padding: $gutter / 2;
+  padding: 15px 13px;
   white-space: nowrap;
   color: $colorNavText;
   font-size: em(14px);
@@ -2736,7 +2738,15 @@ $socialIconFontStack: 'icons';
 /*================ Cart bubble for items in cart ================*/
 @include at-query($min, $large) {
   .site-nav__link--icon .icon {
-    font-size: em(22px);
+    font-size: em(20px);
+
+      &.icon-search {
+          font-size: em(17px);
+      }
+
+      &.icon-customer {
+          font-size: em(16px);
+      }
   }
 }
 

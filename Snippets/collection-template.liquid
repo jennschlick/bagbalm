@@ -2,8 +2,7 @@
   Collection template, used on collection.liquid and collection.image.liquid
 {% endcomment %}
 
-{% paginate collection.products by 12 %}
-
+{% paginate collection.products by 40 %}
 <header class="section-header text-center">
   <h1>{% if collection.handle == 'all' %}Shop Bag Balm{% else %}{{ collection.title }}{% endif %}</h1>
   {% if collection.description != blank %}
