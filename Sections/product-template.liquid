@@ -1,6 +1,6 @@
 <!-- /templates/product.liquid -->
 <div itemscope itemtype="http://schema.org/Product" id="ProductSection--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product-template" data-image-zoom-type="{{ section.settings.zoom_enable }}" data-enable-history-state="true" data-scroll-to-image="{% if section.settings.image_layout == "stacked" %}true{% else %}false{% endif %}">
-
+<div id="opinew-rich-snippets-code-container">{{ product.metafields.opinew_metafields['rich_snippets'] }}</div>
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
     <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
@@ -213,6 +213,7 @@
           {% endif %}
 
           <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+          <div id='opinew-stars-plugin-product'>{{ product.metafields.opinew_metafields['stars_product'] }}</div>
 
           {% assign subtitle = product.metafields.subtitle %}
           {% assign key = 'subtitle' %}
