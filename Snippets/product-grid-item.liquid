@@ -77,6 +77,8 @@
 
     <a href="{{ product.url | within: collection }}" class="grid-product__meta">
       <span class="grid-product__title">{{ product.title }}</span>
+      {% assign subtitle = product.metafields.subtitle %}
+      <span class="grid-product__size">{{ subtitle['subtitle'] }}</span>
       <div class='opinew-stars-plugin-product-list'>{{ product.metafields.opinew_metafields['stars_lists'] }}</div>
       <span class="grid-product__price-wrap">
         <span class="long-dash">—</span>

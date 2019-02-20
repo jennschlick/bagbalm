@@ -5,6 +5,7 @@ $beige: #faf6ed;
 $darkgreen: #0d4c39;
 $mediumgreen: #00982e;
 $red: #b10031;
+$darkred: #7c0123;
 $tan: #8a6f40;
 $white: #fff;
 
@@ -1663,6 +1664,10 @@ input[type="image"] {
   }
 }
 
+.opinew-no-reviews-stars-plugin {
+  display: none;
+}
+
 .collection-collage__item {
   position: relative;
   margin-bottom: $gutter / 2;
@@ -1758,7 +1763,7 @@ a {
 
   &:focus,
   &:hover {
-    opacity: .7;
+    background-color: $darkred;
   }
 }
 
@@ -3546,6 +3551,11 @@ button.mfp-arrow {
   white-space: nowrap;
 }
 
+.product-single.Apparel .product-single__uses,
+.product-single.Apparel .product-single__ingredients
+{
+  display: none;
+}
 
 .template-product {
   nav.breadcrumb {
@@ -3571,6 +3581,7 @@ button.mfp-arrow {
 
 .product-single__subtitle {
   font-size: 16px;
+   @include montserratsemibold;
 }
 
 .product-single__price {
@@ -3579,7 +3590,7 @@ button.mfp-arrow {
 }
 
 .product-single__description {
-  margin: ($spacer * 2) 0;
+  margin: ($spacer) 0;
 }
 
 .product-single__uses {
@@ -3639,6 +3650,8 @@ button.mfp-arrow {
 }
 
 .product-single__bottom {
+    margin: 140px auto;
+
   h2 {
     font-size: 34px;
     line-height: 1;
@@ -3655,12 +3668,28 @@ button.mfp-arrow {
   }
 }
 
+
+
 #ProductSection-related-products {
-  margin: ($spacer * 4) 0;
+  margin: ($spacer * 5) 0;
   text-align: center;
 
+  .large--one-quarter {
+    @media screen and (min-width: 769px) {
+      width: 24.5%;
+    }
+  }
+
+  .opinew-stars-plugin-product-list {
+    display: none;
+  }
+
+  .product--wrapper {
+      width: 80%;
+  }
+
   .section-header {
-    margin-bottom: ($spacer);
+    margin-bottom: 50px;
     text-align: center;
 
     h1 {
@@ -3690,9 +3719,14 @@ button.mfp-arrow {
   }
 
   .btn {
-    background: $red url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/btn-arrow.png?2126813982052107641) 20px center no-repeat;
+    background: $red url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/btn-arrow.png?2126813982052107641) 24px center no-repeat;
     background-size: 11px auto;
-    padding-left: ($spacer * 2);
+    padding-left: 50px;
+
+    &:focus,
+    &:hover {
+      background-color: $darkred;
+    }
   }
 }
 
@@ -3704,9 +3738,17 @@ button.mfp-arrow {
 .grid-product__title {
   @include montserratsemibold;
   display: block;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 18px;
   text-transform: uppercase;
+}
+
+.grid-product__size {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 2px auto 6px;
+    display: block;
+    font-weight: 500;
 }
 
 .grid-product__vendor {
@@ -3772,6 +3814,13 @@ button.mfp-arrow {
     padding-bottom: 55px;
   }
 
+  img.product-badge {
+      width: 75px;
+      height: 75px;
+      position: absolute;
+      z-index: 10;
+  }
+
   .slick-dots {
     background-color: $colorProductBackground;
     bottom: 0;
@@ -3796,7 +3845,6 @@ button.mfp-arrow {
       height: 11px;
     }
   }
-
 }
 
 .product-single {
@@ -3825,6 +3873,7 @@ button.mfp-arrow {
 .product-single__thumbnail {
   img {
     border-width: 1px;
+    padding: 7px;
   }
 
   &.active-thumb {
