@@ -21,63 +21,52 @@
       {% endif %}
     </div>
 
-  {% if section.settings.collection_tags_enable %}
-    {% if collection.all_tags.size > 0 %}
-      {% if section.settings.collection_sort_enable %}
-      {% endif %}
-      {% comment %}
-        To provide a 'catch-all' link at the top of the list,
-        check against the collection.handle, product type, and vendor.
-      {% endcomment %}
-      <ul class="tags tags--collection inline-list">
-        <li{% unless current_tags %} class="tag--active"{% endunless %}>
-          {% comment %}
-            Good for /collections/all collection and regular collections
-          {% endcomment %}
-          {% if collection.handle %}
-            <a href="/collections/{{ collection.handle }}">
-              {{ 'collections.general.all_of_collection' | t }}
-            </a>
 
-          {% comment %}
-            Good for automatic type collections
-          {% endcomment %}
-          {% elsif collection.current_type %}
-            <a href="{{ collection.current_type | url_for_type }}">
-              {{ 'collections.general.all_of_collection' | t }}
-            </a>
+<ul class="tags tags--collection inline-list">
+    <li class="col-all">
+        <a href="/collections/all">All</a>
+    </li>
+    <li class="col-hands">
+        <a href="/collections/all/hands-skin">Hands &amp; Skin</a>
+    </li>
+    <li class="col-lips">
+        <a href="/collections/all/lips">Lips</a>
+    </li>
+    <li class="col-pet">
+        <a href="/collections/all/pet-care">Pet Care</a>
+    </li>
+    <li class="col-apparel">
+        <a href="/collections/all/apparel">Apparel</a>
+    </li>
+    <li class="col-bundle">
+        <a href="/collections/all/bundle-save">Bundle &amp; Save</a>
+    </li>
+</ul>
 
-          {% comment %}
-            Good for automatic vendor collections
-          {% endcomment %}
-          {% elsif collection.current_vendor %}
-            <a href="{{ collection.current_vendor | url_for_vendor }}">
-              {{ 'collections.general.all_of_collection' | t }}
-            </a>
-          {% endif %}
-        </li>
-
-        {% for tag in collection.all_tags %}
-          {% if current_tags contains tag %}
-            <li class="tag--active">
-              {{ tag | link_to_remove_tag: tag }}
-            </li>
-          {% else %}
-            <li>
-              {% comment %}
-                Use link_to_add_tag if you want to allow filtering
-                by multiple tags
-              {% endcomment %}
-              {{ tag | link_to_tag: tag }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endif %}
-
-  {% if section.settings.collection_tags_enable %}
-  {% endif %}
+<script>
+  $(document).ready(function() {
+      var path = window.location.pathname.split("/").pop();
+      var url = location.pathname;
+      if ( path == 'all' ) {
+          $(".col-all").attr("class","tag--active");
+       }
+      if(url.indexOf('hands-skin') > -1) {
+        $(".col-hands").attr("class","tag--active");
+      }
+      if(url.indexOf('lips') > -1) {
+        $(".col-lips").attr("class","tag--active");
+      }
+      if(url.indexOf('pet-care') > -1) {
+        $(".col-pet").attr("class","tag--active");
+      }
+      if(url.indexOf('apparel') > -1) {
+        $(".col-apparel").attr("class","tag--active");
+      }
+      if(url.indexOf('bundle-save') > -1) {
+        $(".col-bundle").attr("class","tag--active");
+      }
+  });
+</script>
 </header>
 
 {% if section.settings.collection_products_grid == 'collage' %}

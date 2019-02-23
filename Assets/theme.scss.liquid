@@ -951,6 +951,7 @@ hr {
 .hr--small {
   @extend hr;
   margin: 20px auto;
+  display: none;
 }
 
 .hr--medium {
@@ -1259,9 +1260,17 @@ blockquote {
   @include bodyFontItalic;
 }
 
+.cart__row--table input {
+    font-size: 13px;
+}
+
+.cart__product-name {
+    font-size: 14px;
+}
+
 .ajaxcart__product-name {
-  font-size: em(17px);
-  line-height: 1.3;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .ajaxcart__price,
@@ -1287,12 +1296,15 @@ blockquote {
 
 .ajaxcart__subtotal {
   @include accentFontStack;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .ajaxcart__qty-num[type="text"] {
   @include accentFontStack;
   font-style: normal;
   font-size: em(13px);
+  font-size: 12px;
 }
 
 .ajaxcart__note {
@@ -1304,6 +1316,7 @@ blockquote {
 .ajaxcart__policies {
   font-weight: $bodyFontWeight;
   opacity: 0.7;
+  font-size: 12px;
 }
 
 .ajaxcart__policies a {
@@ -1320,10 +1333,12 @@ blockquote {
   font-size: em(20px);
 }
 
+
+
 /*================ Misc typography ================*/
 .drawer__title {
   @include copperplategothicbold;
-  font-size: 33px;
+  font-size: 24px;
   text-transform: uppercase;
 }
 
@@ -1901,7 +1916,6 @@ a {
 }
 
 .ajaxcart__footer {
-  border-top: 1px solid $colorDrawerBorder;
   padding-top: $gutter / 2;
 }
 
@@ -1910,7 +1924,7 @@ a {
   bottom: 0;
   left: $gutter / 2;
   right: $gutter / 2;
-  min-height: $drawerCartFooterHeight; // overwritten by JS
+  min-height: 200px; // overwritten by JS
   padding-bottom: $gutter;
 
   @include at-query ($max, $small) {
@@ -1918,8 +1932,10 @@ a {
   }
 
   @include at-query($min, $large) {
-    left: $gutter;
-    right: $gutter;
+   left: 0;
+   right: 0;
+   background-color: #122a20;
+   padding: 30px;
   }
 }
 
@@ -5172,3 +5188,64 @@ body.template-collection {
     opacity: 1;
   }
 }
+
+
+/*================ Product Page Reviews ================*/
+
+#opinew-reviews-product-page-code {
+
+
+  nav.opinew-navbar span {
+    text-transform: uppercase;
+    letter-spacing: normal !important;
+    font-weight: 500 !important;
+  }
+
+  .opw-py-4[data-v-9e6b8f4c] {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      margin-bottom: 10px !important;
+  }
+
+  .opw-shadow-md[data-v-9e6b8f4c] {
+      box-shadow: none !important;
+      border: 1px solid #d9d8d8;
+      padding-top: 10px;
+  }
+
+  .opw-bg-green[data-v-9e6b8f4c] {
+      background-color: #00982e !important;
+      font-size: 10px !important;
+      text-transform: uppercase;
+      font-weight: 500 !important;
+      letter-spacing: .5px;
+      position: relative;
+      top: -2px;
+  }
+
+  i.opw-noci {
+      display: none;
+  }
+
+  span.opw-text-lg.opw-align-top {
+      font-size: 13px !important;
+      font-weight: 600;
+  }
+
+  .opw-italic[data-v-9e6b8f4c] {
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      margin-top: 5px !important;
+  }
+
+  .summary-card-container.opw-mx-1 {
+      margin-top: 20px !important;
+  }
+
+  .pagination-container {
+      font-weight: 600;
+      text-transform: uppercase;
+  }
+}
+
+
