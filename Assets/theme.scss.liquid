@@ -2093,6 +2093,14 @@ $shareCountBg: $colorBody;
 
 /*================ Partials | Theme search grid ================*/
 
+
+.template-search {
+  h4 {
+    margin-top: 20px;
+    text-transform: none;
+    margin-bottom: 0;
+  }
+}
 .grid-search {
   margin-bottom: $gutter;
 }
@@ -4646,10 +4654,10 @@ button.mfp-arrow {
     background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/bag-balm-seal.png?11623341294064470570) 0 0 no-repeat;
     background-size: contain;
     content: '';
-    height: 208px;
+    height: 168px;
     position: absolute;
-      top: -104px;
-    width: 215px;
+    top: -80px;
+    width: 175px;
 
     @media screen and (max-width: $small) {
       left: 50%;
@@ -4661,6 +4669,16 @@ button.mfp-arrow {
     @media screen and (min-width: 591px) {
       left: -40px;
     }
+  }
+
+  .social-icons .icon{
+    padding-right: 11px;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+    max-width: 370px;
   }
 
   .grid-uniform {
@@ -4720,6 +4738,7 @@ button.mfp-arrow {
       font-size: 18px;
       padding: ($spacer) 0;
       text-transform: uppercase;
+      margin-top: 0;
     }
 
     &:nth-of-type(3) {
@@ -4727,6 +4746,8 @@ button.mfp-arrow {
       background: $white;
       font-size: 12px;
       padding: ($spacer * 2) 0;
+      margin-top: 0;
+
 
       .site-footer__linklist {
         li {
@@ -4786,7 +4807,7 @@ button.mfp-arrow {
 
   #mc_embed_signup {
     form {
-      margin-bottom: ($spacer * 1.5);
+      margin-bottom: 20px;
     }
 
     input[type="email"],
@@ -4894,17 +4915,22 @@ body.template-index {
 #shopify-section-1547407483876 {
   position: relative;
 
+  .custom-content {
+      max-height: 740px;
+      overflow: hidden;
+  }
+
   .wrapper {
     max-width: none;
     padding: 0;
 
     &:before {
-      background:rgba(0, 0, 0, .6);
+      background:rgba(0, 0, 0, .4);
       content: '';
       height: 100%;
       position: absolute;
-        top: 0;
-        left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       z-index: 1;
     }
@@ -4914,6 +4940,8 @@ body.template-index {
     display: block;
     height: auto;
     width: 100%;
+    position: relative;
+    top: -30px;
   }
 
   .custom__item {
@@ -4927,12 +4955,12 @@ body.template-index {
 
   .home-video-content {
     position: absolute;
-      top: 50%;
+      top: 37%;
       left: 0;
     text-align: center;
-    -webkit-transform: translate(-50% 0);
-    -ms-transform: translate(-50% 0);
-    transform: translate(-50% 0);
+    -webkit-transform: translate(-37% 0);
+    -ms-transform: translate(-37% 0);
+    transform: translate(-37% 0);
     width: 100%;
     z-index: 2;
 
@@ -4957,11 +4985,26 @@ body.template-index {
 }
 
 /* Repairing Skin */
+
 #shopify-section-1547467922341 {
   margin-top: 140px;
 
   .custom__item-inner {
     text-align: center;
+
+    h2 {
+        text-transform: none;
+        font-size: 35px;
+    }
+
+    p {
+        max-width: 790px;
+        margin: 0 auto 50px auto;
+    }
+
+    img {
+      max-width: 880px;
+    }
   }
 }
 
@@ -4970,6 +5013,7 @@ body.template-index {
   h3 {
     margin-top: ($spacer);
     margin-bottom: ($spacer / 4);
+    font-size: 19px;
   }
 
   p {
@@ -4981,8 +5025,8 @@ body.template-index {
 #shopify-section-1547407575732 {
   .section-header {
     .h1 {
-      @include montserratsemibold;
-      font-size: 20px;
+      font-weight: 600;
+      font-size: 30px;
     }
   }
 }
@@ -4997,6 +5041,7 @@ body.template-index {
     line-height: 1;
     margin-bottom: ($spacer);
     text-align: left;
+    margin-top: 50px;
 
     span {
       color: $mediumgreen;
@@ -5004,22 +5049,25 @@ body.template-index {
       font-size: 44px;
     }
   }
+
+  p {
+    max-width: 420px;
+  }
 }
 
 /*============================================================================
   Custom Page Styles
 ==============================================================================*/
-body#tried-amp-true-bag-balm-uses,
-body#web-specials {
+body#tried-amp-true-bag-balm-uses {
+
   .main-content {
     > .wrapper {
       max-width: 100%;
       padding-left: 0;
       padding-right: 0;
 
-      > .page-template-uses,
-      > .page-template-web-specials {
-        max-width: 1050px;
+      > .page-template-uses {
+        max-width: 1100px;
         margin: 0 auto;
 
         @media screen and (max-width: $small) {
@@ -5030,6 +5078,80 @@ body#web-specials {
         @media screen and (min-width: 591px) {
           padding-left: 30px;
           padding-right: 30px;
+        }
+
+        .section-header {
+          margin-bottom: 70px;
+        }
+
+        .panel-1 {
+          .large--six-twelfths:nth-of-type(2) {
+            padding: 0 60px;
+          }
+        }
+
+        .panel-2 {
+          @media screen and (min-width: 591px) {
+            margin-top: 40px;
+            margin-bottom: 100px;
+          }
+
+          .large--six-twelfths:nth-of-type(2) {
+            max-width: 450px;
+          }
+
+          .large--six-twelfths:nth-of-type(1) {
+            padding: 40px 20px 20px 130px;
+          }
+        } 
+
+        .panel-3 {
+          @media screen and (min-width: 591px) {
+            margin-bottom: 60px;
+          }
+
+          .large--six-twelfths:nth-of-type(2) {
+            padding: 70px 62px 0 62px;
+          }
+
+          .large--six-twelfths:nth-of-type(1) {
+            img {
+              max-width: 492px;
+            }
+          }
+        } 
+
+        .panel-4 {
+          @media screen and (min-width: 591px) {
+            margin-top: 80px;
+            margin-bottom: 100px;
+          }
+
+          .large--six-twelfths:nth-of-type(1) {
+            padding: 30px 20px 20px 130px;
+          }
+
+          .large--six-twelfths:nth-of-type(2) {
+            max-width: 500px;
+          }
+        } 
+
+        .panel-5 {
+            max-width: 920px;
+            margin: 0 auto;
+
+            p {
+              margin-bottom: 40px;
+            }
+
+            img {
+              width: 70px;
+              height: auto;
+            }
+
+            h6 {
+              font-size: 14px;
+            }
         }
 
         .grid__item-inner {
@@ -5063,6 +5185,81 @@ body#web-specials {
   }
 }
 
+body#web-specials {
+  .main-content {
+    > .wrapper {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+
+      > .page-template-web-specials {
+        max-width: 900px;
+        margin: 0 auto;
+
+        @media screen and (max-width: $small) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        @media screen and (min-width: 591px) {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        .grid__item-inner {
+          background: $beige;
+          padding: 20px 50px;
+          text-align: center;
+
+          img {
+            display: block;
+            height: auto;
+            margin-bottom: ($spacer);
+            max-width: 100%;
+          }
+        }
+
+        h2:not(.h1) {
+          @include montserratsemibold;
+          font-size: 20px;
+
+          span {
+            color: $mediumgreen;
+          }
+        }
+
+        .email-signup {
+          margin: 60px auto;
+          text-align: center;
+          max-width: 600px;
+
+          p {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+body#our-heritage {
+  .main-content {
+    > .wrapper {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .about-content {
+      max-width: 700px;
+      margin: 50px auto;
+
+      h2 {
+        text-align: left;
+      }
+    }
+  }
+}
 
 body#products,
 body.template-collection {
@@ -5143,7 +5340,7 @@ body.template-collection {
 
   input[type="email"] {
     background: $white;
-    border: 1px solid $darkgreen;
+    border: 1px solid #A1BAB0;
     color: $mediumgreen;
     min-width: 250px;
   }
@@ -5160,7 +5357,7 @@ body.template-collection {
     &:active,
     &:focus,
     &:hover {
-      opacity: .7;
+      background: $darkred;
     }
   }
 
