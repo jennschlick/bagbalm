@@ -2,7 +2,7 @@
   Collection template, used on collection.liquid and collection.image.liquid
 {% endcomment %}
 
-{% paginate collection.products by 40 %}
+{% paginate collection.products by 60 %}
 <header class="section-header text-center">
   <h1>{% if collection.handle == 'all' %}Shop Bag Balm{% else %}{{ collection.title }}{% endif %}</h1>
   {% if collection.description != blank %}
@@ -27,19 +27,22 @@
         <a href="/collections/all">All</a>
     </li>
     <li class="col-hands">
-        <a href="/collections/all/hands-skin">Hands &amp; Skin</a>
+        <a href="/collections/hands-skin">Hands &amp; Skin</a>
     </li>
     <li class="col-lips">
-        <a href="/collections/all/lips">Lips</a>
+        <a href="/collections/lips">Lips</a>
     </li>
     <li class="col-pet">
-        <a href="/collections/all/pet-care">Pet Care</a>
+        <a href="/collections/pet-care">Pet Care</a>
+    </li>
+    <li class="col-cbd">
+        <a href="/collections/cbd">CBD</a>
     </li>
     <li class="col-apparel">
-        <a href="/collections/all/apparel">Apparel</a>
+        <a href="/collections/apparel">Apparel</a>
     </li>
     <li class="col-bundle">
-        <a href="/collections/all/bundle-save">Bundle &amp; Save</a>
+        <a href="/collections/bundle">Bundle &amp; Save</a>
     </li>
 </ul>
 
@@ -55,6 +58,9 @@
       }
       if(url.indexOf('lips') > -1) {
         $(".col-lips").attr("class","tag--active");
+      }
+      if(url.indexOf('cbd') > -1) {
+        $(".col-cbd").attr("class","tag--active");
       }
       if(url.indexOf('pet-care') > -1) {
         $(".col-pet").attr("class","tag--active");
