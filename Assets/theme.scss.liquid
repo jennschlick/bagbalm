@@ -5103,8 +5103,8 @@ button.mfp-arrow {
       margin-bottom: 20px;
     }
 
-    input[type="email"],
-    input[type="submit"] {
+    input[type="email"]
+    {
       background: transparent;
       border: 1px solid $white;
       color: $white;
@@ -5114,11 +5114,23 @@ button.mfp-arrow {
       padding-bottom: ($spacer / 2);
     }
 
+    input[type="submit"] {
+      background: transparent;
+      color: #ffffff;
+      display: inline-block;
+      font-size: 13px;
+      padding-top: ($spacer / 2);
+      padding-bottom: ($spacer / 2);
+      border: 1px solid #ffffff;
+    }
+
     input[type="email"] {
       min-width: 250px;
+      border-radius: 4px;
 
       @media screen and (max-width: $medium) {
        min-width: 230px;
+       border-radius: 4px;
       }
     }
 
@@ -5138,9 +5150,10 @@ button.mfp-arrow {
       &:active,
       &:focus,
       &:hover {
-        background: $white;
-        color: $darkgreen;
-        opacity: 1;
+      background: #00982e;
+      color: white;
+      opacity: 1;
+      border: 1px solid #00982e;
       }
     }
 
@@ -6015,14 +6028,48 @@ body.template-collection {
   .main-content{
     text-align: center;
 
-    img {
-     max-width: 471px;
-     margin: -20px auto 30px auto;
+    header a.btn.text-link {
+        margin: 50px auto -5px auto;
+        position: relative;
+        padding: 16px 42px 16px 105px;
+    }
 
-     @media screen and (max-width: $medium) {
-      margin: 0 auto 10px auto;
+    header a.btn.text-link:before {
+        content: '';
+        position: absolute;
+        width: 110px;
+        height: 94px;
+        display: block;
+        background-image: url('https://cdn.shopify.com/s/files/1/0108/4823/9675/files/shopstore.png?1641');
+        background-size: 74px;
+        background-repeat: no-repeat;
+        background-position: center;
+        left: -4px;
+        top: -24px;
+    }
+
+    .gm-style-cc, .gm-style-cc+div {
+        visibility: visible;
+    }
+
+    h5 {
+        text-transform: none;
+        font-size: 16px;
+        margin: -10px auto 40px;
+        background: #00982e;
+        border-radius: 5px;
+        padding: 13px;
+        color: #ffffff !important;
+        font-weight: 500;
+
+        @media screen and (max-width: $medium) {
+          font-size: 14px;
+          margin: 0 auto 20px auto;
+        }
+    }
+
+    .wrapper{
       max-width: 100%;
-     }
     }
 
     form {
@@ -6084,11 +6131,171 @@ body.template-collection {
       }
     }
 
+    
+    #storemapper-form {
+    padding: 20px 20px 30px 20px;
+    background: #faf6ed;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e0dfdd;
+
+       label {
+           font-weight: 600;
+           line-height: 19px;
+           display: none;
+       }
+    }
+
+    button#storemapper-go {
+        display: block;
+        width: 39%;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+    }
+
+
+    #storemapper #storemapper-zip {
+        background: white;
+        font-size: 13px;
+        display: block;
+        width: 100%;
+        margin: 10px auto 11px auto;
+        padding: 13px 10px;
+    }
+ 
+    #storemapper-left {
+        text-align: left;
+        border: 1px solid #e0dfdd;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+    }
+
+    #storemapper-right {
+        border-left: 20px solid white;
+    }
+
+    #storemapper-list {
+      h4 {
+          font-size: 16px;
+          margin-bottom: 3px;
+      }
+
+      p.storemapper-address {
+          margin-bottom: 2px;
+      }
+
+      .storemapper-distance {
+          font-weight: 600;
+          margin-bottom: 4px;
+      }
+
 
     
+    }
 
+    a.btn.storemapper-map-directions {
+        background: white;
+        display: block;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 600;
+        color: #b10031;
+    }
 
+    .storemapper_view a {
+        color: #b10031;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+    }
     
+
+    .storemapper_directions a {
+      
+
+        @media screen and (max-width: 768px) {
+          color: #b10031;
+          text-transform: uppercase;
+          font-size: 13px;
+          font-weight: 600;
+          display: block;
+          margin-bottom: 0;
+        }
+    }
+
+
+    p.storemapper-distance {
+        margin-bottom: 4px;
+    }
+
+    #storemapper ul li {
+        border-bottom: 1px solid #e0dfdd;
+        margin: 11px 0;
+        padding: 15px 20px 1px 20px;
+    }
+
+    h4.storemapper-popup-name {
+        margin-top: 9px;
+    }
+
+
+    #storemapper-left, #storemapper-right {
+
+      @media screen and (min-width: 769px) {
+        height: 800px;
+      }
+    }
+
+
+
+    #storemapper-right {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    img[src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2_hdpi.png"] {
+     background-image: url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/marker_1.png?1303) !important;
+     position: relative !important;
+     overflow: hidden;
+     width: 9px !important;
+     height: 36px !important;
+     padding: 35px 27px 0 0 !important;
+     box-sizing: border-box !important;
+     background-size: 31px 23px;
+     background-repeat: no-repeat;
+     background-position: center center;
+    }
+
+    .partners {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 30px auto;
+
+        @media screen and (min-width: 769px) {
+         margin: 60px auto;
+        }
+    }
+
+    .partner {
+        width: 50%;
+        padding: 5px;
+
+        @media screen and (min-width: 769px) {
+          width: 23%;
+          padding: 10px;
+        }
+    }
   }
 }
 
@@ -6117,6 +6324,164 @@ body.template-collection {
 }
 
 
+/*================ wondersign ================*/
+
+#since-1899-bag-balm-has-worked-wonders {
+
+  label {
+      display: block;
+      margin-top: 20px;
+  }
+
+  input {
+      background: #fff;
+      border: 1px solid #A1BAB0;
+      color: #00982e;
+      min-width: 250px;
+  }
+
+  #mc_embed_signup div.mce_inline_error {
+      background: white;
+      color: #6B0505;
+      margin: 5px 0;
+      padding: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+  }
+
+  .main-content #mc_embed_signup input[type="submit"] {
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      background: #b10031;
+      color: #fff;
+      margin-left: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      text-transform: uppercase;
+      margin-left: 0;
+      margin-top: 21px;
+  }
+
+  .site-footer .grid-uniform:nth-of-type(3) {
+     background: #00982e;
+         height: 20px;
+         padding: 0;
+  }
+  .wrapper {
+      max-width: 101%;
+  }
+
+  h1 {
+      font-size: 29px;
+      margin-top: 30px;
+  }
+
+  .announcement-bar__message {
+      color: #00982e;
+      height: 40px;
+  }
+
+  .wonder-side-left {
+      padding-top: 40px;
+  }
+  .wonder-wrap {
+     display: flex;
+     justify-content: center;
+     margin-top: 30px;
+  }
+
+  .wonder-side-right {
+      padding: 30px 30px 30px 62px;
+      width: 80%;
+  }
+
+  .section-header {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      margin-top: 87px;
+  }
+
+  .site-header__logo img {
+  max-width: 600px !important;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  width: 250px;
+  top: 7px;
+  pointer-events: none !important;
+
+   }
+
+ nav.grid__item.large--two-thirds.large--text-right.medium-down--hide {
+     display: none;
+ }
+
+  .site-footer > .grid-uniform > div.wrapper {
+      display: none;
+  }
+
+  div#shopify-section-footer {
+      position: relative;
+      bottom: -90px;
+  }
+
+}
 
 
+/*================ mailchimp forms ================*/
 
+
+.site-footer {
+  #mce-error-response, #mce-success-response {
+      max-width: 373px;
+  }
+}
+
+.mce_inline_error {
+    border: 1px solid #00982e !important;
+}
+
+#mce-error-response, #mce-success-response {
+  margin: 10px 0;
+  padding: 11px 10px;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 12px;
+  background: #ffffff;
+  padding-left: 33px;
+  position: relative;
+  text-align: left;
+}
+
+#mce-error-response {
+    color: #b10031;
+
+    &:before {
+        content: "\f00d";
+        display: block;
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-size: 18px;
+        position: absolute;
+        left: 12px;
+        top: 7px;
+    }
+}
+
+#mce-success-response {
+    color: #00982e;
+
+    &:before {
+        content: "\f00c";
+        display: block;
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-size: 20px;
+        position: absolute;
+        left: 7px;
+        top: 4px;
+    }
+}
