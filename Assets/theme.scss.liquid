@@ -3648,6 +3648,18 @@ button.mfp-arrow {
 
 .pdp-about {
 
+  &.medium--five-twelfths {
+      @media screen and (max-width: 768px) and (min-width: 591px){
+        width: 100%;
+      }
+
+    &+div {
+      @media screen and (max-width: 768px) and (min-width: 591px){
+           width: 100%;
+      }
+    }
+  }
+
   p {
     @media screen and (min-width: 769px) {
       max-width: 360px;
@@ -4302,6 +4314,12 @@ button.mfp-arrow {
 .custom__item-inner--video,
 .custom__item-inner--html {
   display: block;
+}
+
+.balm-gallery img {
+  @media screen and (max-width: $medium) {
+         width: 70px !important;
+  }     
 }
 
 /*================ Flex item alignment ================*/
@@ -5190,7 +5208,7 @@ button.mfp-arrow {
   h1 {
     margin-bottom: 0;
 
-    @media screen and (min-width: 591px) {
+    @media screen and (min-width: 769px) {
       &:before,
       &:after {
         background:url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/heading-line.png?7773746805475830441) 0 0 no-repeat;
@@ -5454,7 +5472,10 @@ body.template-index {
   }
 
   p {
-    max-width: 420px;
+    
+    @media screen and (min-width: 769px) {
+       max-width: 420px;
+    }
 
     @media screen and (max-width: $medium) {
       text-align: center;
@@ -5485,6 +5506,14 @@ body#tried-amp-true-bag-balm-uses {
         @media screen and (min-width: 591px) {
           padding-left: 30px;
           padding-right: 30px;
+        }
+
+        .large--six-twelfths a { 
+          @media screen and (max-width: 768px) and (min-width: 591px){
+            margin: 0 auto;
+            max-width: 350px;
+            display: block;
+          }
         }
 
         .section-header {
@@ -5537,6 +5566,10 @@ body#tried-amp-true-bag-balm-uses {
 
           .large--six-twelfths:nth-of-type(2) {
             max-width: 450px;
+
+            @media screen and (max-width: $medium) {
+              margin: 0 auto;
+            }
           }
 
           .large--six-twelfths:nth-of-type(1) {
@@ -5708,6 +5741,21 @@ body#web-specials {
           padding-left: 30px;
           padding-right: 30px;
         }
+
+
+        .grid {
+
+          @media screen and (max-width: $medium) {
+            margin-left: 0px;
+          }
+        }
+
+        .grid__item {
+           @media screen and (max-width: $medium) {
+             padding-left: 0px;
+           }
+        }
+
 
         .grid__item-inner {
           background: $beige;
@@ -5940,19 +5988,19 @@ body.template-collection {
     font-weight: 500 !important;
   }
 
-  .opw-py-4[data-v-9e6b8f4c] {
+  .opw-py-4 {
       padding-top: 10px !important;
       padding-bottom: 10px !important;
       margin-bottom: 10px !important;
   }
 
-  .opw-shadow-md[data-v-9e6b8f4c] {
+  .opw-shadow-md {
       box-shadow: none !important;
       border: 1px solid #d9d8d8;
       padding-top: 10px;
   }
 
-  .opw-bg-green[data-v-9e6b8f4c] {
+  .opw-bg-green {
       background-color: #00982e !important;
       font-size: 10px !important;
       text-transform: uppercase;
@@ -5962,7 +6010,7 @@ body.template-collection {
       top: -2px;
   }
 
-  i.opw-noci {
+  .opw-noci-user-circle {
       display: none;
   }
 
@@ -5971,7 +6019,7 @@ body.template-collection {
       font-weight: 600;
   }
 
-  .opw-italic[data-v-9e6b8f4c] {
+  .opw-italic {
       font-size: 11px !important;
       font-weight: 500 !important;
       margin-top: 5px !important;
@@ -6010,14 +6058,15 @@ body.template-collection {
 .template-customers-login,
 .template-customers-register,
 #account {
+  .main-content {
 
-  #CustomerLoginForm,
-  #create_customer,
-  form {
-    max-width: 350px;
-    margin: 20px auto;
-  }
-
+    #CustomerLoginForm,
+    #create_customer,
+    form {
+      max-width: 350px;
+      margin: 20px auto;
+    }  
+  }  
 }
 
 
