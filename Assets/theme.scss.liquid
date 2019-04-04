@@ -3301,17 +3301,6 @@ $slick-opacity-not-active: 0.25;
 
 }
 
-.tags--article {
-  a {
-    padding-right: $gutter / 2;
-    padding-left: 0;
-  }
-}
-
-.tags__title {
-  margin-right: $gutter / 2;
-}
-
 .tag--active {
   a {
     background: #00982e;
@@ -4644,8 +4633,189 @@ button.mfp-arrow {
 
 .article__featured-image-link {
   display: block;
-  margin-bottom: $gutter;
+  margin-bottom: 23px;
 }
+
+
+.blog-tags {
+  .tags a {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      border-bottom: 1px solid lightgray !important;
+      margin: 0 2px 12px 2px;
+      padding: 4px 10px;
+      display: inline-block;
+
+     &:hover {
+      border-bottom: 1px solid #00982e !important;
+     }
+  }
+}
+
+
+// blog category page
+#blog {
+
+  .main-content {
+    .grid {
+      margin-left: -5px;
+      margin-bottom: 50px;
+    }
+
+    .grid__item {
+     text-align: center;
+    }
+  }
+
+  .blog-text {
+    h2.h3 {
+        font-size: 16px;
+        text-transform: none;
+    }
+  }
+
+  .blog-tags {
+      text-align: center;
+  }
+
+  .tags__title {
+        text-align: center;
+        margin: 20px auto;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 20px;
+  }
+}
+
+.pagination {
+    margin: 20px auto 40px auto;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+// blog article page
+.template-article {
+
+  .main-content {
+
+    .section-header {
+
+      margin-bottom: 30px;
+      margin-top: 10px;
+      
+      @media screen and (max-width: $medium) {
+        margin-bottom: 15px;
+      }
+
+       h1:before,
+       h1:after {
+          display: none;
+       }
+
+       h1, h2 {
+         @media screen and (max-width: $medium) {
+           font-size: 22px;
+           line-height: 27px;
+         }
+       }
+       .date {
+        margin: 0 auto 10px auto;
+        font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 600;
+        background: #00982e;
+        color: #fff;
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        padding: 5px 20px;
+        position: relative;
+        text-transform: uppercase;
+
+        &:before {
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-left: 7px solid #fff;
+          content: '';
+          height: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+        }
+
+        &:after {
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-right: 7px solid #fff;
+          content: '';
+          height: 0;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 0;
+        }
+       }
+    }
+
+    .blog-button {
+
+      margin: 60px auto 40px auto;
+      
+      @media screen and (max-width: $medium) {
+      margin: 20px auto 40px auto;
+      }
+
+      .btn {
+         @media screen and (max-width: $medium) {
+         width: 100%;
+         }
+      }
+    }
+
+    .blog-hero {
+     text-align: center;
+     margin: 0 auto 30px auto;
+
+
+     img {
+      width: 50%;
+      margin: 0 auto;
+
+      @media screen and (max-width: $medium) {
+      width: 100%;
+      }
+     }
+    }
+
+    .blog-content {
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      h1, h2 {
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+        @include montserratmedium;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .tags__title {
+        margin-right: 10px;
+        font-weight: 600;
+      }
+
+    }
+  }
+}
+
+
 
 /*================ RSS ================*/
 .rss-link {
@@ -5987,6 +6157,12 @@ body.template-collection {
     letter-spacing: normal !important;
     font-weight: 500 !important;
   }
+
+
+  .opw-text-center.opw-bg-grey-light.opw-cursor-pointer {
+      color: white !important;
+  }
+
 
   .opw-py-4 {
       padding-top: 10px !important;
