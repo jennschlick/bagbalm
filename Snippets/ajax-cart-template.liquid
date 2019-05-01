@@ -6,6 +6,11 @@
   handlebar.js template tags as available hooks.
 
 {% endcomment %}
+
+
+
+  {% include 'auto-add' %}
+  
   <script id="CartTemplate" type="text/template">
   {% raw %}
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
@@ -145,3 +150,5 @@
     </div>
   {% endraw %}
   </script>
+
+

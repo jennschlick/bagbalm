@@ -1,0 +1,65 @@
+<!-- /snippets/auto-add.liquid -->
+{% comment %}
+
+https://community.shopify.com/c/Shopify-Design/Add-Companion-Multiple-products-to-basket-when-specific-product/m-p/422229
+
+{% endcomment %}
+
+
+{% assign product = all_products['on-the-go-tube'] %}
+
+<!-- add this product to cart when add a product from the collection below -->
+{% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
+
+  {% assign variant_id = product.variants.first.id %}
+
+  {% assign found = false %}
+  {% for line_item in cart.items %}
+    {% for collection in line_item.product.collections %}
+    <!-- only add the above product to the cart if a product from the below category was added -->
+      {% if collection.handle == "bogo" %} 
+        {% assign found = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  <script>
+  (function($) {
+    var cartItems = {{ cart.items | json }},
+        qtyInTheCart = 0,
+        cartUpdates = {};
+    for (var i=0; i<cartItems.length; i++) {
+      if ( cartItems[i].id === {{ variant_id }} ) {
+        qtyInTheCart = cartItems[i].quantity;
+        break;
+      }
+    }
+    if ( ( cartItems.length >= 1 ) && ( qtyInTheCart !== 1 ) && {{found}} == true ) {
+     cartUpdates = { {{ variant_id }}: 1 }; 
+    }
+    else {
+      return;
+    }
+    var params = {
+      type: 'POST',
+      url: '/cart/update.js',
+      data: { updates: cartUpdates },
+      dataType: 'json',
+      success: function(stuff) { 
+        //window.location.href = '/cart';
+       window.location.href = window.location.href;
+      }
+    }; 
+    $.ajax(params);
+
+  })(jQuery);
+  </script>
+
+{% endunless %}
+
+
+  <script>
+
+console.log('snippetdddd 6');
+</script>
