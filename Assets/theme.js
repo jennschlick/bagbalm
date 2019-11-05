@@ -212,7 +212,7 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
  */
 
 theme.Currency = (function() {
-  var moneyFormat = '${{amount}}';
+  var moneyFormat = '$';
 
   function formatMoney(cents, format) {
     if (typeof cents === 'string') {
@@ -597,7 +597,7 @@ slate.Variants = (function() {
 
 
 /* ================ MODULES ================ */
-{% if settings.cart_type == 'drawer' %}
+
 /*!
 handlebars v1.3.0
 
@@ -797,7 +797,7 @@ var ajaxCart = (function(module, $) {
       addToCartSelector: 'input[type="submit"]',
       cartCountSelector: null,
       cartCostSelector: null,
-      moneyFormat: '${{amount}}',
+      moneyFormat: '$',
       disableAjaxCart: false,
       enableQtySelectors: true
     };
@@ -1181,7 +1181,7 @@ var ajaxCart = (function(module, $) {
   return module;
 })(ajaxCart || {}, jQuery);
 
-{% endif %}
+
 /*============================================================================
   Money Format
   - Shopify.format money is defined in option_selection.js.
@@ -1378,7 +1378,6 @@ timber.accessibleNav = function() {
 timber.drawersInit = function() {
   timber.LeftDrawer = new timber.Drawers('NavDrawer', 'left');
   if (theme.settings.cartType === 'drawer') {
-
     timber.RightDrawer = new timber.Drawers('CartDrawer', 'right', {
       onDrawerOpen: ajaxCart.load
     });
@@ -2738,7 +2737,6 @@ theme.HeaderSection = (function() {
         enableQtySelectors: true,
         moneyFormat: theme.strings.moneyFormat
       });
-
     }
 
     theme.cache.$window.on('load', theme.resizeLogo);
@@ -3322,6 +3320,7 @@ theme.afterCartLoad = function() {
   theme.cache.$body.on('ajaxCart.afterCartLoad', function(evt, cart) {
     // Open cart drawer
     timber.RightDrawer.open();
+
     // Size the cart's fixed footer
     theme.sizeCartDrawerFooter();
 

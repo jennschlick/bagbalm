@@ -5060,20 +5060,18 @@ button.mfp-arrow {
     @include visuallyHidden;
 }
 
+
 /*============================================================================
   Announcement Bar
 ==============================================================================*/
 .announcement-bar__message {
   @include montserratmedium;
   font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
+  font-size: 13px;
   line-height: 16px;
-  letter-spacing: .5px;
 
   @media screen and (max-width: $medium) {
-    font-size: 11px;
-    line-height: 7px;
+    font-size: 12px;
     letter-spacing: initial;
   }
 
@@ -5419,6 +5417,11 @@ body.template-index {
 #shopify-section-1547407483876 {
   position: relative;
 
+
+  @media screen and (max-width: 1303px) {
+      border-bottom: 1px solid transparent;
+  }
+
   .custom-content {
       max-height: 740px;
       overflow: hidden;
@@ -5451,6 +5454,10 @@ body.template-index {
     width: 100%;
     position: relative;
     top: -30px;
+
+    @media screen and (min-width: 1304px) {
+        top: 0;
+    }
   }
 
   .custom__item {
@@ -5997,6 +6004,61 @@ body#our-heritage {
     }
   }
 }
+
+
+
+body#faqs {
+  .main-content {
+    > .wrapper {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .faq-container > div {
+        background: #faf6ed;
+        color: #8a6f40;
+        padding: 30px 40px;
+        margin: 15px auto;
+        max-width: 750px;
+
+
+        @media screen and (max-width: $medium) {
+          padding: 20px;
+        }
+    }
+
+    .faq-container h2 {
+        text-align: left;
+        color: #6c5631;
+        font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        text-transform: none;
+        font-size: 16px;
+        margin-bottom: 10px;
+
+        @media screen and (max-width: $medium) {
+          margin-bottom: 0;
+        }
+    }
+
+    .faq-container p {
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        margin-bottom: 13px;
+    }
+
+
+  }
+}
+
+
+
+
+
+
+
 
 body#products,
 body.template-collection {
@@ -6791,10 +6853,7 @@ body#cbd-certificates-of-analysis-coa {
 }
 
 
-// Selly app customization
-#tdf_upsell.tdf_container .tdf_dialog_header {
-    display: none;
-}
+/*================ selly app customization ================*/
 
 #tdf_upsell.tdf_container .tdf_offer_message h3 {
     font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
@@ -6807,6 +6866,312 @@ body#cbd-certificates-of-analysis-coa {
     color: #0d4c39;
 }
 
-div#tdf_notify {
+#tdf_notify.tdf_container .tdf_notify_minicon {
+    display: none;
+}
+
+.tdf_horizontal_img_left .tdf_img {
+    background-color: #ffffff !important;
+}
+
+.tdf_horizontal_content_right button.tdf_normal_btn {
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500 !important;
+    display: inline-block;
+    font-size: 13px !important;
+    line-height: 1;
+    min-width: none;
+    padding: 15px 30px !important;
+    text-transform: uppercase;
+    background-color: #b10031;
+    border: 0;
+    color: #fff;
+
+    @media screen and (max-width: 768px) {
+      padding: 10px !important;
+      font-size: 13px !important;
+    }
+}
+
+button.tdf_cta_btn {
+    background: white !important;
+    border: 1px solid #cccccc !important;
+    color: #b10031 !important;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500 !important;
+    display: inline-block;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    min-width: unset !important;
+    width: 220px !important;
+    float: right !important;
+}
+
+#tdf_upsell.tdf_container .tdf_target_left {
+    display: none;
+}
+
+.tdf_dialog_header_body .tdf_cart_detail {
     display: none !important;
+}
+
+#tdf_upsell.tdf_container .tdf_bs_offer_0 .tdf_horizontal_content_right {
+    width: 40% !important;
+
+
+    @media screen and (min-width: 769px) {
+      margin-top: 90px;
+    }
+
+
+}
+
+#tdf_currency.tdf_container h4, #tdf_upsell.tdf_container .tdf_money, #tdf_bar.tdf_container h4, #tdf_notify.tdf_container h4, #tdf_upsell.tdf_container h4, .tdf_bundle.tdf_container h4, #tdf_notifies.tdf_container h4, #tdf_modal.tdf_container h4, #tdf_psale.tdf_container h4, .tdf_rec_stable_2.tdf_rec h4, #tdf_discount_widget.tdf_container h4, #tdf_quickview [class^="tdf"] h4 {
+    font-size: 14px !important;
+}
+
+#tdf_upsell.tdf_container .tdf_dialog_header {
+    padding: 10px 8px 20px 20px !important;
+}
+
+#tdf_upsell.tdf_container .tdf_horizontal_title:hover {
+  text-decoration: none !important;
+}
+
+#tdf_upsell.tdf_container .tdf_horizontal_price {
+    margin-bottom: 20px !important;
+    display: none !important;
+
+    @media screen and (max-width: 768px) {
+      padding-top: 0 !important;
+       display: none !important;
+    }
+}
+
+.tdf_label_v span.tdf_ribbon_span {
+  display: none;
+}
+
+#tdf_notify.tdf_container .tdf_notify_msgs {
+  display: none;
+}
+
+
+/*================ homepage custom promo over video circle ================*/
+
+
+#shopify-section-1556810590609 {
+    margin-top: 0;
+    height: 1px;
+
+    @media screen and (max-width: 975px) {
+      height: auto;
+      margin-bottom: -70px;
+      margin-top: 25px;
+    }
+
+    .wrapper {
+        max-width: 100%;
+    }
+}
+
+.custom-promo {
+  width: 300px;
+      height: 300px;
+      background: #00982e;
+      -moz-border-radius: 70px;
+      -webkit-border-radius: 70px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -89px;
+      z-index: 100;
+      right: 41px;
+      text-align: center;
+      display: block;
+      color: #ffffff;
+      display: block;
+      border-bottom-right-radius: 0 !important;
+
+    @media screen and (max-width: 975px) {
+      position: relative;
+      right: 0;
+      left: 0;
+      bottom: 0 !important;
+      top: 0;
+      border-bottom-right-radius: 50% !important;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: 1075px) {
+            bottom: -130px;
+    }
+
+    a {
+        display: block;
+    }
+
+    img {
+      width: 114px;
+      margin: 40px auto 0 auto;
+      display: block;
+      position: relative;
+      top: -75px;
+      left: -8px;
+
+      @media screen and (max-width: 975px) {
+        top: -23px;
+      }
+    }
+
+    h1 {
+      font-size: 22px;
+      max-width: 270px;
+      margin: -55px auto 0 auto;
+      line-height: 27px;
+      color: #ffffff;
+
+      @media screen and (max-width: 975px) {
+        margin-top: -5px;
+      }
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: -3px auto 1px auto;
+      text-transform: none;
+      font-weight: 600;
+      color: #ffffff;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    p {
+      max-width: 232px;
+      margin: -2px auto 5px auto;
+      line-height: 19px;
+      font-size: 14px;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      color: #ffffff;
+
+        span {
+          font-weight: 600;
+          background: #0d4c39;
+          display: inline-block;
+          padding: 1px 5px;
+          color: #ffffff;
+        }
+    }
+}
+
+
+
+
+/* upsell*/
+
+#nudge-offer > div:last-of-type {
+    opacity: 0 !important;
+}
+
+#nudge-offer.multi {
+    margin: 0;
+    padding: 13px 0 !important;
+    width: 100%;
+}
+
+
+#nudge-offer .product-image-wrapper{
+    width: 22% !important;
+    vertical-align: top !important;
+    padding: 0 !important;
+}
+
+
+#nudge-offer {
+    margin-top: 22px !important;
+}
+
+#nudge-offer img {
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+
+
+#nudge-offer .offer-collection {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 12px;
+}
+
+#nudge-offer .details {
+    padding-left: 14px !important;
+}
+
+
+
+
+#nudge-offer .product-price-wrapper {
+    font-family: Montserrat,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#nudge-offer.custom button.bttn {
+  background-color: #00982e !important;
+  border: 0;
+  color: #fff !important;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+
+
+#nudge-offer.multi .offer-text {
+  padding: 0px !important;
+  margin-bottom: 7px !important;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  display: inline;
+
+
+  @media screen and (max-width: 768px) {
+     margin: 0 5px;
+     font-size: 13px;
+  }
+
+}
+
+#nudge-offer.multi .offer-text:before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/lines.png?7956);
+    background-size: 18px 18px;
+    left: -20px;
+    top: -10px;
+}
+
+
+#nudge-offer.multi .product-wrapper {
+    margin-top: 10px !important;
+    display: block !important;
+}
+
+
+
+
+.tester {
+  border: 5px solid red;
 }

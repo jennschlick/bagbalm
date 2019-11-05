@@ -6,6 +6,9 @@
   handlebar.js template tags as available hooks.
 
 {% endcomment %}
+
+
+  
   <script id="CartTemplate" type="text/template">
   {% raw %}
     <form action="/cart" method="post" novalidate class="cart ajaxcart">
@@ -54,7 +57,7 @@
                       </span>
                     {{else}}
                       <span class="ajaxcart__price">
-                        {{{price}}}
+                       <span style="display:none" class="tdf-cart-item-p"></span> <span style="display:none" class="tdf-cart-item-lp"></span>{{{price}}}
                       </span>
                     {{/if}}
                   </div>
@@ -145,3 +148,5 @@
     </div>
   {% endraw %}
   </script>
+
+
