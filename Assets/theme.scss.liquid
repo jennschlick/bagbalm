@@ -5414,9 +5414,9 @@ body.template-index {
 }
 
 /* Video */
-#shopify-section-1547407483876 {
+.section-custom-video,
+.section-custom-hero-photo {
   position: relative;
-
 
   @media screen and (max-width: 1303px) {
       border-bottom: 1px solid transparent;
@@ -5517,10 +5517,32 @@ body.template-index {
   }
 }
 
-/* Repairing Skin */
+/* Hero Photo */
+.section-custom-hero-photo {
+  .wrapper {
+    overflow: hidden;
+  }
 
+  .home-video-content h2 span {
+    @media screen and (max-width: $medium) {
+      font-size: 30px;
+    }
+  }
+  
+  .home-video-content{
+    padding: 20px
+  }
+  
+  .btn {
+    @media screen and (max-width: $medium) {
+      width: 100%;
+    }
+  }
+}
+
+/* Repairing Skin */
 #shopify-section-1547467922341 {
-  margin-top: 140px;
+  margin-top: 100px;
 
   @media screen and (max-width: $medium) {
     margin-top: 20px;
@@ -5597,11 +5619,12 @@ body.template-index {
 #shopify-section-1547407703492 {
   background: $beige;
   padding: ($spacer * 6) 0 ($spacer * 4) 0;
+  margin-top: 0;
 
    @media screen and (max-width: $medium) {
       padding: 20px 20px 50px 20px;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 60px;
    }
   
   .wrapper {
@@ -7064,10 +7087,7 @@ button.tdf_cta_btn {
 }
 
 
-
-
 /* upsell*/
-
 #nudge-offer > div:last-of-type {
     opacity: 0 !important;
 }
@@ -7078,13 +7098,11 @@ button.tdf_cta_btn {
     width: 100%;
 }
 
-
 #nudge-offer .product-image-wrapper{
     width: 22% !important;
     vertical-align: top !important;
     padding: 0 !important;
 }
-
 
 #nudge-offer {
     margin-top: 22px !important;
@@ -7096,8 +7114,6 @@ button.tdf_cta_btn {
     width: 100% !important;
 }
 
-
-
 #nudge-offer .offer-collection {
     text-align: left;
     padding-left: 0;
@@ -7108,9 +7124,6 @@ button.tdf_cta_btn {
 #nudge-offer .details {
     padding-left: 14px !important;
 }
-
-
-
 
 #nudge-offer .product-price-wrapper {
     font-family: Montserrat,sans-serif;
@@ -7133,8 +7146,6 @@ button.tdf_cta_btn {
   padding: 10px 15px;
   text-transform: uppercase;
 }
-
-
 
 #nudge-offer.multi .offer-text {
   padding: 0px !important;
@@ -7162,7 +7173,6 @@ button.tdf_cta_btn {
     left: -20px;
     top: -10px;
 }
-
 
 #nudge-offer.multi .product-wrapper {
     margin-top: 10px !important;

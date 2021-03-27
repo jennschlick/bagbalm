@@ -1,4 +1,4 @@
-<div class="wrapper {% for block in section.blocks %}{% if block.settings.custom_class != blank %}{{ block.settings.custom_class }}{% endif %}{% endfor %}">
+<div class="wrapper">
   <div class="custom-content">
   {% for block in section.blocks %}
     {% case block.settings.width %}
@@ -52,21 +52,21 @@
 {
   "name": {
     "de": "Benutzerdefiniertes HTML",
-    "en": "Custom HTML",
+    "en": "Custom Video HTML",
     "es": "HTML personalizado",
     "fr": "Code HTML personnalisé",
     "it": "HTML personalizzato",
     "ja": "HTMLをカスタムする",
     "pt-BR": "HTML personalizado"
   },
-  "class": "section-custom-html",
+  "class": "section-custom-video",
   "max_blocks": 9,
   "blocks": [
     {
       "type": "html",
       "name": {
         "de": "Benutzerdefiniertes HTML",
-        "en": "Custom HTML",
+        "en": "Custom Video HTML",
         "es": "HTML personalizado",
         "fr": "Code HTML personnalisé",
         "it": "HTML personalizzato",
@@ -235,11 +235,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "custom_class",
-          "type": "text",
-          "label": "Optional Class"
         }
       ]
     }
@@ -248,7 +243,7 @@
     {
       "name": {
         "de": "Benutzerdefiniertes HTML",
-        "en": "Custom HTML",
+        "en": "Custom Video HTML",
         "es": "HTML personalizado",
         "fr": "Code HTML personnalisé",
         "it": "HTML personalizzato",
