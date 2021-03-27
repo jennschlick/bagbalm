@@ -1,4 +1,4 @@
-<!-- /snippets/ajax-cart-template.liquid -->
+<script class="cartFlagX"></script><!-- /snippets/ajax-cart-template.liquid -->
 {% comment %}
 
   This snippet provides the default handlebars.js templates for
@@ -90,7 +90,7 @@
             <p class="ajaxcart__subtotal">{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
           </div>
           <div class="grid__item one-third text-right">
-            <p class="ajaxcart__subtotal">{{{totalPrice}}}</p>
+            <p class="ajaxcart__subtotal"><span style="display:none" class="tdf-cart-total-flag"></span>{{{totalPrice}}}</p>
           </div>
         </div>
         {{#if totalCartDiscount}}
