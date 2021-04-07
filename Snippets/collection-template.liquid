@@ -25,21 +25,25 @@
     <li class="col-all">
         <a href="/collections/all">All</a>
     </li>
-    <li class="col-hands">
-        <a href="/collections/hands-skin">Hands &amp; Skin</a>
-    </li>
-    <li class="col-lips">
-        <a href="/collections/lips">Lips</a>
-    </li>
-    <li class="col-pet">
-        <a href="/collections/pet-care">Pet Care</a>
-    </li>
-   <li class="col-hemp">
-        <a href="/collections/hemp">CBD</a>
-    </li>
     <li class="col-bundle">
         <a href="/collections/bundle">Bundle &amp; Save</a>
     </li>
+
+    {%- comment -%}
+      <!-- collection links commented out -->
+      <li class="col-hands">
+          <a href="/collections/hands-skin">Hands &amp; Skin</a>
+      </li>
+      <li class="col-lips">
+          <a href="/collections/lips">Lips</a>
+      </li>
+      <li class="col-pet">
+          <a href="/collections/pet-care">Pet Care</a>
+      </li>
+      <li class="col-hemp">
+          <a href="/collections/hemp">CBD</a>
+      </li>
+    {%- endcomment -%}
 </ul>
 
 <script>
@@ -61,12 +65,12 @@
       if(url.indexOf('pet-care') > -1) {
         $(".col-pet").attr("class","tag--active");
       }
+      if(url.indexOf('bundle') > -1) {
+        $(".col-bundle").attr("class","tag--active");
+      }
       // if(url.indexOf('apparel') > -1) {
       //   $(".col-apparel").attr("class","tag--active");
       // }
-      if(url.indexOf('bundle-save') > -1) {
-        $(".col-bundle").attr("class","tag--active");
-      }
   });
 </script>
 </header>

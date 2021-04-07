@@ -173,14 +173,15 @@
           unavailable: {{ 'products.product.unavailable' | t | json }}
         }
       </script>
-    {% endif %}
+  {% endif %}
 
   <div id="SearchModal" class="mfp-hide">
     {% include 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--modal' %}
   </div>
 
-<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"9a8ae6ff4c0c10f638d15c128","lid":"b4865074c5","uniqueMethods":true}) })</script>
+<div id="opinew_config_container" style="display:none;" data-opwconfig="{{shop.metafields.opinew['opinew_config']}}"></div>
 
-<div id='opinew_config_container' style='display:none;' data-opwconfig='{{shop.metafields.opinew['opinew_config']}}'></div>
+<!-- klaviyo -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VJW5Sr"></script>
 </body>
 </html>
