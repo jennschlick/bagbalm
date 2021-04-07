@@ -3186,14 +3186,38 @@ $socialIconFontStack: 'icons';
   font-weight: $headerFontWeight;
 
   &.on-sale {
-    color: $colorSaleTag;
+    // color: $colorSaleTag;
   }
 }
 
 .product-single__price--compare-at {
   padding-right: 5px;
   display: inline-block;
-  text-decoration: line-through;
+  position: relative;
+  font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 23px;
+  color: #abb9b5;
+  margin-right: 10px;
+
+  @media screen and (max-width: $medium) {
+    font-size: 17px;
+  }
+
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 2px solid;
+    border-color: #0d4c39;
+    -webkit-transform: rotate(-13deg);
+    -moz-transform: rotate(-13deg);
+    -ms-transform: rotate(-13deg);
+    -o-transform: rotate(-13deg);
+    transform: rotate(-13deg);
+  }
 }
 
 .product-single__policies {
