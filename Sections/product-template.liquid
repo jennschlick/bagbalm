@@ -252,7 +252,7 @@
           {% assign key = 'subtitle' %}
           <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
 
-          <div id='opinew-stars-plugin-product'>{{ product.metafields.opinew_metafields['stars_product'] }}</div>
+          <div id='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %}</div>
 
           <div class="product-single__description rte" itemprop="description">
             {{ product.description }}

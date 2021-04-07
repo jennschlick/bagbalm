@@ -1,5 +1,6 @@
 {% if section.settings.show_related_products == true %}
 <div class="product-template__container page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+<div id="opinew-rich-snippets-code-container">{{ product.metafields.opinew_metafields['rich_snippets'] }}</div>
 
 {% comment %}
   Number of related items per row,
