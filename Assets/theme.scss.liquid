@@ -1889,6 +1889,10 @@ a {
   height: auto;
   padding-top: ($gutter / 2);
   margin: 0;
+
+  @include at-query($min, $medium) {
+    margin-bottom: 10px;
+  }
 }
 
 @include at-query($max, $medium) {
@@ -1922,9 +1926,11 @@ a {
   bottom: $drawerCartFooterHeight; // overwritten with JS
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding-top: 50px;
 
   @include at-query($min, $large) {
     padding: $gutter $gutter 0;
+    padding-top: 50px;
   }
 }
 
@@ -1981,6 +1987,10 @@ a {
   &:hover {
     background-color: adaptive-color($colorDrawerButton, 10%);
   }
+}
+
+p.cart--empty-message {
+  margin-top: 40px;
 }
 
 /*============================================================================

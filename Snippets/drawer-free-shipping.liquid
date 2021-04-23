@@ -1,0 +1,173 @@
+{%- comment -%} 
+  FREE SHIPPING THRESHOLD MODULE - Quinn Collective
+  ------------------------------------------------------------------
+  
+  :::: add to ajax cart updates
+    calculateProgress(cart.total_price, freeShippingThreshold);
+
+  :::: main settings schema is updated as follows
+  {
+    "name": {
+      "de": "Free Shipping",
+      "en": "Free Shipping",
+      "es": "Free Shipping",
+      "fr": "Free Shipping",
+      "it": "Free Shipping",
+      "pt-BR": "Free Shipping"
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "free_ship_value",
+        "label": "Free Shipping Threshold",
+        "info": "Do NOT include a '$' sign. Example: 30 = free shipping over $30. Note that this setting is ONLY for the mini cart visual messaging and has no impact on actual free shipping settings.",
+        "default": "30"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_ship_enable",
+        "label": "Yes! Show the free shipping flag in the mini cart.",
+        "default": true
+      }
+    ]
+  }
+{%- endcomment -%}
+
+<style>
+  .mini-free-shipping {
+    font-style: normal;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    position: relative;
+    padding: 5px 20px 3px 20px;
+    margin: 6px auto 2px auto;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .cart-shippingThreshold__bar {
+    position: relative;
+    background-color: #f3f3f3;
+    height: 2px;
+    opacity: 0;
+  }
+
+  .cart-shippingThreshold__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .mini-free-shipping {
+    padding: 7px 20px 7px 20px;
+    margin: 5px auto 2px auto;
+    font-size: 13px;
+    background-color: #00982e;
+  }
+
+  @media screen and (max-width: 767px) {
+    .mini-free-shipping {
+      font-size: 12px;
+      letter-spacing: initial;
+      padding-right: 5px;
+      padding-left: 5px;
+      text-align: center;
+    }
+  }
+
+  .mini-free-shipping:before,
+  .mini-free-shipping:after {
+    border-top: 13px solid transparent;
+    border-bottom: 15px solid transparent;
+    content: "";
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+    z-index: 1;
+  }
+
+  .mini-free-shipping:before {
+    border-left: 8px solid #0d4c39;
+    left: -1px;
+  }
+
+  .mini-free-shipping:after {
+    border-right: 8px solid #0d4c39;
+    right: -1px;
+  }
+
+  .cart-shipping__wrapper {
+    padding: 0;
+    margin: 0 auto;
+  }
+</style>
+
+{% if settings.free_ship_enable == true %} {% assign freeshipping_threshold = settings.free_ship_value %} 
+  <div class="cart-shipping__wrapper{% if cart.item_count < 1 %} hidden{% endif %}" data-freeship="{{ freeshipping_threshold }}">
+    <p class="cart-shipping__numOuter mini-free-shipping">$<span class="cart-shipping__num"></span> AWAY FROM FREE SHIPPING</p>
+    <p class="cart-shipping__success mini-free-shipping">FREE SHIPPING</p>
+    <div class="cart-shippingThreshold__bar">
+      <span class="cart-shippingThreshold__progress"></span>
+    </div>
+  </div> 
+{% endif %}
+
+<script>
+  function calculateProgress(currentVal, targetVal) {
+    var progressBar = document.querySelectorAll(".cart-shippingThreshold__progress");
+    var progressNum = document.querySelectorAll(".cart-shipping__num");
+    var progressOuter = document.querySelectorAll(".cart-shipping__numOuter");
+    var successMsg = document.querySelectorAll(".cart-shipping__success");
+    // progress bar is hidden
+    var result = Math.round((100 * currentVal) / targetVal);
+    progressBar.forEach(function (el) {
+      el.setAttribute("style", "width: ".concat(result, "%"));
+    });
+    var newProgressNum = (targetVal - currentVal) / 100;
+    if (newProgressNum <= 0) {
+      successMsg.forEach(function (el) {
+        el.setAttribute("style", "display: block;");
+      });
+      progressOuter.forEach(function (el) {
+        el.setAttribute("style", "display: none;");
+      });
+      progressNum.forEach(function (el) {
+        el.textContent = newProgressNum;
+      });
+    } else {
+      successMsg.forEach(function (el) {
+        el.setAttribute("style", "display: none;");
+      });
+      progressOuter.forEach(function (el) {
+        el.setAttribute("style", "display: block;");
+      });
+      progressNum.forEach(function (el) {
+        el.textContent = newProgressNum;
+      });
+    }
+  };
+
+  // initializes free shipping bar on page load
+  let freeShippingRaw = $(".cart-shipping__wrapper").data("freeship");
+  let freeShippingThreshold = freeShippingRaw * 100;
+  $(function () {
+    jQuery.ajax({
+      url: '/cart.js',
+      dataType: 'json'
+    })
+      .done(function (data) {
+        var newCount = data.items_subtotal_price;
+        calculateProgress(newCount, freeShippingThreshold);
+      });
+  });
+</script>

@@ -725,6 +725,10 @@ ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
 // Get from cart.js returns the cart in JSON
 ShopifyAPI.getCart = function(callback) {
   jQuery.getJSON('/cart.js', function(cart) {
+
+    // update free shipping threshold bar
+    calculateProgress(cart.total_price, freeShippingThreshold);
+
     if (typeof callback === 'function') {
       callback(cart);
     } else {
@@ -893,6 +897,9 @@ var ajaxCart = (function(module, $) {
     // Update quantity and price
     updateCountPrice(cart);
     buildCart(cart);
+
+    // update free shipping threshold bar
+    calculateProgress(cart.total_price, freeShippingThreshold);
   };
 
   buildCart = function(cart) {

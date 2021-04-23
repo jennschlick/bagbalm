@@ -1034,5 +1034,30 @@
         }
       }
     ]
+  },
+  {
+    "name": {
+      "de": "Free Shipping",
+      "en": "Free Shipping",
+      "es": "Free Shipping",
+      "fr": "Free Shipping",
+      "it": "Free Shipping",
+      "pt-BR": "Free Shipping"
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "free_ship_value",
+        "label": "Free Shipping Threshold",
+        "info": "Do NOT include a '$' sign. Example: 30 = free shipping over $30. Note that this setting is ONLY for the mini cart visual messaging and has no impact on actual free shipping settings.",
+        "default": "30"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_ship_enable",
+        "label": "Yes! Show the free shipping flag in the mini cart.",
+        "default": true
+      }
+    ]
   }
 ]
