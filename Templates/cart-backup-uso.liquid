@@ -55,9 +55,6 @@
                   <div class="grid__item two-thirds">
                     <a href="{{ item.url }}" class="h4 cart__product-name">
                       {{ item.product.title }}
-<span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
-<span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
-                                
                     <span class=tdf-cart-item-t></span> 
                     <span style="display:none" class="tdf-cart-item-p"></span>
                     </a>
@@ -111,14 +108,10 @@
 
                   <div class="grid__item two-thirds text-right">
                     {% if item.original_line_price != item.line_price %}
-                      
-<span class="saso-cart-item-line-price" data-key="{{item.key}}"><small class="cart__price cart__price--strikethrough">{{ item.original_line_price | money }}</small></span>
-
+                      <small class="cart__price cart__price--strikethrough">{{ item.original_line_price | money }}</small>
                     {% endif %}
 
-                    <span class="cart__price"><span class=tdf-cart-item-lp-p>
-<span class="saso-cart-item-line-price" data-key="{{item.key}}">{{ item.line_price | money }}</span>
-</span></span>
+                    <span class="cart__price"><span class=tdf-cart-item-lp-p>{{ item.line_price | money }}</span></span>
 
                     {% assign discounts_size = item.discounts | size %}
                     {% if discounts_size > 0 %}
@@ -155,10 +148,7 @@
                   <p class="cart__subtotal">{{ 'cart.general.subtotal' | t }}</p>
                 </div>
                 <div class="grid__item one-half large--one-third">
-                  <p class="cart__subtotal"><span style="display:none" class="tdf-cart-total-flag">
-<span class=""></span>{{ cart.total_price | money }}</p></span>
-<span class=""></span>
-
+                  <p class="cart__subtotal"><span style="display:none" class="tdf-cart-total-flag"></span>{{ cart.total_price | money }}</p>
                 </div>
               </div>
 
