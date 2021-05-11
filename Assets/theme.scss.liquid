@@ -1700,6 +1700,13 @@ input[type="image"] {
   text-align: center;
 }
 
+span.opinew-star-plugin-inside {
+  @include at-query($max, $small) {
+    display: block;
+    text-align: center;
+  }
+}
+
 .collection-collage__item {
   position: relative;
   margin-bottom: $gutter / 2;
@@ -6928,7 +6935,7 @@ body#cbd-certificates-of-analysis-coa {
 #tdf_upsell.tdf_container .tdf_offer_message h3 {
     font-family: 'Copperplate Gothic', Georgia, Times, 'Times New Roman', serif;
     font-weight: 700;
-    font-size: 23px;
+    font-size: 19px;
     text-transform: uppercase;
     text-align: center;
     margin-top: 20px;
@@ -6945,55 +6952,52 @@ body#cbd-certificates-of-analysis-coa {
 }
 
 .tdf_horizontal_content_right button.tdf_normal_btn {
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 500 !important;
-    display: inline-block;
-    font-size: 13px !important;
-    line-height: 1;
-    min-width: none;
-    padding: 15px 30px !important;
-    text-transform: uppercase;
-    background-color: #b10031;
-    border: 0;
-    color: #fff;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500 !important;
+  display: inline-block;
+  font-size: 13px !important;
+  line-height: 1;
+  min-width: none;
+  padding: 15px 30px !important;
+  text-transform: uppercase;
+  background-color: #b10031;
+  border: 0;
+  color: #fff;
 
-    @media screen and (max-width: 768px) {
-      padding: 10px !important;
-      font-size: 13px !important;
-    }
+  @media screen and (max-width: 768px) {
+    padding: 10px !important;
+    font-size: 13px !important;
+  }
 }
 
 button.tdf_cta_btn {
-    background: white !important;
-    border: 1px solid #cccccc !important;
-    color: #b10031 !important;
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 500 !important;
-    display: inline-block;
-    font-size: 12px !important;
-    text-transform: uppercase;
-    min-width: unset !important;
-    width: 220px !important;
-    float: right !important;
+  background: #fff!important;
+  border: 1px solid #b10031 !important;
+  color: #b10031!important;
+  font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500 !important;
+  display: inline-block;
+  font-size: 13px!important;
+  text-transform: uppercase;
+  min-width: unset!important;
+  width: 220px!important;
+  float: right!important;
 }
 
 #tdf_upsell.tdf_container .tdf_target_left {
-    display: none;
+  display: none;
 }
 
 .tdf_dialog_header_body .tdf_cart_detail {
-    display: none !important;
+  display: none !important;
 }
 
 #tdf_upsell.tdf_container .tdf_bs_offer_0 .tdf_horizontal_content_right {
-    width: 40% !important;
+  width: 40% !important;
 
-
-    @media screen and (min-width: 769px) {
-      margin-top: 90px;
-    }
-
-
+  @media screen and (min-width: 769px) {
+    margin-top: 90px;
+  }
 }
 
 #tdf_currency.tdf_container h4, #tdf_upsell.tdf_container .tdf_money, #tdf_bar.tdf_container h4, #tdf_notify.tdf_container h4, #tdf_upsell.tdf_container h4, .tdf_bundle.tdf_container h4, #tdf_notifies.tdf_container h4, #tdf_modal.tdf_container h4, #tdf_psale.tdf_container h4, .tdf_rec_stable_2.tdf_rec h4, #tdf_discount_widget.tdf_container h4, #tdf_quickview [class^="tdf"] h4 {
@@ -7001,7 +7005,7 @@ button.tdf_cta_btn {
 }
 
 #tdf_upsell.tdf_container .tdf_dialog_header {
-    padding: 10px 8px 20px 20px !important;
+    padding: 0 10px 26px 10px !important;
 }
 
 #tdf_upsell.tdf_container .tdf_horizontal_title:hover {
@@ -7009,13 +7013,13 @@ button.tdf_cta_btn {
 }
 
 #tdf_upsell.tdf_container .tdf_horizontal_price {
-    margin-bottom: 20px !important;
-    display: none !important;
+  margin-bottom: 20px !important;
+  display: none !important;
 
-    @media screen and (max-width: 768px) {
-      padding-top: 0 !important;
-       display: none !important;
-    }
+  @media screen and (max-width: 768px) {
+    padding-top: 0 !important;
+    display: none !important;
+  }
 }
 
 .tdf_label_v span.tdf_ribbon_span {
@@ -7026,6 +7030,96 @@ button.tdf_cta_btn {
   display: none;
 }
 
+.tdf_dialog_footer.tdf_upsell_checkout > div:first-of-type {
+  display: none !important;
+}
+
+.tdf_upsell_checkout {
+  height: 60px !important;
+}
+
+button.tdf_cta_btn {
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.tdf_horizontal_img_left {
+  display: block;
+  margin-bottom: 20px !important;
+}
+
+#tdf_upsell.tdf_container .tdf_close_btn {
+  opacity: 1;
+}
+
+.tdf_dialog_modal.tdf_dialog_modal_upsell {
+  display: flex;
+  align-items: center;
+}
+
+.tdf_dialog_header.tdf_upsell_trigger {
+  @media screen and (min-width: 769px) {
+    height: 100% !important;
+    display: block;
+  }
+}
+
+.tdf_dialog_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.tdf_dialog_content {
+  width: 90% !important;
+  margin: 0 auto !important;
+
+  @media screen and (min-width: 769px) {
+    max-width: 600px !important;
+  }
+}
+
+.tdf_dialog_footer.tdf_upsell_checkout {
+  order: 2;
+}
+
+@media screen and (min-width: 769px) {
+  #tdf_upsell.tdf_container .tdf_dialog_footer.tdf_upsell_checkout {
+    padding: 20px 28px !important;
+  }
+  
+  #tdf_upsell.tdf_container .tdf_dialog_footer.tdf_upsell_checkout div:last-of-type {
+    width: 100%;
+    margin-top: -9px;
+    display: block !important;
+  }
+}
+
+#tdf_upsell.tdf_container .tdf_target_right {
+  @media screen and (min-width: 769px) {
+    width: 100% !important;
+    margin: 100px auto !important;
+    padding-left: 0;
+  }
+}
+
+.tdf_action button.tdf_cta_btn {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500 !important;
+  display: inline-block;
+  font-size: 13px !important;
+  line-height: 1;
+  padding: 15px 30px !important;
+  text-transform: uppercase;
+  background-color: #b10031 !important;
+  border: 0;
+  color: #fff !important;
+
+  @media screen and (max-width: 768px) {
+    margin: 50px auto !important
+  }
+}
 
 /*================ homepage custom promo over video circle ================*/
 
