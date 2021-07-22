@@ -7233,52 +7233,71 @@ button.tdf_cta_btn {
     }
 }
 
-
-/* upsell*/
+/* app In Cart Upsell & Cross Sell - mini cart */
 #nudge-offer > div:last-of-type {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 
 #nudge-offer.multi {
-    margin: 0;
-    padding: 13px 0 !important;
-    width: 100%;
+  margin: 0;
+  padding: 13px 0 !important;
+  width: 100%;
+}
+
+.nudge-offer.multi {
+  width: 100%;
+  padding: 15px 8px !important;
+  background: #083c2c !important;
+  border-radius: 6px;
 }
 
 #nudge-offer .product-image-wrapper{
-    width: 22% !important;
-    vertical-align: top !important;
-    padding: 0 !important;
+  width: 22% !important;
+  vertical-align: top !important;
+  padding: 0 !important;
+}
+
+.nudge-offer .product-image-wrapper img {
+  background-color: #ffffff;
+  padding: 10px !important;
 }
 
 #nudge-offer {
-    margin-top: 22px !important;
+  margin-top: 22px !important;
 }
 
 #nudge-offer img {
-    padding: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 #nudge-offer .offer-collection {
-    text-align: left;
-    padding-left: 0;
-    font-size: 14px;
-    line-height: 12px;
+  text-align: left;
+  padding-left: 0;
+  font-size: 14px;
+  line-height: 12px;
 }
 
 #nudge-offer .details {
-    padding-left: 14px !important;
+  padding-left: 14px !important;
 }
 
 #nudge-offer .product-price-wrapper {
-    font-family: Montserrat,sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 12px;
-    margin-bottom: 8px;
-    display: block;
+  font-family: Montserrat,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.nudge-offer button.bttn.product-price {
+  border-radius: 0;
+  font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 14px;
 }
 
 #nudge-offer.custom button.bttn {
@@ -7302,26 +7321,56 @@ button.tdf_cta_btn {
   position: relative;
   display: inline;
 
-
   @media screen and (max-width: 768px) {
-     margin: 0 5px;
-     font-size: 13px;
+    margin: 0 5px;
+    font-size: 13px;
   }
 
+  p {
+    margin-bottom: 6px;
+  }
 }
 
-#nudge-offer.multi .offer-text:before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background-image: url(https://cdn.shopify.com/s/files/1/0108/4823/9675/files/lines.png?7956);
-    background-size: 18px 18px;
-    left: -20px;
-    top: -10px;
+.nudge-offer.multi .offer-text p {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.nudge-offer.multi .offer-text {
+  margin-bottom: 2px !important;
 }
 
 #nudge-offer.multi .product-wrapper {
-    margin-top: 10px !important;
-    display: block !important;
+  margin-top: 10px !important;
+  display: block !important;
+}
+
+.nudge-wrapper .offer-text h3 {
+  color: #fff;
+  font-size: 11px;
+  margin: 0 auto 1px auto;
+  display: inline-block;
+  padding-bottom: 1px;
+}
+
+.nudge-offer .nudge-wrapper {
+  padding: 0 0 0 5px;
+}
+
+.nudge-offer > div:last-of-type {
+  display: none !important;
+}
+
+.nudge-offer .product-title-wrapper {
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+
+.nudge-offer.multi img.product-image.medium {
+  width: 75px !important;
+
+  @media screen and (min-width: 976px) {
+    width: 100% !important;
+    margin-left: 10px !important;
+  }
 }
