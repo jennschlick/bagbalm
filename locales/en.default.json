@@ -318,7 +318,7 @@
         "back_to_cart": "Return to cart"
       },
       "contact": {
-        "address1_label": "Address (sorry, no PO boxes at this time)"
+        "address1_label": "Address"
       }
     }
   }
