@@ -1,5 +1,11 @@
+<style>
+  .main-content
+  {
+    padding-bottom:0px !important;
+  }
+</style>
 <footer class="site-footer small--text-center" role="contentinfo">
-  <div class="grid-uniform">
+  <div class="grid-uniform  m-t-0 site-footer__content-wrapper">
     <div class="wrapper">
 
       {% comment %}
@@ -15,9 +21,9 @@
           We have a Footer menu that isn't empty, we will need another column
         {% endcomment %}
         {% assign num_footer_columns = num_footer_columns | plus: 1 %}
-        {% assign extra_footer_linklist_column = false %}
+        {% assign extra_footer_linklist_column = true %}
         {% assign footer_linklist_count = linklists[section.settings.footer_link_list].links.size %}
-        {% if footer_linklist_count > 5 %}
+        {% if footer_linklist_count > 2 %}
           {% assign extra_footer_linklist_column = true %}
           {% comment %}
             We split the links so we'll need another column
@@ -65,16 +71,16 @@
         {% when 1 %}
           {% assign footer_column_width = '' %}
         {% when 2 %}
-          {% assign footer_column_width = 'one-half small--one-whole' %}
+          {% assign footer_column_width = 'three-tenths small--one-whole' %}
         {% when 3 %}
-          {% assign footer_column_width = 'one-third small--one-whole' %}
+          {% assign footer_column_width = 'three-tenths small--one-whole' %}
         {% when 4 %}
           {% assign footer_column_width = 'large--one-quarter medium--one-half' %}
       {% endcase %}
 
       {% if linklists[section.settings.footer_link_list].links.size > 0 %}
-        <div class="grid__item {{ footer_column_width }}">
-          <ul class="no-bullets site-footer__linklist">
+        <div class="grid__item {{ footer_column_width }} site-footer__linklist">
+          <ul class="no-bullets">
             {% for link in linklists[section.settings.footer_link_list].links %}
 
       {% comment %}
@@ -156,25 +162,27 @@
               {% endif %}
             </ul>
           {% endif %}
+      </div>
 
-  
+      <div class="grid__item {{ footer_column_width }} site-footer__linklist">
 
-
-        </div>
-        <div class="grid__item {{ footer_column_width }}">
-
-          <ul class="no-bullets site-footer__linklist">
+        <ul class="no-bullets ">
+          {% endif %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%for sublink in link.links%}
+          <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+          {%endfor%}
+          {% endfor %}
+        </ul>
+      </div>
       {% endif %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
 
-      <div class="grid__item large--two-quarters">
-        <h2>Sign up <img src="https://cdn.shopify.com/s/files/1/0108/4823/9675/files/for.png?15222619099356151098" alt="for"> Savings</h2>
+      <div class="grid__item four-tenths small--one-whole site-footer__newsletter-block">
+<!--         <h2>Sign up <img src="https://cdn.shopify.com/s/files/1/0108/4823/9675/files/for.png?15222619099356151098" alt="for"> Savings</h2> -->
+        <h2>Sign up <span class='rotatedText'>for</span> Savings</h2>
+
         {%- include 'footer-newsletter-klaviyo' -%}
-        <p>Vermont’s original Bag Balm provides relief for dry, cracked skin, hands, lips, knees, feet! Since 1899, Bag Balm has been intensely moisturizing and helping protect skin – even in the toughest conditions. Bag Balm is an intensely moisturizing salve recommended by construction workers, nurses, and even CrossFit trainers!</p>
+        <p>Bag Balm is an iconic heritage skincare brand with a time-tested formula beloved by farmers, busy moms and celebrities alike. Since 1899, our legendary balm from the farms of Vermont’s rugged Northeast Kingdom has been soothing, protecting and moisturizing skin with simple ingredients. When nothing else works, Bag Balm works wonders.</p>
           {%- if section.settings.show_payment_icons -%}
             {%- unless shop.enabled_payment_types == empty -%}
               <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
@@ -190,12 +198,12 @@
       </div>
     </div>
   </div>
-  <div class="grid-uniform">
+  <div class="grid-uniform site-footer__skin-care m-t-0">
     <div class="wrapper">
       Skin care that works wonders since 1899
     </div>
   </div>
-  <div class="grid-uniform">
+  <div class="grid-uniform  m-t-0 site-footer__bottom">
     <div class="wrapper">
 <!-- 
       <div style="margin: 0 auto 20px auto !important;"><script type='text/javascript' src='https://www.rapidscansecure.com/siteseal/siteseal.js?code=17,A7C997DBB63785A37B5E72F963FBE4C535F39F83'></script></div> -->
@@ -205,7 +213,9 @@
         <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
-      All contents &copy; {{ 'now' | date: '%Y' }} Vermont's Original, LLC. All rights reserved.<span class="sep">/</span><a href="tel:844-424-2256">(844) 424-2256</a>
+<!--       All contents &copy; {{ 'now' | date: '%Y' }} Vermont's Original, LLC. All rights reserved.<span class="sep">/</span><a href="tel:844-424-2256">(844) 424-2256</a> -->
+      <span class='copyrightSpan'>All contents &copy; {{ 'now' | date: '%Y' }} Vermont's Original, LLC. All rights reserved.<span class="sep">/</span><a href="tel:844-424-2256">(844) 424-2256</a></span>	
+
     </div>
   </div>
 </footer>

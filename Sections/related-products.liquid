@@ -1,5 +1,13 @@
+<style>
+  .slick-list {
+  min-height: 200px;
+  width: 100%;
+    padding:0px;
+}
+</style>
 {% if section.settings.show_related_products == true %}
-<div class="product-template__container page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+<div class="product-template__container page-width" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" 
+     data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
 <div id="opinew-rich-snippets-code-container">{{ product.metafields.opinew_metafields['rich_snippets'] }}</div>
 
 {% comment %}
@@ -90,7 +98,7 @@
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
 
-    {% include 'product-grid-item' %}
+    		 {% include 'product-grid-item' %}
 
              {% assign counter = counter | plus: 1 %}
              {% if counter == break_at %}
@@ -109,11 +117,11 @@
   <aside class="grid">
     <div class="grid__item">
       {% unless heading == blank %}
-      <header class="section-header">
+      <header class="collection-section-header" >
         <h1>{{ heading }}</h1>
       </header>
       {% endunless %}
-      <div class="grid-uniform">
+      <div class="grid-uniform ">
         {{ related_items }}
       </div>
     </div>
@@ -122,9 +130,9 @@
   {% endunless %}
 
 {% endif %}
-
+{%comment%}
 <a href="/collections/all/" class="btn btn--secondary-accent">Back to Shop All</a>
-
+{%endcomment%}
 </div>
 {% endif %}
 
@@ -191,3 +199,57 @@
   ]
 }
 {% endschema %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  
+
+  
+  
+  
+  $("#ProductSection-{{ section.id }} .grid-uniform").slick({
+  centerMode: true,
+  focusOnSelect: true,
+  centerPadding: '60px',
+  slidesToShow: 1,
+     adaptiveHeight: true,
+  dots: true,
+  responsive: [{
+    breakpoint: 9999,
+            settings: "unslick"
+    }
+  , {
+    breakpoint: 769,
+    settings: {
+      arrows: false,
+      centerMode: true,
+      centerPadding: '10px',
+      slidesToShow: 1
+    }
+  }]
+});
+
+function setSlideVisibility() {
+  //Find the visible slides i.e. where aria-hidden="false"
+  var visibleSlides = $('.slick-slide[aria-hidden="false"]');
+  //Make sure all of the visible slides have an opacity of 1
+  $(visibleSlides).each(function() {
+    $(this).css('opacity', 1);
+  });
+  //Set the opacity of the first and last partial slides.
+  $(visibleSlides).first().prev().css('opacity', 0);
+  $(visibleSlides).last().next().css('opacity', 0);
+}
+
+$(setSlideVisibility());
+
+$('#ProductSection-{{ section.id }} .grid-uniform').on('beforeChange', function() {
+  $('.slick-slide').each(function() {
+  	$(this).css('opacity', 1);
+  });
+});
+
+$('.slider').on('afterChange', function() {
+  setSlideVisibility();
+});
+
+</script>

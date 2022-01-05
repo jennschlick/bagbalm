@@ -1,3 +1,60 @@
+{%- comment -%} qc- cart keep shopping {%- endcomment -%}
+<style>
+  div.keep-shopping {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  div.keep-shopping a {
+    margin: 20px auto;
+    width: auto;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+    cursor: pointer;
+    border: 1px solid transparent;
+    user-select: none;
+    -webkit-appearance: none;
+    font-family: sofia-pro,sans-serif;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    border: 2px solid #009438;
+    border-radius: 3px;
+    color: #fff;
+    transition: all .2s ease-out;
+    min-height: 46px;
+    color: #009438;
+  }
+
+  @media screen and (min-width: 769px) {
+    div.keep-shopping {
+      text-align: right;
+    }
+  }
+
+</style>
+
+<script data-cfasync="false" type="text/javascript">if (typeof Shopify === "undefined") var Shopify = {}; Shopify.cart = {{ cart | json }};</script> 
+<div id="sca-fg-owl-carousel">
+  <div id="freegift_cart_container" class="sca-fg-cart-container" style="display: none;">
+    <div id="freegift_message" class="owl-carousel"></div>
+  </div> 
+  <div id="sca-fg-slider-cart" style="display: none;">
+    <div class="sca-fg-cart-title">
+      <strong>Select your free gift (s)</strong>
+    </div>
+    <div id="sca_freegift_list" class="owl-carousel"></div>
+  </div>
+</div>
+<div id="sca_fg_cart">
 <script class="cartFlagX"></script><!-- /templates/cart.liquid -->
 {% comment %}
 
@@ -155,10 +212,9 @@
                   <p class="cart__subtotal">{{ 'cart.general.subtotal' | t }}</p>
                 </div>
                 <div class="grid__item one-half large--one-third">
-                  <p class="cart__subtotal"><span style="display:none" class="tdf-cart-total-flag">
-<span class=""></span>{{ cart.total_price | money }}</p></span>
-<span class=""></span>
-
+                  <p class="cart__subtotal"><span class="tdf-cart-total-flag">
+                  <span class=""></span>{{ cart.total_price | money }}</p></span>
+                  <span class=""></span>
                 </div>
               </div>
 
@@ -180,8 +236,8 @@
               {%- endcapture -%}
 
               <p class="rte"><em>{{ taxes_shipping_checkout }}</em></p>
-              <button type="submit" name="update" class="btn--secondary update-cart">{{ 'cart.general.update' | t }}</button>
-              <button type="submit" name="checkout" class="btn cart__checkout">
+              <button type="submit" name="update" class="btn__solid btn--secondary update-cart">{{ 'cart.general.update' | t }}</button>
+              <button type="submit" name="checkout" class="btn__solid btn cart__checkout">
                 {{ 'cart.general.checkout' | t }} <span class="icon icon-arrow-right" aria-hidden="true"></span>
               </button>
 
@@ -190,9 +246,11 @@
               {% endif %}
             </div>
           </div>
+         
+          {%- comment -%} qc- cart keep shopping {%- endcomment -%}
+          <div class="keep-shopping"><a href="/collections/all">KEEP SHOPPING</a></div>
 
         </div>
-
       </form>
 
     {% else %}
@@ -209,4 +267,6 @@
 
     {% endif %}
   </div>
+</div>
+
 </div>

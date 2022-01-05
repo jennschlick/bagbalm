@@ -1,0 +1,73 @@
+<div class="wrapper ">
+  <div class="custom-content">
+    <div class="custom__item one-whole align--top-middle">
+      <div class="custom__item-inner custom__item-inner--html">
+        <div class="rte" data-section-id="1547407703492" data-section-type="featured-content-section">
+          <div class="grid">
+            <div class="grid__item  large--six-twelfths w-40 works-wonder__content">
+              <h2>{{section.settings.title}}</h2>
+              {{section.settings.description}}
+            </div>
+            <div class="grid__item large--six-twelfths w-60 works-wonder__image_grid">
+              <div class="grid__item large--six-twelfths wk-right">
+                <div class="image1 image-wrapper"><img  src="{{section.settings.image1 |img_url:'master'}}" alt=""></div> 
+                <div class="image2 image-wrapper m-t"><img  src="{{section.settings.image2 |img_url:'master'}}" alt=""></div>
+              </div>
+              <div class="grid__item large--six-twelfths p-left">
+                <div class="image2 image-wrapper"><img  src="{{section.settings.image3 |img_url:'master'}}" alt=""></div>
+                <div class="image1 image-wrapper  m-t"><img  src="{{section.settings.image4 |img_url:'master'}}" alt=""></div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Section Wonders",
+    "settings": [
+				{
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Bag Balm<br><span>Works Wonders</span>"
+                },
+				{
+                    "type": "textarea",
+                    "id": "description",
+                    "label": "Description"
+                },
+				{
+                    "type": "image_picker",
+                    "id": "image1",
+                    "label": "Image 1"
+                },
+				{
+                    "type": "image_picker",
+                    "id": "image2",
+                    "label": "Image 2"
+                },
+				{
+                    "type": "image_picker",
+                    "id": "image3",
+                    "label": "Image 3"
+                },
+				{
+                    "type": "image_picker",
+                    "id": "image4",
+                    "label": "Image 4"
+                }
+
+
+],
+	"class":"section-works-wonder"
+  }
+{% endschema %}
+
+
+
+{% javascript %}
+{% endjavascript %}

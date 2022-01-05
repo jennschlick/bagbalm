@@ -1,6 +1,6 @@
 <!-- /templates/collection.liquid -->
 <div id="CollectionSection" data-section-id="{{ section.id }}" data-section-type="collection-template" data-grid-type="{{ section.settings.collection_products_grid }}">
-  {% include 'collection-template' %}
+  {% include 'collection-template', section:section %}
 </div>
 
 
@@ -95,6 +95,29 @@
         "pt-BR": "Exiba o fornecedor do produto"
       }
     }
-  ]
+  ],
+
+    "blocks": [
+        
+        {
+            "type": "tags",
+            "name": "Tags filter",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Filter"
+                },
+
+				 {
+                    "type": "textarea",
+                    "id": "filter_details",
+                    "label": "Add filters in each line"
+                }
+				
+            ]
+        }
+    ]
 }
 {% endschema %}

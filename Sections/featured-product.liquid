@@ -58,6 +58,7 @@
         {% endif %}
 
         <h1 class="product-single__title" itemprop="name">{{ title }}</h1>
+        <div class='opinew-stars-plugin-product-list'>{% render 'opinew_review_stars_lists' product:product %}</div>
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           <div data-price-container>

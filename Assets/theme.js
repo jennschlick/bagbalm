@@ -725,6 +725,10 @@ ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
 // Get from cart.js returns the cart in JSON
 ShopifyAPI.getCart = function(callback) {
   jQuery.getJSON('/cart.js', function(cart) {
+
+    // update free shipping threshold bar
+    calculateProgress(cart.total_price, freeShippingThreshold);
+
     if (typeof callback === 'function') {
       callback(cart);
     } else {
@@ -784,6 +788,7 @@ var ajaxCart = (function(module, $) {
     adjustCart,
     adjustCartCallback,
     qtySelectors,
+      calculateProgress,
     validateQty;
 
   /*============================================================================
@@ -893,6 +898,9 @@ var ajaxCart = (function(module, $) {
     // Update quantity and price
     updateCountPrice(cart);
     buildCart(cart);
+
+    // update free shipping threshold bar
+    calculateProgress(cart.total_price, freeShippingThreshold);
   };
 
   buildCart = function(cart) {
@@ -943,9 +951,10 @@ var ajaxCart = (function(module, $) {
           if (key.charAt(0) === '_' || !value) {
             delete cartItem.properties[key];
           }
-        });
+        }); 
       }
 
+      console.log(cartItem)
       // Create item's data object and add to 'items' array
       item = {
         key: cartItem.key,
@@ -958,7 +967,7 @@ var ajaxCart = (function(module, $) {
         itemAdd: cartItem.quantity + 1,
         itemMinus: cartItem.quantity - 1,
         itemQty: cartItem.quantity,
-        price: theme.Currency.formatMoney(cartItem.price, settings.moneyFormat),
+        price: theme.Currency.formatMoney(cartItem.line_price, settings.moneyFormat),
         discountedPrice: theme.Currency.formatMoney(
           cartItem.price - cartItem.total_discount / cartItem.quantity,
           settings.moneyFormat
@@ -998,6 +1007,24 @@ var ajaxCart = (function(module, $) {
 
     cartCallback(cart);
   };
+  
+  
+   calculateProgress = function(total_price, freeShippingThreshold){
+    if((+total_price) < freeShippingThreshold)
+    {
+      $('.cart-shipping__numOuter').show()
+       $('.cart-shipping__numOuter').find('.cart-shipping__num').text( (freeShippingThreshold - total_price)/100 )
+      $('.cart-shipping__success').hide();
+    }
+    else
+    {
+      $('.cart-shipping__numOuter').hide();
+      $('.cart-shipping__success').show()
+
+    }
+
+  } 
+  
 
   cartCallback = function(cart) {
     $body.removeClass('drawer--is-loading');
@@ -1101,6 +1128,7 @@ var ajaxCart = (function(module, $) {
 
   adjustCartCallback = function(cart) {
     // Update quantity and price
+     calculateProgress(cart.total_price, freeShippingThreshold);
     updateCountPrice(cart);
 
     // Reprint cart on short timeout so you don't see the content being removed
@@ -1378,6 +1406,7 @@ timber.accessibleNav = function() {
 timber.drawersInit = function() {
   timber.LeftDrawer = new timber.Drawers('NavDrawer', 'left');
   if (theme.settings.cartType === 'drawer') {
+
     timber.RightDrawer = new timber.Drawers('CartDrawer', 'right', {
       onDrawerOpen: ajaxCart.load
     });
@@ -2180,7 +2209,7 @@ theme.Product = (function() {
       var $newImage = $(
         this.selectors.productImagePhotoContainer,
         this.$container
-      ).not('.hide');
+      )
       $newImage
         .closest(
           $(this.selectors.productImagePhotoFlexWrapper, this.$container)
@@ -2275,6 +2304,7 @@ theme.Product = (function() {
       $(this.selectors.productImages, this.$container).slick({
         arrows: false,
         dots: true,
+        slide: '.product-single__photo--flex-wrapper',
         adaptiveHeight: true,
         onAfterChange: function() {
           // Let's do this after changing slides
@@ -2497,18 +2527,7 @@ theme.Product = (function() {
       var calcLimit = $wrapper.offset().top + $wrapper.height();
       calcLimit -= productCopyHeight;
 
-      // Init sticky if desc shorter than images and fits in viewport
-      if (
-        productCopyHeight < productImagesHeight &&
-        productCopyHeight < $(window).height()
-      ) {
-        theme.variables.productPageSticky = true;
-        $meta.scrollToFixed({
-          limit: calcLimit
-        });
-      } else {
-        theme.variables.productPageSticky = false;
-      }
+      
     },
 
     onUnload: function() {
@@ -2737,6 +2756,7 @@ theme.HeaderSection = (function() {
         enableQtySelectors: true,
         moneyFormat: theme.strings.moneyFormat
       });
+
     }
 
     theme.cache.$window.on('load', theme.resizeLogo);
@@ -3320,7 +3340,6 @@ theme.afterCartLoad = function() {
   theme.cache.$body.on('ajaxCart.afterCartLoad', function(evt, cart) {
     // Open cart drawer
     timber.RightDrawer.open();
-
     // Size the cart's fixed footer
     theme.sizeCartDrawerFooter();
 
@@ -3423,6 +3442,102 @@ theme.cookiesEnabled = function() {
   }
   return cookieEnabled;
 }
+
+
+
+  let variantPrice;
+  let variantid
+      
+  function updatePrice(selectElement) {
+    let variantimage ;
+    variantid = selectElement.selectedOptions[0].getAttribute('value');
+    variantPrice = selectElement.selectedOptions[0].getAttribute('data-price');
+    variantimage = selectElement.selectedOptions[0].getAttribute('data-image');
+    let all_matches = selectElement.parentNode.parentNode.querySelectorAll(`.collection-compare-price`) ;
+    let all_matches_sale = selectElement.parentNode.parentNode.querySelectorAll(`.collection-grid-product__on-sale`) ;
+   
+    
+    [].forEach.call(all_matches, function(match) {
+      match.style.display = "none";
+    });
+    
+       [].forEach.call(all_matches_sale, function(match) {
+      match.style.display = "none";
+    });
+
+    selectElement.parentNode.parentNode.querySelector(`.collection-compare-price[data-id="${variantid}"]`).style.display = 'block'
+    selectElement.parentNode.parentNode.querySelector(`.collection-grid-product__on-sale[variant-id="${variantid}"]`).style.display = 'block'
+
+    
+    
+    if(variantimage != null){
+    selectElement.parentNode.parentNode.querySelector('.product--image').setAttribute('src' , variantimage)  ;
+    }
+  }
+  
+  function updateCollection(url)
+  {
+    $.ajax({
+      type: 'GET',
+      url: url,
+      beforeSend: function() {
+       $(".collection-template .collection-products-wrapper").addClass('loging_data')
+      },
+      success: function(data) {
+        var filteredData = $(data).find(".collection-template .collection-products-wrapper .grid-product ");         
+        $(".collection-template .collection-products-wrapper .grid-uniform").empty()  
+        $(".collection-template .collection-products-wrapper .grid-uniform").append(filteredData); 
+        $(".collection-template .collection-products-wrapper").removeClass('loging_data')
+        window.history.pushState("", "", url);
+        $('.collection-section-header h1').empty()
+        $('.collection-section-header h1').html($(data).find('.collection-section-header h1').text());
+        
+        
+
+
+          ajaxCart.init({
+            formSelector: '.add-to-cart__form',
+            cartContainer: '#CartContainer',
+            addToCartSelector: '.add-to-cart',
+            enableQtySelectors: true,
+            moneyFormat: theme.strings.moneyFormat
+          });
+
+        
+        
+        
+        
+      },
+      dataType: "html"
+    });
+  }
+
+
+  var filters = document.querySelectorAll(".collection-filter h2")
+  filters.forEach(function(filter){
+    // filter.nextElementSibling.lastElementChild.innerHTML = "&#43"
+    if (window.innerWidth > 768){
+      filter.nextElementSibling.style.height =   filter.nextElementSibling.scrollHeight + "px";
+    }
+    else{
+      filter.lastElementChild.innerHTML = "&#43"
+    }
+  })
+
+  filters.forEach(function(filter){
+    filter.addEventListener("click",function(){
+      if( filter.nextElementSibling.style.height){
+        filter.nextElementSibling.style.height = null   
+        filter.lastElementChild.innerHTML = "&#43"
+        console.log("filter closed")
+      }
+      else{
+        filter.nextElementSibling.style.height = filter.nextElementSibling.scrollHeight + "px";
+        filter.lastElementChild.innerHTML = "&#8722;"
+        console.log("filter opened")
+      }
+    })
+  });
 
 $(document).ready(function() {
   theme.init();

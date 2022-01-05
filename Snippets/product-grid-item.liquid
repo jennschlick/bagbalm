@@ -80,7 +80,7 @@
     </div>
 
     <a href="{{ product.url | within: collection }}" class="grid-product__meta">
-      <span class="grid-product__title">{{ product.title }}</span>
+      <span class="collection-grid-product__title">{{ product.title }}</span>
       {% assign subtitle = product.metafields.subtitle %}
       <span class="grid-product__size">{{ subtitle['subtitle'] }}</span>
       <div class='opinew-stars-plugin-product-list'>{% include 'opinew_review_stars_lists' %}</div>
@@ -99,7 +99,7 @@
               <span class="fallback-text">+</span>
             </span>
           {% else %}
-            {{ product.price | money_without_trailing_zeros }}
+          <span class="related-product-price__text"> starts at</span> {{ product.price | money_without_trailing_zeros }}
           {% endif %}
         </span>
       </span>

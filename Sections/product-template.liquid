@@ -1,4 +1,5 @@
 <!-- /templates/product.liquid -->
+
 <div itemscope itemtype="http://schema.org/Product" id="ProductSection--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product-template" data-image-zoom-type="{{ section.settings.zoom_enable }}" data-enable-history-state="true" data-scroll-to-image="{% if section.settings.image_layout == "stacked" %}true{% else %}false{% endif %}">
 <div id="opinew-rich-snippets-code-container">{{ product.metafields.opinew_metafields['rich_snippets'] }}</div>
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -7,8 +8,25 @@
     {% assign current_variant = product.selected_or_first_available_variant %}
     {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
+    <div class="breadcrumbs-wrapper medium-up-hide">
+      {% include 'breadcrumbs' %}   
+    </div>
+    
+    <div class="product-single__meta desktop-hide">
+      {% if section.settings.product_vendor_enable %}
+        <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
+      {% endif %}
+
+      <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+
+      {% assign subtitle = product.metafields.subtitle %}
+      {% assign key = 'subtitle' %}
+      <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
+        	<div class='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %} <p class="opinew-review-numbers">({{ product.metafields.opinew_metafields.reviews_count }})</p></div>
+
+    </div>
     <div class="grid product-single {% for tag in product.tags %}{{ tag }}{% endfor %}">
-      <div class="grid__item large--six-twelfths medium--six-twelfths text-center">
+      <div class="grid__item large--six-twelfths medium--six-twelfths text-center wrapper-medium-image product-single__images-wrapper">
 
         {% if section.settings.image_layout == "stacked" %}
           {% comment %}
@@ -119,6 +137,7 @@
             {% comment %}
               Display current variant image
             {% endcomment %}
+            {%comment%}
             <div class="product-single__photo--flex-wrapper">
               <div class="product-single__photo--flex">
                 {% include 'image-style' with image: featured_image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
@@ -126,7 +145,7 @@
                   
                   {% comment %}
                     size badges for first image only based on tag
-                  {% endcomment %}
+                  
                   {% for tag in product.tags %}  
                       {% if tag == '1-ounce' %}
                         <img src="{{ 'badge_1_oz.png' | file_url }}" class="product-badge" >
@@ -153,7 +172,7 @@
                       {% else %}
                       {% endif %}
                   {% endfor %}
-
+{% endcomment %}
                   <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: featured_image.aspect_ratio | times: 100}}%;">
                     {% assign img_url = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       
@@ -177,12 +196,12 @@
                 </div>
               </div>
             </div>
-
+{% endcomment %}
             {% comment %}
               Populate rest of product images with display = none, not repeating the featured one
             {% endcomment %}
-            {% for image in product.images %}
-              {% unless image contains featured_image %}
+            {% for image in product.images limit: 4 %}
+          
 
                 {% comment %}
                   We need to figure out the max width we want the image to be on the page
@@ -191,48 +210,67 @@
                 {% endcomment %}
                 {% capture img_id_class %}product-single__photo-{{ image.id }}{% endcapture %}
                 {% capture wrapper_id %}ProductImageWrapper-{{ image.id }}{% endcapture %}
-
-                <div class="product-single__photo--flex-wrapper">
+            {% if forloop.first == true %}
+                <div class="product-single__photo--flex-wrapper  first_gallerly_image">
                   <div class="product-single__photo--flex">
                     {% include 'image-style' with image: image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
-                    <div id="{{ wrapper_id }}" class="product-single__photo--container product-single__photo--container-thumb hide">
+                    <div id="{{ wrapper_id }}" class="product-single__photo--container product-single__photo--container-thumb "
+                         {%if forloop.index < 5%}style="display:block!important;" {%endif%} >
                       <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
                         {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                        <img class="product-single__photo lazyload {{ img_id_class }}"
-                          src="{{ image | img_url: '300x' }}"
+                        <img class="product-single__photo  {{ img_id_class }}"
+                          src="{{ image | img_url: '1024x1024' }}"
                           data-src="{{ img_url }}"
-                          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                          data-aspectratio="{{ image.aspect_ratio }}"
-                          data-sizes="auto"
                           {% if section.settings.zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %}
                           data-image-id="{{ image.id }}"
                           alt="{{ image.alt | escape }}">
-
-                        <noscript>
-                          <img class="product-single__photo" src="{{ image.src | img_url: 'master' }}"
-                            {% if section.settings.zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %}
-                            alt="{{ image.alt | escape }}"
-                            data-image-id="{{ image.id }}">
-                        </noscript>
                       </div>
                     </div>
                   </div>
                 </div>
-              {% endunless %}
-            {% endfor %}
+            {%else%}
+            
+            <div class="product-single__photo--flex-wrapper">
+              <div class="product-single__photo--flex">
+                {% include 'image-style' with image: image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
+                <div id="{{ wrapper_id }}" class="product-single__photo--container product-single__photo--container-thumb "
+                     {%if forloop.index < 5%}style="display:block!important;" {%endif%} >
+                  <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
+                    {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img class="product-single__photo lazyload {{ img_id_class }}"
+                         src="{{ image | img_url: '300x' }}"
+                         data-src="{{ img_url }}"
+                         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                         data-aspectratio="{{ image.aspect_ratio }}"
+                         data-sizes="auto"
+                         {% if section.settings.zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %}
+                         data-image-id="{{ image.id }}"
+                         alt="{{ image.alt | escape }}">
 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {%endif%}
+            {% endfor %}
+            <div style="clear:both;"></div>
             {% comment %}
               Display thumbnails
             {% endcomment %}
             <ul class="product-single__thumbnails small--hide grid-uniform" id="ProductThumbs">
               {% for image in product.images %}
+              {%if forloop.index > 4 
+             %}
                 {% if product.images.size > 1 %}
-                  <li class="grid__item medium--one-third large--one-quarter product-single__photo-wrapper">
+                  <li class="grid__item medium--one-third large--one-quarter product-single__photo-wrapper {%if forloop.index >6%} medium-hide{%endif%}">
                     <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: 'grande' }}" class="product-single__thumbnail {% if image contains featured_image %} active-thumb{% endif %}">
-                      <img class="product-single__thumb" src="{{ image.src | img_url: '150x' }}" alt="{{ image.alt | escape }}">
+                      <img class="product-single__thumb" src="{{ image.src | img_url: 'master' }}" alt="{{ image.alt | escape }}">
                     </a>
                   </li>
                 {% endif %}
+              {%endif%}
               {% endfor %}
             </ul>
 
@@ -240,22 +278,25 @@
         {% endif %}
       </div>
 
-      <div class="grid__item product-single__meta--wrapper medium--six-twelfths large--six-twelfths">
+      <div class="grid__item product-single__meta--wrapper medium--six-twelfths large--six-twelfths wrapper-medium-meta">
         <div class="product-single__meta">
-          {% if section.settings.product_vendor_enable %}
-            <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
-          {% endif %}
+          <div class="breadcrumbs-wrapper medium-down-hide">
+            {% include 'breadcrumbs' %}   
+          </div>
+          
+          <div class="mobile-hide">
+            {% if section.settings.product_vendor_enable %}
+              <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
+            {% endif %}
+            
+            <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
 
-          <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+            {% assign subtitle = product.metafields.subtitle %}
+            {% assign key = 'subtitle' %}
+            <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
 
-          {% assign subtitle = product.metafields.subtitle %}
-          {% assign key = 'subtitle' %}
-          <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
+            <div class='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %} <p class="opinew-review-numbers">({{ product.metafields.opinew_metafields.reviews_count }})</p></div>
 
-          <div id='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %}</div>
-
-          <div class="product-single__description rte" itemprop="description">
-            {{ product.description }}
           </div>
 
           <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -315,7 +356,7 @@
                   <div class="radio-wrapper js product-form__item">
                     <label class="single-option-radio__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}"
                       for="ProductSelect-option-{{ forloop.index0 }}">
-                      {{ option.name | escape }}
+                      {%comment%}{{ option.name | escape }}{%endcomment%}
                     </label>
                     {% if section.settings.product_selector == 'radio' %}
                       <fieldset class="single-option-radio"
@@ -323,6 +364,7 @@
                         id="ProductSelect-option-{{ forloop.index0 }}">
                         {% assign option_index = forloop.index %}
                         {% for value in option.values %}
+                        {% unless value contains '% off)' %}
                           {% assign variant_label_state = true %}
                           {% if product.options.size == 1 %}
                             {% unless product.variants[forloop.index0].available  %}
@@ -338,12 +380,17 @@
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
                           <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
+                        {%endunless%}
                         {% endfor %}
                       </fieldset>
                     {% else %}
                       <select class="single-option-selector__radio single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
                         {% for value in option.values %}
-                          <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value | escape }}</option>
+                        
+                        {% unless value contains '% off)' %}
+                        <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value | escape }}</option>
+                        {%endunless%} 
+                        
                         {% endfor %}
                       </select>
                     {% endif %}
@@ -367,10 +414,10 @@
                   {% endif %}
                 {% endfor %}
               </select>
-
+			<div class="quantity-add-to" style="display:flex">
               {% if section.settings.quantity_enabled %}
               <div class="product-single__quantity">
-                <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                {%comment%}<label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>{%endcomment%}
                 <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
               </div>
               {% endif %}
@@ -389,45 +436,78 @@
                   {{ form | payment_button }}
                 {% endif %}
               </div>
+            </div>
             {% endform %}
-
+ <div class="product-single__description rte" itemprop="description">
+            {{ product.description }}
+          </div>
           </div>
 
-          <div class="product-single__uses">
           {% assign uses = product.metafields.uses %}
           {% assign key = 'uses' %}
-          <p>Works wonders for:</p>
-          {{ uses.uses }}
-          </div>
+          {% if uses.uses %}
+            <div class="product-tabs product-single__uses">
+              <p class="accordian-header">Works wonders on</p>
+              <div class="accordian-body"><p>{{ uses.uses }}</p></div>
+            </div>
+          {% endif %}
+          
 
-          <div class="product-single__ingredients">
+          
           {% assign ingredients = product.metafields.ingredients %}
           {% assign key = 'ingredients' %}
-          <details>
-          <summary><span>+</span> Ingredients</summary>
-          {{ ingredients.ingredients }}
-          </details>
-          </div>
-
-          {% if section.settings.social_sharing_products %}
-            {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+          {% if ingredients.ingredients %}
+            <div class=" product-tabs product-single__ingredients">
+              <p class="accordian-header"> Ingredients </p>
+              <div class="accordian-body"><p>{{ ingredients.ingredients }}</p></div>
+            </div>
           {% endif %}
+          
+
+           
+          {% assign ingredients = product.metafields.howitworks %}
+          {% assign key = 'howitworks' %}
+          {% if ingredients.howitworks %}
+          <div class="product-tabs product-single__ingredients">
+            <p class="accordian-header"> How it Works </p>
+            <div class="accordian-body"> <p>{{ ingredients.howitworks }} </p></div>
+          </div> 
+          {% endif %}
+          {%comment%}{% if section.settings.social_sharing_products %}
+            {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+          {% endif %}{%endcomment%}
         </div>
       </div>
+      </div>
+    </div>
       <div class="clearfix"></div>
       <div class="product-single__quote">
       {% assign quote = product.metafields.quote %}
       {% assign key = 'quote' %}
-      <blockquote class="blockquote--large">{{ quote.quote }}</blockquote>
+        <blockquote class="blockquote--large"><p>{{ quote.quote }}</p></blockquote>
       </div>
-    </div>
+  
 
-</div>
+
 {% unless product.empty == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
   </script>
 {% endunless %}
+
+<script>
+  let accordian_headers = document.querySelectorAll('.accordian-header');
+ accordian_headers.forEach((accordian_header) => accordian_header.addEventListener('click', function(e){
+   this.classList.toggle("active");
+   var accordian_body = this.nextElementSibling;
+   if (accordian_body.style.maxHeight)  {
+       accordian_body.style.maxHeight = null;
+   } 
+   else {
+       accordian_body.style.maxHeight = accordian_body.scrollHeight + "px";
+   } 
+}))
+</script>
 
 {% schema %}
 {
@@ -663,3 +743,25 @@
   ]
 }
 {% endschema %}
+
+<div style="clear:both;"></div><div id="opinew-reviews-product-page-code" class="opw-widget-wrapper-default">
+<span id="opinew-plugin" data-server-address="https://opinew.ngrok.io" data-opw-prodreviews="{{ product.metafields.opinew_metafields['product_plugin'] }}" data-opinew-shop-id="{{ shop.id }}" data-shop-url="{{shop.domain}}" data-platform-product-id="{{product.id}}">
+  <span id="opinew_product_plugin_app"></span>
+</span></div>
+
+
+
+<script>
+  //update first slider image on thumbnails click
+  $( document ).ready(function() {
+    $('.product-single__thumb').click(function(event){
+      event.preventDefault()
+      event.stopPropagation();
+      var src =  $(this).attr('src') ;
+      $('.first_gallerly_image').find('.product-single__photo').attr('src' , src);
+      $('.first_gallerly_image').find('.product-single__photo').attr('data-mfp-src' , src);
+    });
+
+});
+  
+</script>

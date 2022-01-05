@@ -1,0 +1,197 @@
+<!-- /snippets/product-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'small--one-half medium--one-half large--one-quarter' %}
+{% endunless %}
+
+{% unless width %}
+  {%- assign width = 310 -%}
+{% endunless %}
+{% unless height %}
+  {%- assign height = 415 -%}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% capture img_id_class %}ProductImage-{{ product.featured_image.id }}{% endcapture %}
+{% capture img_wrapper_id %}ProductImageWrapper-{{ product.featured_image.id }}{% endcapture %}
+{%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+<div class="grid__item grid-product small--one-half medium--one-half large--one-third {% if sold_out %} is-sold-out{% endif %}">
+  <div class="grid-product__wrapper">
+    
+    <div class="grid-product__image-wrapper">
+      <a class="grid-product__image-link" href="{{ product.url | within: collection }}">
+        {% if product.featured_image.src == blank %}
+          <img class="grid-product__image" src="{{ product.featured_image.src | img_url: '1024x' }}" alt="{{ product.featured_image.alt | escape }}">
+        {% else %}
+          {% include 'image-style' with image: product.featured_image, small_style: true, width: width, height: height, wrapper_id: img_wrapper_id, img_id_class: img_id_class %}
+          <div id="{{ img_wrapper_id }}" class="product--wrapper">
+            <div style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%;">
+              <img class="product--image  {{ img_id_class }}"
+                   src="{{ product.featured_image | img_url: '' }}"
+                   data-src="{{ img_url }}"
+                   alt="{{ product.featured_image.alt | escape }}">
+            </div>
+          </div>
+          <noscript>
+            <img class="grid-product__image" src="{{ product.featured_image.src | img_url: '1024x' }}" alt="{{ product.featured_image.alt | escape }}">
+          </noscript>
+        {% endif %}
+      </a>
+      
+      {% if sold_out %}
+        <div class="grid-product__sold-out">
+          <p>{{ 'products.product.sold_out_html' | t }}</p>
+        </div>
+      
+      {% elsif on_sale %}
+
+      {% endif %}
+      
+      {%for tag in product.tags%}
+      {%if tag contains "Save"%}
+      {%for variant in product.variants%}
+      {%if variant.compare_at_price > variant.price%}
+      <div class="collection-grid-product__on-sale" variant-id="{{variant.id}}" {%unless variant == product.selected_or_first_available_variant%}style="display:none ;"{%endunless%}>
+        {% assign saving = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round  %}
+        {% assign amount = saving | at_least: percentage %}
+        <p style="text-transform: uppercase">{{tag}} {{ amount}}%</p>
+      </div>
+      {%endif%}
+      {%endfor%}
+      {%endif%}
+      {%endfor%}
+      
+      
+    </div>
+
+    <a href="{{ product.url | within: collection }}" class="grid-product__meta">
+      <span class="collection-grid-product__title">{{ product.title }}</span>
+      {% assign subtitle = product.metafields.subtitle %}
+      <span class="collection-grid-subtitle">{{ subtitle['subtitle'] }}</span>
+      <div class='opinew-stars-plugin-product-list'>{% include 'opinew_review_stars_lists' %}</div>
+      
+      {%comment%}
+		<!--    Price   .grid-product__price-wrap used to be here. Moved below to .collection-compare-price    -->
+      <span class="grid-product__price-wrap">
+        <span class="long-dash">—</span>
+        <span class="grid-product__price">
+          {% if on_sale %}
+            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+          {% else %}
+             <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+          {% endif %}
+          {% if product.price_varies %}
+            {{ product.price_min | money_without_trailing_zeros }}
+            <span class="icon-fallback-text">
+              <span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
+              <span class="fallback-text">+</span>
+            </span>
+          {% else %}
+            {{ product.price | money_without_trailing_zeros }}
+          {% endif %}
+        </span>
+      </span>
+      {%endcomment%}
+
+      {% if section.settings.product_vendor_enable %}
+        <p class="grid-product__vendor">{{ product.vendor }}</p>
+      {% endif %}
+    </a>
+    
+    
+    
+    {% for variant in product.variants  %}
+      {% assign abc = variant.title | split: "Pack" | first | strip   %}
+      <div class="collection-compare-price"  data-id="{{variant.id}}" {%if product.selected_or_first_available_variant != variant %}style="display: none ;"{%endif%}>
+        {% for product_option in product.options_with_values %}
+          {% if product_option.name contains 'Color' %}
+          	{% assign color_names = true %}
+          {% endif %}
+        {% endfor %}
+        {% if abc != '1' and product.has_only_default_variant == false and color_names != true %}
+          {% assign peritem= variant.price | divided_by: abc %}
+          <p class="pack_price">{{variant.price | money_without_trailing_zeros}} / <span class="compare-light">{{peritem | money_without_trailing_zeros}} per pack</span></p>
+        {%else%}
+          <a href="{{ product.url | within: collection }}">
+            <span class="grid-product__price-wrap">
+              <span class="long-dash">—</span>
+              <span class="grid-product__price">
+                {% if on_sale %}
+                <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                {% else %}
+                <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                {% endif %}
+                {% if product.price_varies %}
+                {% comment %}
+                {{ product.price_min | money_without_trailing_zeros }}
+                {% endcomment %}
+                <span class="displayedProductPrice">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+                <span class="icon-fallback-text">
+                  <span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
+                  <span class="fallback-text">+</span>
+                </span>
+                {% else %}
+                {% comment %}
+                {{ product.price | money_without_trailing_zeros }}
+                {% endcomment %}
+                <span class="displayedProductPrice">{{ product.price | money_without_trailing_zeros }}</span>
+                {% endif %}
+              </span>
+            </span>
+          </a>		
+        {% endif %}
+      </div>
+    {% endfor %}
+    
+    <form action="/cart/add" method="post" class="add-to-cart__form">
+      {% if product.variants.size  < 0 %}
+      	<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      {% else %}
+        <select class="collection-dropdown" name="id" onchange='updatePrice(this)'>
+          {% for variant in product.variants %}
+          {% unless variant.title contains '% off)' %}
+          {%if variant.title contains 'Default'%}
+          <option value="{{ variant.id }}" data-price="{{variant.price | money}}" data-id="{{product.id}}">1 pack</option> />
+          {%else%}
+          <option value="{{ variant.id }}" {%if variant.image != blank%}data-image="{{variant.image | img_url: ''}}{%endif%}" data-price="{{variant.price | money}}" data-id="{{product.id}}">{{ variant.title }}</option>{%endif%}
+          {%endunless%} 
+          {% endfor %} 
+        </select>
+      {% endif %}
+      <div class="product-single__add-to-cart">
+        <button type="submit" name="add" id="" class="btn btn--add-to-cart collection-button add-to-cart">
+          <span class="btn__text"> Add to Cart</span>
+        </button>
+      </div>
+    </form>
+    
+  </div>
+</div>
+
+
+
+

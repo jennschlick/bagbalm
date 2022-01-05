@@ -1,9 +1,18 @@
 <!-- /templates/product.liquid -->
+<style>
+  .main-content .wrapper
+  {
+    padding:0px;
+    margin:0px;
+    max-width:1920px;
+  }
+</style>
 {% comment %}
 The contents of the product.liquid template can be found in /sections/product-template.liquid
 {% endcomment %}
 {% section 'product-template' %}
 {% section 'related-products' %}
+{%comment%}
 <div class="product-single__bottom">
     <div class="grid">
         <div class="grid__item large--five-twelfths medium--five-twelfths pdp-about">
@@ -19,6 +28,7 @@ The contents of the product.liquid template can be found in /sections/product-te
         </div>
     </div>
 </div>
+{%endcomment%}
 <div style="clear:both;"></div>
 <div style="clear:both;"></div>
 
@@ -57,4 +67,31 @@ The contents of the product.liquid template can be found in /sections/product-te
       CompareAtPrice: item.CompareAtPrice
     }
   }]);
+</script>
+<style>
+  #opinew-reviews-product-page-code .summary-card-container.opw-mx-1
+  {
+    margin-top:0px !important;
+  }
+  #opinew-reviews-product-page-code .opw-py-4
+  {
+    margin-bottom:0px !important;
+  }
+</style>
+
+
+<!-- LiveConnect Tag -->
+<!-- Please implement this tag on your add to cart page. -->
+<script type="text/javascript">
+window.liQ = window.liQ || [];
+window.liQ.push({
+  	"event": "addToCart",
+	"email": "{{ customer.email }}",
+	"items": [
+        {
+            "id": "{{ product.id }}",
+            "price": "{{ product.price|money_without_currency }}"
+    	}
+	]
+});
 </script>
