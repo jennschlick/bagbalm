@@ -9,9 +9,9 @@ development:
   - config/settings_data.json
 
 # ALERT!! - FOR SOME REASON I COULD NOT DEPLOY ON PRODUCTION - ONLY USING WATCH 
-# production:
-#   password: e67ba686787a14534897578865d0e004
-#   theme_id: "44655444027"
-#   store: vermonts-original-bag-balm.myshopify.com
-#   ignore_files:
-#   - config/settings_data.json
+production:
+  password: e67ba686787a14534897578865d0e004
+  theme_id: "44655444027"
+  store: vermonts-original-bag-balm.myshopify.com
+  ignore_files:
+  - config/settings_data.json
