@@ -1,9 +1,9 @@
 # updated 2021
 # dev theme = Development - 2021
-# https://bagbalm.com/?preview_theme_id=121190613173
+# https://bagbalm.com/?preview_theme_id=129997635801
 development:
   password: e67ba686787a14534897578865d0e004
-  theme_id: "121190613173"
+  theme_id: "129997635801"
   store: vermonts-original-bag-balm.myshopify.com
   ignore_files:
   - config/settings_data.json
@@ -11,7 +11,7 @@ development:
 # ALERT!! - FOR SOME REASON I COULD NOT DEPLOY ON PRODUCTION - ONLY USING WATCH 
 production:
   password: e67ba686787a14534897578865d0e004
-  theme_id: "44655444027"
+  theme_id: "129044381913"
   store: vermonts-original-bag-balm.myshopify.com
   ignore_files:
   - config/settings_data.json
