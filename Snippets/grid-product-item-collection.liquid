@@ -171,7 +171,7 @@
       {% if product.variants.size  < 0 %}
       	<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
       {% else %}
-        <select class="collection-dropdown" name="id" onchange='updatePrice(this)'>
+        <select class="collection-dropdown" name="id" onchange='updatePrice(this)' aria-label="Quantity">
           {% for variant in product.variants %}
           {% unless variant.title contains '% off)' %}
           {%if variant.title contains 'Default'%}
