@@ -354,9 +354,9 @@
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
                   <div class="radio-wrapper js product-form__item">
-                    <label class="single-option-radio__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}"
+                    <label class="visually-hidden single-option-radio__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}"
                       for="ProductSelect-option-{{ forloop.index0 }}">
-                      {%comment%}{{ option.name | escape }}{%endcomment%}
+                      {% for product_option in product.options_with_values %}{{ product_option.name }}{% endfor %}
                     </label>
                     {% if section.settings.product_selector == 'radio' %}
                       <fieldset class="single-option-radio"
