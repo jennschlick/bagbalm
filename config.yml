@@ -17,7 +17,7 @@ jackie:
   - config/settings_data.json
   # https://bagbalm.com/?preview_theme_id=130511765721
 
-development:
+jenn:
   password: e67ba686787a14534897578865d0e004
   theme_id: "132113826009"
   store: vermonts-original-bag-balm.myshopify.com
