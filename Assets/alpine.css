@@ -32,7 +32,7 @@
 
 .section-works-wonder h2 span {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 
 .site-footer .wrapper p {
@@ -45,7 +45,7 @@
 .site-footer .wrapper h2 {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: normal;
-  font-weight: normal;
+  /* font-weight: normal; */
   font-size: 48px;
   line-height: 35px;
   text-transform: none;
@@ -54,7 +54,7 @@
 .site-footer .wrapper h2 .rotatedText {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: italic;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: 24px;
   line-height: 35px;
   letter-spacing: 0.1em;
@@ -1805,7 +1805,7 @@ body.template-collection .grid-uniform {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-size: 22px;
   line-height: 1;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .product-tabs .accordian-header::after {
@@ -1818,7 +1818,7 @@ body.template-collection .grid-uniform {
   display: inline-block;
   position: relative;
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: 24px;
   color: #ccd7c5;
   margin-right: 25px;
@@ -2122,7 +2122,7 @@ body.template-collection .grid-uniform {
 .site-footer .grid-uniform:nth-of-type(2) {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 32px;
   color: #1c110a;
   line-height: 35px;

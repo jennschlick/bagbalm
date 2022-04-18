@@ -1268,7 +1268,7 @@ h1,
 h2
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 33px;
     text-transform: capitalize;
 }
@@ -1295,7 +1295,7 @@ h5,
 h6
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     text-transform: uppercase
 }
 
@@ -1359,7 +1359,7 @@ h6
 th
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-style: normal;
     font-size: .92857em;
     letter-spacing: .15em
@@ -1428,7 +1428,7 @@ blockquote cite:before
 blockquote.blockquote--large
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 300;
+    /* font-weight: 300; */
     background: #F3EFE0;
     color: #8a6f40;
     font-size: 24px;
@@ -1603,7 +1603,7 @@ blockquote.blockquote--large:before
 .drawer__title
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 24px;
 }
 
@@ -3048,7 +3048,7 @@ p.cart--empty-message
 .hero__slide .hero__subtitle
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-style: normal;
     margin-bottom: 15px
 }
@@ -3992,7 +3992,7 @@ p.cart--empty-message
 .tags--collection
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 14px;
     margin: 30px auto 0 auto;
     text-transform: uppercase
@@ -4429,7 +4429,7 @@ button.mfp-arrow:active
 {
     margin-top: 20px;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 20px;
     margin-bottom: 9px;
     text-transform: uppercase
@@ -4541,7 +4541,7 @@ button.mfp-arrow:active
 {
     font-size: 16px;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600
+    /* font-weight: 600 */
 }
 
 @media screen and (max-width:768px)
@@ -4826,7 +4826,7 @@ button.mfp-arrow:active
 #ProductSection-related-products .section-header h1
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 20px
 }
 
@@ -4910,7 +4910,7 @@ button.mfp-arrow:active
 .grid-product__title
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     display: block;
     font-size: 15px;
     line-height: 18px;
@@ -6028,8 +6028,8 @@ button.mfp-arrow:active
 {
     font-size: 20px;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 500;
-    font-weight: 600;
+    /* font-weight: 500; */
+    /* font-weight: 600; */
     margin-bottom: 2px
 }
 
@@ -6151,7 +6151,7 @@ button.mfp-arrow:active
 .password-page__hero
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-style: normal;
     font-size: 3em;
     line-height: 1.25;
@@ -7470,7 +7470,7 @@ body#tried-amp-true-bag-balm-uses .main-content>.wrapper>.page-template-uses .h2
 body#tried-amp-true-bag-balm-uses .main-content>.wrapper>.page-template-uses h2:not(.h1)
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 32px
 }
 
@@ -7560,7 +7560,7 @@ body#web-specials .main-content>.wrapper>.page-template-web-specials .h2:not(.h1
 body#web-specials .main-content>.wrapper>.page-template-web-specials h2:not(.h1)
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 20px
 }
 
@@ -8577,7 +8577,7 @@ body#cbd-certificates-of-analysis-coa .main-content .page-template-certs .cert a
 #tdf_upsell.tdf_container .tdf_offer_message h3
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 19px;
     text-transform: uppercase;
     text-align: center;
@@ -8951,7 +8951,7 @@ button.tdf_cta_btn
     font-size: 22px;
     margin: -3px auto 1px auto;
     text-transform: none;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #fff;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
 }
@@ -9094,7 +9094,7 @@ button.tdf_cta_btn
 {
      font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 42px;
     line-height: 45px;
     text-align: center;
@@ -9130,7 +9130,7 @@ button.tdf_cta_btn
 {
   font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: normal;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 24px;
   line-height: 20px;
   text-transform:capitalize;
@@ -9182,7 +9182,7 @@ button.tdf_cta_btn
     margin-left:-100px;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 24px;
     line-height: 20px;
     color: #1C110A;
@@ -9201,7 +9201,7 @@ button.tdf_cta_btn
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 18px;
     line-height: 1;
     text-align: center;
@@ -10065,7 +10065,7 @@ text-align: center;
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 48px;
     line-height: 45px;
     color: #1C110A;
@@ -10086,7 +10086,7 @@ text-align: center;
 {
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 48px;
 /*     line-height: 55px; */
     letter-spacing: 0.05em;
@@ -10258,7 +10258,7 @@ blockquote p
     margin: 0 auto;
     font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
     font-style: normal;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 20px;
     line-height: 35px;
     text-align: center;
