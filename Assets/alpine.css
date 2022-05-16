@@ -1,5 +1,5 @@
 .site-nav__link {
-  font-family: sofia-pro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: normal;
   color: #1c110a;
@@ -8,7 +8,7 @@
 }
 
 #CollectionSection .collection-section-header {
-  font-family: Canto, serif;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
 }
 
 #CollectionSection .collection-template .grid .grid-uniform {
@@ -16,7 +16,7 @@
 }
 
 .collection-grid-product__on-sale p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: capitalize;
 }
 
@@ -26,35 +26,35 @@
 }
 
 .section-works-wonder h2 {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
 }
 
 .section-works-wonder h2 span {
-  font-family: 'Canto Pen', serif;
-  font-weight: 700;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
+  /* font-weight: 700; */
 }
 
 .site-footer .wrapper p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-size: 16px;
   line-height: 35px;
 }
 
 .site-footer .wrapper h2 {
-  font-family: 'Canto Pen', serif;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: normal;
-  font-weight: normal;
+  /* font-weight: normal; */
   font-size: 48px;
   line-height: 35px;
   text-transform: none;
 }
 
 .site-footer .wrapper h2 .rotatedText {
-  font-family: 'Canto Pen', serif;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: italic;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: 24px;
   line-height: 35px;
   letter-spacing: 0.1em;
@@ -64,12 +64,12 @@
 }
 
 .section-works-wonder p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #1c110a;
 }
 
 .site-footer .grid-uniform:nth-of-type(3) .wrapper {
-  font-family: sofia-pro;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -84,7 +84,7 @@
 }
 
 .collection-filter label {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .product-single__meta .opw-noci.opw-noci-star-full {
   font-size: 20px !important;
@@ -397,7 +397,7 @@ body.template-collection .grid-uniform {
 
 .site-footer__bottom a {
   color: black;
-  ont-weight: 300;
+  font-weight: 300;
 }
 
 @media(min-width: 768px) {
@@ -1061,7 +1061,7 @@ body.template-collection .grid-uniform {
   border-style: none !important;
   min-width: 80px !important;
   min-height: 46px !important;
-  font-family: 'sofia-pro', sans-serif !important;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-size: 13px !important;
@@ -1078,7 +1078,7 @@ body.template-collection .grid-uniform {
   border: 1px solid #FFFFFF !important;
   box-sizing: border-box !important;
   border-radius: 3px !important;
-  font-family: 'sofia-pro', sans-serif !important;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   padding: 2px 0px 0px 16px !important;
 }
 
@@ -1501,7 +1501,7 @@ body.template-collection .grid-uniform {
 /************* COLLECTION PAGE FONTS *************/
 
 .collection-grid-subtitle {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: 20px;
@@ -1523,7 +1523,7 @@ body.template-collection .grid-uniform {
   display: block;
   margin: 10px auto;
   background-color: #fff;
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
   text-align: center;
@@ -1533,7 +1533,7 @@ body.template-collection .grid-uniform {
 
 .collection-compare-price p,
 .grid-product__price {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
@@ -1542,7 +1542,7 @@ body.template-collection .grid-uniform {
 }
 
 .section-works-wonder p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 500px;
   font-style: normal;
   line-height: 30px;
@@ -1550,7 +1550,7 @@ body.template-collection .grid-uniform {
 }
 
 .collection-grid-product__on-sale p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   text-align: center;
@@ -1802,10 +1802,10 @@ body.template-collection .grid-uniform {
 }
 
 .product-tabs .accordian-header {
-  font-family: Canto;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-size: 22px;
   line-height: 1;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .product-tabs .accordian-header::after {
@@ -1817,15 +1817,15 @@ body.template-collection .grid-uniform {
   padding-right: 5px;
   display: inline-block;
   position: relative;
-  font-family: 'Canto Pen', serif;
-  font-weight: 700;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
+  /* font-weight: 700; */
   font-size: 24px;
   color: #ccd7c5;
   margin-right: 25px;
 }
 
 #ProductSection--product-template .product-single__add-to-cart .btn__text {
-  font-family: sofia-pro;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 1;
@@ -2095,7 +2095,7 @@ body.template-collection .grid-uniform {
 /************* FOOTER/HEADER FONTS *************/
 
 .announcement-bar__message {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #000;
@@ -2105,7 +2105,7 @@ body.template-collection .grid-uniform {
 }
 
 .site-footer .grid-uniform:nth-of-type(1) .site-footer__linklist li {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -2114,15 +2114,15 @@ body.template-collection .grid-uniform {
 }
 
 .site-footer .wrapper p {
-  font-family: sofia-pro, sans-serif;
+  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   line-height: 35px;
 }
 
 .site-footer .grid-uniform:nth-of-type(2) {
-  font-family: Canto;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
   font-style: normal;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 32px;
   color: #1c110a;
   line-height: 35px;
@@ -2279,7 +2279,7 @@ flex-direction: column;
   margin-bottom: 15px;
   margin-right: auto !important;
   font-size: 22px;
-  font-family: Canto;
+  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
 }
 
 .opw-noci-star-full {
