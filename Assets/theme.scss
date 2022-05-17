@@ -9204,7 +9204,7 @@ button.tdf_cta_btn
 
 .collection-grid-product__title
 {
-    font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
+    font-family: 'gothic725_bd_btbold', Georgia, Times, Times New Roman, serif;
     font-style: normal;
     // font-weight: bold;
     font-size: 18px;
@@ -9228,7 +9228,7 @@ button.tdf_cta_btn
 }
 .collection-compare-price p,.grid-product__price
 {
-  font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
@@ -10068,7 +10068,7 @@ text-align: center;
 
 #ProductSection--product-template .product-single__title
 {
-    font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
+    font-family: 'gothic725_bd_btbold', Georgia, Times, Times New Roman, serif;
     font-style: normal;
     // font-weight: 600;
     font-size: 48px;
@@ -10089,10 +10089,10 @@ text-align: center;
 }
 #ProductSection--product-template .product-single__price
 {
-    font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
+    font-family: 'Gothic_720 W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-style: normal;
     // font-weight: 700;
-    font-size: 48px;
+    font-size: 26px !important;
 /*     line-height: 55px; */
     letter-spacing: 0.05em;
     color: #1C110A;
@@ -10223,7 +10223,6 @@ text-align: center;
 }
 .product-single__uses p,.product-single__ingredients summary
 {
-    font-weight: 600;
     font-size: 36px;
     line-height: 30px;
     color: #1C110A;
