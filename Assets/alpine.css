@@ -1817,9 +1817,8 @@ body.template-collection .grid-uniform {
   padding-right: 5px;
   display: inline-block;
   position: relative;
-  font-family: 'gutterregular', Georgia, Times, Times New Roman, serif;
-  /* font-weight: 700; */
-  font-size: 24px;
+  font-family: Gothic_720 W01 Light,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 26px !important;
   color: #ccd7c5;
   margin-right: 25px;
 }
