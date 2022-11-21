@@ -17,11 +17,11 @@
         <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
       {% endif %}
 
-      <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+      <div style="position:relative;"><h1 class="product-single__title" itemprop="name"> {{ product.title }} </h1><span id="secomapp-fg-image-{{  product.id }}" style="display: none;"> {{ "icon-freegift.png" | asset_url | img_tag: "Free Gift", "sca-fg-img-label" }} </span> </div>
 
       {% assign subtitle = product.metafields.subtitle %}
       {% assign key = 'subtitle' %}
-      <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
+      <h2 class="product-single__subtitle"> {{ subtitle.subtitle }} </h2>
         	<div class='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %} <p class="opinew-review-numbers">({{ product.metafields.opinew_metafields.reviews_count }})</p></div>
 
     </div>
@@ -289,11 +289,11 @@
               <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
             {% endif %}
             
-            <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+            <div style="position:relative;"><h1 class="product-single__title" itemprop="name"> {{ product.title }} </h1><span id="secomapp-fg-image-{{  product.id }}" style="display: none;"> {{ "icon-freegift.png" | asset_url | img_tag: "Free Gift", "sca-fg-img-label" }} </span> </div>
 
             {% assign subtitle = product.metafields.subtitle %}
             {% assign key = 'subtitle' %}
-            <h2 class="product-single__subtitle">{{ subtitle.subtitle }}</h2>
+            <h2 class="product-single__subtitle"> {{ subtitle.subtitle }} </h2>
 
             <div class='opinew-stars-plugin-product'>{% include 'opinew_review_stars_product' %} <p class="opinew-review-numbers">({{ product.metafields.opinew_metafields.reviews_count }})</p></div>
 
@@ -400,6 +400,9 @@
 
               <select name="id" id="ProductSelect" class="product-single__variants no-js">
                 {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
                   {% if variant.available %}
                     <option {% if variant == product.selected_or_first_available_variant %}
                       selected="selected" {% endif %}
@@ -412,6 +415,9 @@
                       {{ variant.title }} - {{ 'products.product.sold_out' | t }}
                     </option>
                   {% endif %}
+
+{%endunless%}
+{%endunless%}
                 {% endfor %}
               </select>
 			<div class="quantity-add-to" style="display:flex">

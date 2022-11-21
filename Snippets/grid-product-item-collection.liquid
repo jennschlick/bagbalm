@@ -13,7 +13,7 @@
     - assign grid_item_width = 'large--one-quarter medium--one-half'
 
 {% endcomment %}
-
+{% assign sca_product = product %}{% assign sca_product_id_text = "," | append : sca_product.id | append : "," %}{% assign sca_price = sca_product.price %}{% assign sca_price_min = sca_product.price_min %}{% assign sca_price_max = sca_product.price_max %}{% assign sca_compare_at_price = sca_product.compare_at_price %}{% assign sca_compare_at_price_min = sca_product.compare_at_price_min %}{% assign sca_compare_at_price_max = sca_product.compare_at_price_max %}{% assign sca_product_available = sca_product.available %}{% assign sca_product_variantCount = sca_product.variants.size %}{% assign sca_compare_at_price_varies = sca_product.compare_at_price_varies %}{% assign sca_price_varies = sca_product.price_varies %}{% assign sca_has_only_default_variant = false %}{% capture sca_product_variants_json %}{{sca_product.variants | json }}{% endcapture %} {% capture sca_product_json %}{ {% if sca_all_gift_products_ids == null or sca_all_gift_products_ids contains sca_product_id_text %}{% assign sca_product_available = false %}{% assign sca_product_variantCount = 0 %}{% assign sca_has_only_default_variant = true %}{% assign sca_is_first_variant = true %}{% capture sca_variants_json %} [{% for variant in sca_product.variants %}{% unless variant.metafields.secomapp.freegifts %}{% unless variant.title contains '(Freegifts)' %}{% unless variant.title contains '% Off' %}{% unless variant.metafields.shappify_qb.qb_hide == "1" %}{% unless variant.metafields.shappify_bundle.is_bundle == "true" %}{% unless variant.metafields.brodev_scn.hide == "true" %}{% unless variant.metafields.wholesaler2.wholesale %}{% unless variant.metafields.Wholesaler.level %}{% unless variant.title contains '(Wholesale' %}{% if sca_is_first_variant%} {{ variant | json }}{% assign sca_price = variant.price %} {% assign sca_price_min = variant.price %} {% assign sca_price_max = variant.price %} {% assign sca_compare_at_price = variant.compare_at_price %} {% assign sca_compare_at_price_min = variant.compare_at_price %} {% assign sca_compare_at_price_max = variant.compare_at_price %} {% assign sca_product_available = variant.available %} {% assign sca_product_variantCount = 1 %} {% assign sca_is_first_variant = false%}{% else %},{{variant | json }} {% if sca_price_min >= variant.price %} {% assign sca_price_min = variant.price %} {% assign sca_price = variant.price %}{% endif %} {% if sca_price_max <= variant.price %} {% assign sca_price_max = variant.price %} {% endif %} {% if variant.compare_at_price %} {% if sca_compare_at_price_min==null or sca_compare_at_price_min >= variant.compare_at_price %} {% assign sca_compare_at_price_min = variant.compare_at_price %} {% assign sca_compare_at_price = variant.compare_at_price %} {% endif %} {% if sca_compare_at_price_max==null or sca_compare_at_price_max < variant.compare_at_price %} {% assign sca_compare_at_price_max = variant.compare_at_price %} {% endif %} {% endif %} {% if variant.available == true %} {% assign sca_product_available = true %} {% endif %} {% assign sca_product_variantCount = sca_product_variantCount | plus: 1 %}{% endif %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{% endunless %}{%endfor%} ]{% endcapture %}{% if sca_price_min < sca_price_max %}{% assign sca_price_varies = true %}{% else %}{% assign sca_price_varies = false %}{% endif %}{% if sca_compare_at_price_min < sca_compare_at_price_max %}{% assign sca_compare_at_price_varies = true %}{% else %}{% assign sca_compare_at_price_varies = false %}{% endif %}{% if sca_product_variantCount > 1 %}{% assign sca_has_only_default_variant = false %}{% endif %}{% if sca_product_variantCount == sca_product.variants.size %} "variants":{{ sca_product.variants }},{% else %}{%assign sca_product_variants_json = sca_variants_json %} "variants":{{ sca_variants_json }},{% endif %}{% else %} "variants":{{ sca_product_variants_json }},{% endif %} "id": {{sca_product.id}}, "title": {{sca_product.title | json}}, "handle": {{sca_product.handle | json}}, "description": {{sca_product.description | json}}, "published_at": "{{sca_product.published_at | date: "%Y-%m-%dT%H-%M-%S%:z" }}", "created_at": "{{sca_product.created_at | date: "%Y-%m-%dT%H-%M-%S%:z" }}", "vendor": {{sca_product.vendor | json}}, "type": {{sca_product.type | json}}, "tags": {{sca_product.tags | json}}, "price": {{sca_price}}, "price_min": {{sca_price_min}}, "price_max": {{sca_price_max}}, "available": {{sca_product.available}}, "price_varies": {{sca_price_varies}}, "compare_at_price": {{sca_compare_at_price}}, "compare_at_price_min": {{sca_compare_at_price_min}}, "compare_at_price_max": {{sca_compare_at_price_max}}, "compare_at_price_varies": {{sca_compare_at_price_varies}}, "images": {{sca_product.images | json}}, "featured_image": {{sca_product.featured_image | json }}, "options": {{sca_product.options | json}}, "media": {{sca_product.media | json }}, "content": {{sca_product.content | json }}} {% endcapture sca_product_json %}
 {% unless grid_item_width %}
   {% assign grid_item_width = 'small--one-half medium--one-half large--one-quarter' %}
 {% endunless %}
@@ -26,7 +26,7 @@
 {% endunless %}
 
 {% assign on_sale = false %}
-{% if product.compare_at_price > product.price %}
+{% if sca_compare_at_price > sca_price %}
   {% assign on_sale = true %}
 {% endif %}
 
@@ -74,6 +74,7 @@
       {%for tag in product.tags%}
       {%if tag contains "Save"%}
       {%for variant in product.variants%}
+
       {%if variant.compare_at_price > variant.price%}
       <div class="collection-grid-product__on-sale" variant-id="{{variant.id}}" {%unless variant == product.selected_or_first_available_variant%}style="display:none ;"{%endunless%}>
         {% assign saving = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round  %}
@@ -104,14 +105,14 @@
           {% else %}
              <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
           {% endif %}
-          {% if product.price_varies %}
-            {{ product.price_min | money_without_trailing_zeros }}
+          {% if sca_price_varies %}
+            {{ sca_price_min | money_without_trailing_zeros }}
             <span class="icon-fallback-text">
               <span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
               <span class="fallback-text">+</span>
             </span>
           {% else %}
-            {{ product.price | money_without_trailing_zeros }}
+            {{ sca_price | money_without_trailing_zeros }}
           {% endif %}
         </span>
       </span>
@@ -128,7 +129,7 @@
       {% assign abc = variant.title | split: "Pack" | first | strip   %}
       <div class="collection-compare-price"  data-id="{{variant.id}}" {%if product.selected_or_first_available_variant != variant %}style="display: none ;"{%endif%}>
         {% for product_option in product.options_with_values %}
-          {% if product_option.name contains 'Color' %}
+          {% if product_option.name contains 'Color' or product_option.name contains 'Style' %}
           	{% assign color_names = true %}
           {% endif %}
         {% endfor %}
@@ -145,9 +146,9 @@
                 {% else %}
                 <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
                 {% endif %}
-                {% if product.price_varies %}
+                {% if sca_price_varies %}
                 {% comment %}
-                {{ product.price_min | money_without_trailing_zeros }}
+                {{ sca_price_min | money_without_trailing_zeros }}
                 {% endcomment %}
                 <span class="displayedProductPrice">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
                 <span class="icon-fallback-text">
@@ -156,9 +157,9 @@
                 </span>
                 {% else %}
                 {% comment %}
-                {{ product.price | money_without_trailing_zeros }}
+                {{ sca_price | money_without_trailing_zeros }}
                 {% endcomment %}
-                <span class="displayedProductPrice">{{ product.price | money_without_trailing_zeros }}</span>
+                <span class="displayedProductPrice">{{ sca_price | money_without_trailing_zeros }}</span>
                 {% endif %}
               </span>
             </span>
@@ -168,7 +169,7 @@
     {% endfor %}
     
     <form action="/cart/add" method="post" class="add-to-cart__form">
-      {% if product.variants.size  < 0 %}
+      {% if sca_product_variantCount  < 0 %}
       	<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
       {% else %}
         <select class="collection-dropdown" name="id" onchange='updatePrice(this)' aria-label="Quantity">
@@ -188,6 +189,8 @@
         </button>
       </div>
     </form>
+<span class="sca-fg-cat-list" style="display: none;" id="secomapp-fg-data-{{ product.id }}"> </span>
+
     
   </div>
 </div>

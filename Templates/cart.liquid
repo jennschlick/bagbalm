@@ -71,7 +71,8 @@
         <hr class="hr--small">
       </header>
 
-      <form action="/cart" method="post" novalidate class="cart">
+      <!-- qc- previously action="/cart" -->
+      <form action="/checkout" method="post" novalidate class="cart">
 
         <div class="cart__row medium-down--hide cart__header-labels">
           <div class="grid--full">
@@ -99,18 +100,18 @@
                 <div class="grid">
 
                   <div class="grid__item one-third">
-                    <a href="{{ item.url | within: collections.all }}" class="cart__image">
+                    <a href="  {%if item.variant.metafields.secomapp.freegifts%}{{ item.product.url }}{%else%}{{ item.url | within: collections.all }}{%endif%}" class="cart__image">
 
                       {% comment %}
                         More image size options at:
                           - http://docs.shopify.com/themes/filters/product-img-url
                       {% endcomment %}
-                      <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                      <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | remove: '/ Default Title'| remove: 'Default Title' | remove: '/ Default' | remove: 'Default' | replace: '(Freegifts)', ''  | escape }}">
                     </a>
                   </div>
 
                   <div class="grid__item two-thirds">
-                    <a href="{{ item.url }}" class="h4 cart__product-name">
+                    <a href="  {%if item.variant.metafields.secomapp.freegifts%}{{ item.product.url }}{%else%}{{ item.url }}{%endif%}" class="h4 cart__product-name">
                       {{ item.product.title }}
 <span class="saso-cart-item-discount-notes" data-key="{{item.key}}"></span>
 <span class="saso-cart-item-upsell-notes" data-key="{{item.key}}"></span>
@@ -120,7 +121,7 @@
                     </a>
                     {% unless item.variant.title contains 'Default' %}
                       <p class="cart__product-meta">
-                        {{ item.variant.title }}
+                        {{ item.variant.title | remove: '/ Default Title'| remove: 'Default Title' | remove: '/ Default' | remove: 'Default' | replace: '(Freegifts)', ''  }}
                       </p>
                     {% endunless %}
 
@@ -162,7 +163,7 @@
                   <div class="grid__item one-third text-center">
 
                     <label for="updates_{{ item.key }}" class="visually-hidden">{{ 'cart.label.quantity' | t }}</label>
-                    <input type="number" name="updates[]" id="updates_{{ item.key }}" class="cart__product-qty" value="{{ item.quantity }}" min="0" data-id="{{ item.key }}">
+                    <input {%if item.variant.metafields.secomapp.freegifts%}readonly{%endif%}   type="number" name="updates[]" id="updates_{{ item.key }}" class="cart__product-qty" value="{{ item.quantity }}" min="0" data-id="{{ item.key }}">
 
                   </div>
 

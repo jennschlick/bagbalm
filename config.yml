@@ -27,7 +27,7 @@ jenn:
 
 production:
   password: e67ba686787a14534897578865d0e004
-  theme_id: "132708565209"
+  theme_id: "129044381913"
   store: vermonts-original-bag-balm.myshopify.com
   ignore_files:
   - config/settings_data.json

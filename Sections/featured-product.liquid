@@ -57,7 +57,7 @@
           <h2 class="product-single__vendor" itemprop="brand">{{ vendor }}</h2>
         {% endif %}
 
-        <h1 class="product-single__title" itemprop="name">{{ title }}</h1>
+        <h1 class="product-single__title" itemprop="name"> {{ title }} </h1>
         <div class='opinew-stars-plugin-product-list'>{% render 'opinew_review_stars_lists' product:product %}</div>
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -134,6 +134,7 @@
                       id="ProductSelect--{{ section.id }}-option-{{ forloop.index0 }}">
                       {% assign option_index = forloop.index %}
                       {% for value in option.values %}
+                      {% unless value contains '% off)' %}
                         {% assign variant_label_state = true %}
                         {% if product.options.size == 1 %}
                           {% unless product.variants[forloop.index0].available  %}
@@ -149,6 +150,7 @@
                           class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                           id="ProductSelect--{{ section.id }}-option-{{ option.name | handleize }}-{{ value | escape }}">
                         <label for="ProductSelect--{{ section.id }}-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
+                      {%endunless%}
                       {% endfor %}
                     </fieldset>
                   </div>
@@ -157,6 +159,9 @@
 
               <select name="id" id="ProductSelect" class="product-single__variants no-js">
                 {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
                   {% if variant.available %}
                     <option {% if variant == product.selected_or_first_available_variant %}
                       selected="selected" {% endif %}
@@ -169,6 +174,9 @@
                       {{ variant.title }} - {{ 'products.product.sold_out' | t }}
                     </option>
                   {% endif %}
+
+{%endunless%}
+{%endunless%}
                 {% endfor %}
               </select>
 
