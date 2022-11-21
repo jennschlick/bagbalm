@@ -3,19 +3,11 @@
 
 development:
   password: e67ba686787a14534897578865d0e004
-  theme_id: "129997635801"
+  theme_id: "135868285145"
   store: vermonts-original-bag-balm.myshopify.com
   ignore_files:
   - config/settings_data.json
-  # https://bagbalm.com/?preview_theme_id=129997635801
-
-jackie:
-  password: e67ba686787a14534897578865d0e004
-  theme_id: "132708565209"
-  store: vermonts-original-bag-balm.myshopify.com
-  ignore_files:
-  - config/settings_data.json
-  # https://bagbalm.com/?preview_theme_id=132708565209
+  # https://bagbalm.com/?preview_theme_id=135868285145
 
 jenn:
   password: e67ba686787a14534897578865d0e004

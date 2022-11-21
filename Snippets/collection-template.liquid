@@ -156,9 +156,33 @@ Collection template, used on collection.liquid and collection.image.liquid
             {% endunless%}
             {% endif %}
             {%endfor%}
+
+
           </div>
         </div>
 
+        {%- comment -%} qc- collection page extra static link {%- endcomment -%}
+        {%- if section.settings.collection_link_text != blank -%}
+          <style>
+            .qc-static-url {
+              border-top: 1px dotted #8dba97;
+              margin: 20px 0;
+              padding: 11px 0;
+            }
+            .qc-static-url a {
+              margin: 10px 0 25px;
+              display: inline-block;
+              font-size: 16px;
+            }
+          </style>
+          <div class="qc-static-url">
+            {% if section.settings.collection_link_url != blank %}
+              <a href="{{ section.settings.collection_link_url }}">{{ section.settings.collection_link_text }}</a>
+            {%- else -%}
+              {{ section.settings.collection_link_text }}
+            {% endif %}
+          </div>
+        {%- endif -%}
 
         {%endfor%}
       </div></div>
